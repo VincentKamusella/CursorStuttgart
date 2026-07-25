@@ -22,6 +22,18 @@ Spotlight is **not** a content generator (the market has ~258 of those). It's a 
 
 ---
 
+## Features
+
+| Feature | What it does |
+|---|---|
+| 🧬 **Creator DNA** | Your signature voice, mapped from your own videos — hooks, pacing, signature phrases, and the things you *never* do (taboos). Built from the voice fingerprint. |
+| 🎯 **Two‑axis score** | Every draft is measured on **two independent axes** — *sounds like you* and *fits a rising trend* — shown as a meter, with the **tension** between them called out instead of averaged away. |
+| 🔥 **Trend radar** | Surfaces only the trends that fit *your* niche, each with a fit score and a decay estimate, ranked against your winning patterns. |
+| 📈 **Draft predictor** | Paste a script, caption, or video link and get an **instant review before you post** — the two‑axis score, predicted reach, and concrete enhanced suggestions to lift it. |
+| 🧾 **Receipts** | Every insight is **traceable** — each number links to the exact video, comment, or line it's based on. No black‑box opinions. Lines up with EU AI Act Article 50 transparency (effective 2 Aug 2026). |
+
+---
+
 ## Architecture
 
 Four n8n pipelines, each reads and writes structured data — nothing is coupled, so no single failure kills the demo.
