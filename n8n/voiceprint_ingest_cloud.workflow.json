@@ -1,5 +1,5 @@
 {
-  "name": "Voiceprint — Ingestion (Cloud: route by type → per-model)",
+  "name": "Voiceprint — Ingestion (Cloud: per-type multi-model branches)",
   "nodes": [
     {
       "parameters": {},
@@ -8,8 +8,8 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        220,
-        420
+        -140,
+        340
       ]
     },
     {
@@ -31,8 +31,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.5,
       "position": [
-        440,
-        420
+        80,
+        340
       ]
     },
     {
@@ -163,119 +163,237 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.4,
       "position": [
-        660,
-        420
+        300,
+        340
       ]
     },
     {
       "parameters": {
         "method": "POST",
         "url": "https://fal.run/fal-ai/wizper",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
         "contentType": "json",
         "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({ audio_url: $json.media_url }) }}",
+        "jsonBody": "={{ JSON.stringify({ audio_url: $('Read creator sheet').item.json.media_url }) }}",
         "options": {
-          "timeout": 120000
-        },
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth"
+          "timeout": 180000
+        }
       },
-      "id": "wizper",
-      "name": "fal · Wizper (speech→text)",
+      "id": "sttV",
+      "name": "STT · video",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        900,
-        200
+        540,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://fal.run/openrouter/router/video",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ video_url: $('Read creator sheet').item.json.media_url, prompt: \"Describe the visual style and what happens in this short video in one or two sentences for a creator style profile, then on a new line prefixed TEXT: transcribe any on-screen text overlays verbatim. If none, write TEXT:\", model: \"google/gemini-2.5-flash\" }) }}",
+        "options": {
+          "timeout": 180000
+        }
+      },
+      "id": "sceneV",
+      "name": "Scene · video",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        760,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const row = { ...$('Read creator sheet').item.json };\nconst transcript = String(($('STT · video').item.json.text) || '').trim() || null;\nconst out = String(($json && $json.output) || '');\nconst i = out.indexOf('TEXT:');\nlet vd = null, ov = null;\nif (i >= 0) { vd = out.slice(0, i).trim() || null; ov = out.slice(i + 5).trim() || null; }\nelse { vd = out.trim() || null; }\nrow._transcript = transcript; row._visual_desc = vd; row._overlay = ov;\nreturn [{ json: row }];"
+      },
+      "id": "shapeV",
+      "name": "Shape video",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        980,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://fal.run/fal-ai/wizper",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ audio_url: $('Read creator sheet').item.json.media_url }) }}",
+        "options": {
+          "timeout": 180000
+        }
+      },
+      "id": "sttA",
+      "name": "STT · audio",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        540,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const row = { ...$('Read creator sheet').item.json };\nrow._transcript = String(($json && $json.text) || '').trim() || null;\nrow._visual_desc = null; row._overlay = null;\nreturn [{ json: row }];"
+      },
+      "id": "shapeA",
+      "name": "Shape audio",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        760,
+        180
       ]
     },
     {
       "parameters": {
         "method": "POST",
         "url": "https://fal.run/openrouter/router/vision",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
         "contentType": "json",
         "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({ image_url: $json.media_url, prompt: \"Describe this social-media image in one sentence for a creator style profile, then on a new line prefixed TEXT: transcribe verbatim any text overlaid on the image (captions, stickers, titles). If there is no overlaid text, write TEXT:\" }) }}",
+        "jsonBody": "={{ JSON.stringify({ image_urls: [$('Read creator sheet').item.json.media_url], prompt: \"Describe this social-media image in one sentence for a creator style profile, then on a new line prefixed TEXT: transcribe verbatim any text overlaid on the image (captions, stickers, titles). If there is no overlaid text, write TEXT:\", model: \"google/gemini-2.5-flash\" }) }}",
         "options": {
-          "timeout": 120000
-        },
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth"
+          "timeout": 180000
+        }
       },
-      "id": "vision",
-      "name": "fal · Vision (image→text+OCR)",
+      "id": "visI",
+      "name": "Vision · image",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        900,
-        420
+        540,
+        360
       ]
     },
     {
       "parameters": {
-        "jsCode": "// video/audio branch: fold Wizper transcript back onto the original sheet row\nconst r = { ...$('Read creator sheet').item.json };\nconst res = $json || {};\nr._transcript = (res.text ? String(res.text).trim() : '') || null;\nr._visual_desc = null;\nr._overlay = null;\nreturn [{ json: r }];"
+        "jsCode": "const row = { ...$('Read creator sheet').item.json };\nconst out = String(($json && $json.output) || '');\nconst i = out.indexOf('TEXT:');\nlet vd = null, ov = null;\nif (i >= 0) { vd = out.slice(0, i).trim() || null; ov = out.slice(i + 5).trim() || null; }\nelse { vd = out.trim() || null; }\nrow._transcript = String(row.transcript || '').trim() || null;\nrow._visual_desc = vd; row._overlay = ov;\nreturn [{ json: row }];"
       },
-      "id": "shapeSTT",
-      "name": "Shape transcript",
+      "id": "shapeI",
+      "name": "Shape image",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1140,
-        200
+        760,
+        360
       ]
     },
     {
       "parameters": {
-        "jsCode": "// image/story branch: split \"<desc>\\nTEXT:<overlay>\" from the VLM, fold onto row\nconst r = { ...$('Read creator sheet').item.json };\nconst res = $json || {};\nconst txt = String(res.output || res.text || res.response || res.content || '');\nconst idx = txt.indexOf('TEXT:');\nlet vd = null, ov = null;\nif (idx >= 0) { vd = txt.slice(0, idx).trim() || null; ov = txt.slice(idx + 5).trim() || null; }\nelse { vd = txt.trim() || null; }\nr._transcript = (String(r.transcript || '').trim()) || null;\nr._visual_desc = vd;\nr._overlay = ov;\nreturn [{ json: r }];"
+        "method": "POST",
+        "url": "https://fal.run/fal-ai/wizper",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ audio_url: $('Read creator sheet').item.json.media_url }) }}",
+        "options": {
+          "timeout": 180000
+        }
       },
-      "id": "shapeVision",
-      "name": "Shape visual + OCR",
+      "id": "sttS",
+      "name": "STT · story",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        540,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://fal.run/openrouter/router/video",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ video_url: $('Read creator sheet').item.json.media_url, prompt: \"Describe the visual style and what happens in this short video in one or two sentences for a creator style profile, then on a new line prefixed TEXT: transcribe any on-screen text overlays verbatim. If none, write TEXT:\", model: \"google/gemini-2.5-flash\" }) }}",
+        "options": {
+          "timeout": 180000
+        }
+      },
+      "id": "vidS",
+      "name": "Video+OCR · story",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        760,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const row = { ...$('Read creator sheet').item.json };\nconst transcript = String(($('STT · story').item.json.text) || '').trim() || null;\nconst out = String(($json && $json.output) || '');\nconst i = out.indexOf('TEXT:');\nlet vd = null, ov = null;\nif (i >= 0) { vd = out.slice(0, i).trim() || null; ov = out.slice(i + 5).trim() || null; }\nelse { vd = out.trim() || null; }\nrow._transcript = transcript; row._visual_desc = vd; row._overlay = ov;\nreturn [{ json: row }];"
+      },
+      "id": "shapeS",
+      "name": "Shape story",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1140,
-        420
+        980,
+        540
       ]
     },
     {
       "parameters": {
-        "jsCode": "// comment branch: passes straight through from the Switch, just normalise fields\nconst r = { ...$json };\nr._transcript = (String(r.transcript || '').trim()) || null;\nr._visual_desc = null;\nr._overlay = null;\nreturn [{ json: r }];"
+        "jsCode": "const row = { ...$json };\nrow._transcript = String(row.transcript || '').trim() || null;\nrow._visual_desc = null; row._overlay = null;\nreturn [{ json: row }];"
       },
-      "id": "shapeComment",
+      "id": "shapeC",
       "name": "Shape comment",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1140,
-        640
+        540,
+        720
       ]
     },
     {
       "parameters": {
-        "numberInputs": 3
+        "numberInputs": 5
       },
       "id": "merge",
       "name": "Merge branches",
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        1380,
-        420
+        1220,
+        300
       ]
     },
     {
       "parameters": {
-        "jsCode": "// Collect every enriched row from the Merge, split into the three buckets,\n// compute engagement-rate percentile, emit one JSON file per bucket.\nconst S = v => (v == null ? '' : String(v)).trim();\nconst N = v => { const n = parseInt(String(v).replace(/[, ]/g, ''), 10); return isNaN(n) ? 0 : n; };\n\nconst rows = $input.all().map(i => i.json);\nconst corpus = [], visual = [], audience = [];\n\nfor (const r of rows) {\n  const id = S(r.id) || ('row_' + Math.random().toString(36).slice(2, 10));\n  const mtype = S(r.media_type).toLowerCase();\n  const author = (S(r.author) || 'creator').toLowerCase();\n\n  if (mtype === 'comment' && author === 'audience') {\n    audience.push({ id, platform: S(r.platform), text: S(r.caption) || S(r._transcript) || S(r.transcript), likes: N(r.likes) });\n    continue;\n  }\n\n  if (r._visual_desc) visual.push({ id, platform: S(r.platform), visual_desc: S(r._visual_desc) });\n\n  let caption = S(r.caption) || null;\n  if (r._overlay) caption = (caption ? caption + ' ' : '') + S(r._overlay);\n  const transcript = S(r._transcript) || S(r.transcript) || null;\n  const title = S(r.title) || null;\n  if (!(transcript || caption || title)) continue;\n\n  const hook = S(r.hook) || (transcript || caption || '')\n    .replace(/\\n/g, ' ').split('. ')[0].split(' ').slice(0, 14).join(' ');\n\n  corpus.push({\n    id, platform: S(r.platform), title, transcript, caption, hook,\n    published_at: S(r.published_at) || null,\n    metrics: { views: N(r.views), likes: N(r.likes), comments: N(r.comments) },\n    performance_percentile: 0,\n  });\n}\n\nconst scored = corpus.map(i => (i.metrics.likes + i.metrics.comments) / Math.max(i.metrics.views, 1));\nconst sorted = [...scored].sort((a, b) => a - b);\ncorpus.forEach((it, k) => {\n  const rank = sorted.filter(v => v <= scored[k]).length;\n  it.performance_percentile = corpus.length ? Math.round((rank / corpus.length) * 1000) / 1000 : 0;\n});\n\nconst c0 = rows[0] || {};\nconst corpusDoc = {\n  creator: { handle: S(c0.creator || c0.handle), niche: S(c0.niche),\n             platforms: [...new Set(corpus.map(i => i.platform).filter(Boolean))] },\n  items: corpus,\n};\n\nreturn [\n  { json: { fileName: 'corpus.json',           fileContent: JSON.stringify(corpusDoc, null, 2) } },\n  { json: { fileName: 'visual_profile.json',   fileContent: JSON.stringify({ items: visual }, null, 2) } },\n  { json: { fileName: 'audience_signals.json', fileContent: JSON.stringify({ items: audience }, null, 2) } },\n];"
+        "jsCode": "const S = v => (v == null ? '' : String(v)).trim();\nconst N = v => { const n = parseInt(String(v).replace(/[, ]/g, ''), 10); return isNaN(n) ? 0 : n; };\nconst rows = $input.all().map(i => i.json);\nconst corpus = [], visual = [], audience = [];\nfor (const r of rows) {\n  const id = S(r.id) || ('row_' + Math.random().toString(36).slice(2, 10));\n  const mtype = S(r.media_type).toLowerCase();\n  const author = (S(r.author) || 'creator').toLowerCase();\n  if (mtype === 'comment' && author === 'audience') {\n    audience.push({ id, platform: S(r.platform), text: S(r.caption) || S(r._transcript) || S(r.transcript), likes: N(r.likes) });\n    continue;\n  }\n  if (r._visual_desc) visual.push({ id, platform: S(r.platform), media_type: mtype, visual_desc: S(r._visual_desc) });\n  let caption = S(r.caption) || null;\n  if (r._overlay) caption = (caption ? caption + ' ' : '') + S(r._overlay);\n  const transcript = S(r._transcript) || S(r.transcript) || null;\n  const title = S(r.title) || null;\n  if (!(transcript || caption || title)) continue;\n  const hook = S(r.hook) || (transcript || caption || '').replace(/\\n/g, ' ').split('. ')[0].split(' ').slice(0, 14).join(' ');\n  corpus.push({ id, platform: S(r.platform), media_type: mtype, title, transcript, caption, hook,\n    published_at: S(r.published_at) || null,\n    metrics: { views: N(r.views), likes: N(r.likes), comments: N(r.comments) }, performance_percentile: 0 });\n}\nconst scored = corpus.map(i => (i.metrics.likes + i.metrics.comments) / Math.max(i.metrics.views, 1));\nconst sorted = [...scored].sort((a, b) => a - b);\ncorpus.forEach((it, k) => { const rank = sorted.filter(v => v <= scored[k]).length;\n  it.performance_percentile = corpus.length ? Math.round((rank / corpus.length) * 1000) / 1000 : 0; });\nconst c0 = rows[0] || {};\nconst corpusDoc = { creator: { handle: S(c0.creator || c0.handle), niche: S(c0.niche),\n  platforms: [...new Set(corpus.map(i => i.platform).filter(Boolean))] }, items: corpus };\nreturn [\n  { json: { fileName: 'corpus.json',           fileContent: JSON.stringify(corpusDoc, null, 2) } },\n  { json: { fileName: 'visual_profile.json',   fileContent: JSON.stringify({ items: visual }, null, 2) } },\n  { json: { fileName: 'audience_signals.json', fileContent: JSON.stringify({ items: audience }, null, 2) } },\n];"
       },
       "id": "assemble",
       "name": "Assemble buckets + percentile",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1600,
-        420
+        1440,
+        300
       ]
     }
   ],
@@ -306,28 +424,28 @@
       "main": [
         [
           {
-            "node": "fal · Wizper (speech→text)",
+            "node": "STT · video",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "fal · Wizper (speech→text)",
+            "node": "STT · audio",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "fal · Vision (image→text+OCR)",
+            "node": "Vision · image",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "fal · Vision (image→text+OCR)",
+            "node": "STT · story",
             "type": "main",
             "index": 0
           }
@@ -341,29 +459,29 @@
         ]
       ]
     },
-    "fal · Wizper (speech→text)": {
+    "STT · video": {
       "main": [
         [
           {
-            "node": "Shape transcript",
+            "node": "Scene · video",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "fal · Vision (image→text+OCR)": {
+    "Scene · video": {
       "main": [
         [
           {
-            "node": "Shape visual + OCR",
+            "node": "Shape video",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Shape transcript": {
+    "Shape video": {
       "main": [
         [
           {
@@ -374,7 +492,18 @@
         ]
       ]
     },
-    "Shape visual + OCR": {
+    "STT · audio": {
+      "main": [
+        [
+          {
+            "node": "Shape audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Shape audio": {
       "main": [
         [
           {
@@ -385,13 +514,68 @@
         ]
       ]
     },
-    "Shape comment": {
+    "Vision · image": {
+      "main": [
+        [
+          {
+            "node": "Shape image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Shape image": {
       "main": [
         [
           {
             "node": "Merge branches",
             "type": "main",
             "index": 2
+          }
+        ]
+      ]
+    },
+    "STT · story": {
+      "main": [
+        [
+          {
+            "node": "Video+OCR · story",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Video+OCR · story": {
+      "main": [
+        [
+          {
+            "node": "Shape story",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Shape story": {
+      "main": [
+        [
+          {
+            "node": "Merge branches",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "Shape comment": {
+      "main": [
+        [
+          {
+            "node": "Merge branches",
+            "type": "main",
+            "index": 4
           }
         ]
       ]
