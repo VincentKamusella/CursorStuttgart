@@ -1,0 +1,135 @@
+{
+  "name": "Voiceprint — Ingestion (Sheet → fal → corpus.json)",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "trigger",
+      "name": "Run ingestion",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "YOUR_GOOGLE_SHEET_ID"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Sheet1"
+        },
+        "options": {}
+      },
+      "id": "sheet",
+      "name": "Read creator sheet",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        460,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Voiceprint ingestion — fal enrich + three-bucket assembly.\n// Input: rows from the Google Sheets node. Output: 3 items, one JSON file each.\n// Requires env var FAL_KEY set before starting n8n. See docs/INGEST_PLAN.md.\nconst FAL_KEY = $env.FAL_KEY || (typeof process !== 'undefined' && process.env.FAL_KEY);\nif (!FAL_KEY) throw new Error('FAL_KEY env var not set — export FAL_KEY before starting n8n');\n\nconst helpers = this.helpers;\nconst WIZPER = 'https://fal.run/fal-ai/wizper';\nconst VISION = 'https://fal.run/openrouter/router/vision';\nconst VISION_PROMPT = \"Describe this social-media image in one sentence for a creator style profile, \"\n  + \"then on a new line prefixed 'TEXT:' transcribe verbatim any text overlaid on the image \"\n  + \"(captions, stickers, titles). If there is no overlaid text, write 'TEXT:'.\";\nconst TOP_QUARTILE = 0.75;\n\nasync function fal(url, body) {\n  return await helpers.httpRequest({\n    method: 'POST', url,\n    headers: { Authorization: 'Key ' + FAL_KEY, 'Content-Type': 'application/json' },\n    body, json: true,\n  });\n}\n\nconst S = v => (v == null ? '' : String(v)).trim();\nconst N = v => { const n = parseInt(String(v).replace(/[, ]/g, ''), 10); return isNaN(n) ? 0 : n; };\n\nconst rows = $input.all().map(i => i.json);\nconst corpus = [], visual = [], audience = [];\n\nfor (const r of rows) {\n  const id = S(r.id) || ('row_' + Math.random().toString(36).slice(2, 10));\n  const mtype = S(r.media_type).toLowerCase();\n  const author = (S(r.author) || 'creator').toLowerCase();\n  const url = S(r.media_url);\n\n  // AUDIENCE bucket — other people's comments never touch the voice corpus\n  if (mtype === 'comment' && author === 'audience') {\n    audience.push({ id, platform: S(r.platform), text: S(r.caption) || S(r.transcript), likes: N(r.likes) });\n    continue;\n  }\n\n  let transcript = S(r.transcript) || null;\n  let visual_desc = null, overlay = null;\n  try {\n    if ((mtype === 'video' || mtype === 'audio') && url && !transcript) {\n      const res = await fal(WIZPER, { audio_url: url });\n      transcript = (res && res.text ? String(res.text).trim() : '') || null;\n    }\n    if ((mtype === 'image' || mtype === 'story') && url) {\n      const res = await fal(VISION, { image_url: url, prompt: VISION_PROMPT });\n      const txt = String((res && (res.output || res.text || res.response || res.content)) || '');\n      const idx = txt.indexOf('TEXT:');\n      if (idx >= 0) { visual_desc = txt.slice(0, idx).trim() || null; overlay = txt.slice(idx + 5).trim() || null; }\n      else { visual_desc = txt.trim() || null; }\n    }\n  } catch (e) {\n    console.log('[fal] ' + id + ' (' + mtype + ') failed: ' + e.message + ' — skipping media text');\n  }\n\n  // VISUAL bucket — VLM scene description is style, not prose (feeds Stage-5 thumbnails)\n  if (visual_desc) visual.push({ id, platform: S(r.platform), visual_desc });\n\n  // VOICE-TEXT bucket — creator's own words only. Overlay text he wrote IS his voice.\n  let caption = S(r.caption) || null;\n  if (overlay) caption = (caption ? caption + ' ' : '') + overlay;\n  const title = S(r.title) || null;\n  if (!(transcript || caption || title)) continue;  // pure-image posts feed only visual\n\n  const hook = S(r.hook) || (transcript || caption || '')\n    .replace(/\\n/g, ' ').split('. ')[0].split(' ').slice(0, 14).join(' ');\n\n  corpus.push({\n    id, platform: S(r.platform), title, transcript, caption, hook,\n    published_at: S(r.published_at) || null,\n    metrics: { views: N(r.views), likes: N(r.likes), comments: N(r.comments) },\n    performance_percentile: 0,\n  });\n}\n\n// engagement-rate percentile within THIS creator's own catalogue (not raw views)\nconst scored = corpus.map(i => (i.metrics.likes + i.metrics.comments) / Math.max(i.metrics.views, 1));\nconst sorted = [...scored].sort((a, b) => a - b);\ncorpus.forEach((it, k) => {\n  const rank = sorted.filter(v => v <= scored[k]).length;\n  it.performance_percentile = corpus.length ? Math.round((rank / corpus.length) * 1000) / 1000 : 0;\n});\n\nconst c0 = rows[0] || {};\nconst corpusDoc = {\n  creator: {\n    handle: S(c0.creator || c0.handle),\n    niche: S(c0.niche),\n    platforms: [...new Set(corpus.map(i => i.platform).filter(Boolean))],\n  },\n  items: corpus,\n};\n\nreturn [\n  { json: { fileName: 'corpus.json',           fileContent: JSON.stringify(corpusDoc, null, 2) } },\n  { json: { fileName: 'visual_profile.json',   fileContent: JSON.stringify({ items: visual }, null, 2) } },\n  { json: { fileName: 'audience_signals.json', fileContent: JSON.stringify({ items: audience }, null, 2) } },\n];"
+      },
+      "id": "assemble",
+      "name": "Enrich + assemble buckets",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        680,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "toText",
+        "sourceProperty": "fileContent",
+        "binaryPropertyName": "data",
+        "options": {
+          "fileName": "={{ $json.fileName }}"
+        }
+      },
+      "id": "tofile",
+      "name": "To JSON files",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        900,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "=./data/{{ $json.fileName }}",
+        "dataPropertyName": "data",
+        "options": {}
+      },
+      "id": "write",
+      "name": "Write to data/",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        1120,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Run ingestion": {
+      "main": [
+        [
+          {
+            "node": "Read creator sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read creator sheet": {
+      "main": [
+        [
+          {
+            "node": "Enrich + assemble buckets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enrich + assemble buckets": {
+      "main": [
+        [
+          {
+            "node": "To JSON files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "To JSON files": {
+      "main": [
+        [
+          {
+            "node": "Write to data/",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
