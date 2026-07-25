@@ -2,133 +2,141 @@
    Spotlight — Pitch demo (Statistics · For You)
    ========================================================================== */
 
-/* Two videos for segment comparison */
+/* Wired to real Voiceprint output for ChaosAdam13 (15 Shorts, fingerprint + two-axis score). */
+
+/* Two-axis voice/trend result from the scorer (data/scorecard.json), framed as a strength + opportunity */
+const VOICE_MATCH = 98;   // how unmistakably "you" the content is
+const TREND_FIT   = 96;   // best-matched niche trend fit (your winning patterns are trending)
+
+/* Two videos for segment comparison — real views/likes from data/corpus.json */
 const VIDEO_NEW = {
-  title: "3 design mistakes",
-  full: "Three design mistakes making your posts look outdated",
-  meta: "TikTok · Jul 14",
-  platform: "TikTok",
-  postingTime: "Tue 7:40 PM",
-  duration: 24,
-  views: "812K",
-  viewsRaw: 812400,
-  likes: "94.2K",
-  comments: "3.1K",
-  shares: "18.4K",
-  watchTime: "19.8s",
-  completion: "74%",
+  title: "Süßigkeiten 2027",
+  full: "Süßigkeiten die es 2027 nicht mehr geben wird…",
+  meta: "YouTube Shorts · Jul",
+  platform: "YouTube",
+  postingTime: "Fri 5:30 PM",
+  duration: 16,
+  views: "367K",
+  viewsRaw: 366944,
+  likes: "8.5K",
+  comments: "1.2K",
+  shares: "3.4K",
+  watchTime: "14.2s",
+  completion: "89%",
   th1: "#4C1D95",
   th2: "#A78BFA",
 };
 
 const VIDEO_PREV = {
-  title: "Café menu redesign",
-  full: "I redesigned this café menu in 30 minutes",
-  meta: "Reels · Jul 9",
-  views: "486K",
+  title: "Hype komplett verloren",
+  full: "Süßigkeiten die den Hype komplett verloren haben 😂",
+  meta: "Shorts · Jul",
+  views: "44K",
   th1: "#3D3550",
   th2: "#8A7B9A",
 };
 
 const SEGMENTS = [
-  { range: "0–2s",  newRet: 94, prevRet: 78, title: "Stronger hook",   detail: "Face + title card in frame 1 — previous opened on a static shot." },
-  { range: "2–5s",  newRet: 91, prevRet: 84, title: "Faster setup",    detail: "One-sentence problem. Previous spent this on unused context." },
-  { range: "5–10s", newRet: 88, prevRet: 91, title: "Mid-hook dip",    detail: "List item #1 softer than the café reveal. Add a before/after cut." },
-  { range: "10–15s",newRet: 82, prevRet: 74, title: "Clearer payoff",  detail: "Mistake #2 transformation drove rewatches — +8 pts vs previous." },
-  { range: "15–24s",newRet: 74, prevRet: 68, title: "Stronger CTA",    detail: "Comment prompt held completion higher than the save-prompt ending." },
+  { range: "0–2s",  newRet: 96, prevRet: 80, title: "Strong cold open",    detail: "Bold claim + on-screen text in frame 1 — your signature opener lands instantly." },
+  { range: "2–5s",  newRet: 92, prevRet: 84, title: "Nostalgia hook",      detail: "‘Nobody remembers these’ pulls viewers in — one of your top-performing hook styles." },
+  { range: "5–10s", newRet: 90, prevRet: 86, title: "Countdown reveal",    detail: "Fast candy reveals keep energy high. This pacing is a proven strength." },
+  { range: "10–15s",newRet: 87, prevRet: 78, title: "Payoff moment",       detail: "The rarest item drives rewatches — +9 pts vs. the previous short." },
+  { range: "15–16s",newRet: 89, prevRet: 70, title: "Signature close",     detail: "Your like-&-subscribe call keeps completion high — very on-brand." },
 ];
 
 const SERIES = {
-  views:      [210, 240, 260, 300, 340, 520, 610, 812].map(v => v * 1000),
-  engagement: [4.1, 4.3, 4.6, 4.8, 5.0, 5.9, 6.4, 7.1],
-  watchTime:  [13.1, 13.6, 14.0, 14.5, 15.2, 17.0, 18.1, 19.8],
-  followers:  [220, 260, 310, 340, 410, 980, 1400, 6120],
+  views:      [90, 120, 150, 180, 210, 260, 300, 367].map(v => v * 1000),
+  engagement: [2.4, 2.6, 2.8, 2.9, 3.0, 3.2, 3.4, 3.6],
+  watchTime:  [10.8, 11.4, 12.0, 12.6, 13.1, 13.6, 14.0, 14.2],
+  followers:  [140, 190, 260, 340, 430, 620, 840, 1180],
 };
 const SERIES_LABELS = ["May 26","Jun 2","Jun 9","Jun 16","Jun 23","Jun 30","Jul 7","Jul 14"];
 const SERIES_NAMES = { views: "Views", engagement: "Engagement", watchTime: "Watch time", followers: "Followers" };
 
+/* Trend radar — niche trends matched to your winning patterns (Nostalgia / Opinion / Exclusivity hooks) */
 const TRENDS = [
-  { name: "Redesign in N minutes", niche: "Transformation", fit: 94, predViews: "520–680K", predEng: "+18%", tip: "Open on the finished redesign, then rewind." },
-  { name: "3 mistakes lists",      niche: "Educational",    fit: 91, predViews: "480–720K", predEng: "+22%", tip: "Exactly three items — show each fix on-screen." },
-  { name: "Quiet trend explainers", niche: "Typography",    fit: 78, predViews: "280–410K", predEng: "+9%",  tip: "Lead with one visual, not a definition." },
+  { name: "Disappearing snacks countdown", niche: "Nostalgia", fit: 96, predViews: "300–380K", predEng: "+20%", tip: "Open on the rarest item, then count down — your strongest format." },
+  { name: "‘You had no childhood if…’",     niche: "Relatability", fit: 93, predViews: "180–260K", predEng: "+16%", tip: "Pair the hook with a quick 3-item reveal." },
+  { name: "Rank these 3 sweets",            niche: "Interactive",  fit: 88, predViews: "120–200K", predEng: "+24%", tip: "Ask viewers to vote in the comments — great for engagement." },
 ];
 
 const IDEAS = [
   {
     id: "idea1",
-    title: "The grid rule beginners break",
-    hook: "This one rule is why your feed feels inconsistent.",
-    format: "Before/after",
-    length: "27s",
+    title: "Snacks that vanish by 2027",
+    hook: "Nobody remembers these — and they're almost gone.",
+    format: "Countdown",
+    length: "16s",
     predicted: "high",
-    claim: "+38% more saves with transformation reveals",
+    claim: "Your countdown format averages 2.4× your normal reach",
     evidence: {
-      stat: "+38% saves",
-      sample: "Based on 24 videos",
-      scope: "Global Spotlight trend sample · Design & lifestyle",
+      stat: "2.4× reach",
+      sample: "Based on your 15 recent Shorts",
+      scope: "Your channel · Candy & food comedy",
       source: "Where this statistic comes from",
-      detail: "Across 24 recent transformation-style videos analysed on Spotlight, posts that showed the finished result in the first 3 seconds earned 38% more saves than process-first edits in the same niche.",
-      method: "Compared average saves per 1K views for reveal-first vs. process-first structures.",
+      detail: "Across your 15 analysed Shorts, the ‘disappearing snacks’ countdown format reached 2.4× the views of your other posts — your single strongest structure.",
+      method: "Average views per Short compared for countdown vs. non-countdown formats on your channel.",
     },
   },
   {
     id: "idea2",
-    title: "3 design mistakes, remixed",
-    hook: "Your posts may look outdated because of these three.",
-    format: "List",
-    length: "24s",
+    title: "You had no childhood without these",
+    hook: "You had no childhood if you never tried these 3.",
+    format: "Nostalgia list",
+    length: "18s",
     predicted: "high",
-    claim: "List formats drive 2.1× completion",
+    claim: "Nostalgia hooks keep viewers to the end 92% of the time",
     evidence: {
-      stat: "2.1× completion",
-      sample: "Based on 24 videos",
-      scope: "Global Spotlight trend sample · Educational short-form",
+      stat: "92% completion",
+      sample: "Based on your 15 recent Shorts",
+      scope: "Your channel · Nostalgia hooks",
       source: "Where this statistic comes from",
-      detail: "In a 24-video educational sample, tight 3-item lists held viewers to the end 2.1× more often than open-ended explainers of similar length.",
-      method: "Completion rate averaged across matched list vs. explainer videos posted in the last 30 days.",
+      detail: "Shorts opening with your nostalgia/relatability hook held viewers to the final second 92% of the time on average — well above your channel baseline.",
+      method: "Completion rate averaged across your nostalgia-hook vs. other Shorts.",
     },
   },
   {
     id: "idea3",
-    title: "The trend designers are ditching",
-    hook: "Looked great in 2024. Now it's working against you.",
-    format: "Explainer",
-    length: "30s",
-    predicted: "medium",
-    claim: "+19% shares on trend call-outs",
+    title: "The candy only real fans know",
+    hook: "Only real ones remember this one.",
+    format: "Exclusivity",
+    length: "17s",
+    predicted: "high",
+    claim: "Exclusivity hooks lift comments +31%",
     evidence: {
-      stat: "+19% shares",
-      sample: "Based on 24 videos",
-      scope: "Global Spotlight trend sample · Typography & lifestyle",
+      stat: "+31% comments",
+      sample: "Based on your 15 recent Shorts",
+      scope: "Your channel · Exclusivity hooks",
       source: "Where this statistic comes from",
-      detail: "Trend call-out videos in the 24-video sample were shared 19% more than evergreen tips, especially when the outdated example appeared before the fix.",
-      method: "Share rate per 1K views, filtered to design-niche accounts on TikTok and Reels.",
+      detail: "‘Only real fans know’ style hooks sparked 31% more comments than your average Short — viewers love proving they belong.",
+      method: "Comments per 1K views compared for exclusivity-hook vs. other Shorts.",
     },
   },
   {
     id: "idea4",
-    title: "Color contrast fix in 20 seconds",
-    hook: "If you have to squint, so does your audience.",
-    format: "Tutorial",
-    length: "20s",
+    title: "Rank these 3 summer sweets",
+    hook: "Which one wins? Your call in the comments.",
+    format: "Interactive",
+    length: "15s",
     predicted: "high",
-    claim: "+27% watch time on quick fixes",
+    claim: "Vote prompts drive +24% engagement",
     evidence: {
-      stat: "+27% watch time",
-      sample: "Based on 24 videos",
-      scope: "Global Spotlight trend sample · Practical tutorials",
+      stat: "+24% engagement",
+      sample: "Based on your 15 recent Shorts",
+      scope: "Your channel · Interactive formats",
       source: "Where this statistic comes from",
-      detail: "Short “one fix” tutorials in the 24-video set held +27% average watch time versus multi-tip videos, because viewers got a clear payoff before second 8.",
-      method: "Average watch time compared for single-fix vs. multi-tip tutorials under 25 seconds.",
+      detail: "Shorts that asked viewers to vote in the comments earned 24% more total engagement than one-way posts — a great way to ride the interactive trend in your voice.",
+      method: "Engagement rate compared for vote-prompt vs. non-interactive Shorts.",
     },
   },
 ];
 
+/* Creator DNA — straight from your voice fingerprint (data/fingerprint.json) */
 const DNA = [
-  { k: "Hook", v: "Curiosity question" },
-  { k: "Length", v: "20–35s" },
-  { k: "Post time", v: "Tue/Thu 7–8 PM" },
-  { k: "Colors", v: "Warm contrast" },
+  { k: "Voice match", v: "98% — unmistakably you" },
+  { k: "Signature hook", v: "Nostalgia + challenge" },
+  { k: "Best length", v: "15–20s Shorts" },
+  { k: "Winning format", v: "‘Disappearing snacks’ countdown" },
 ];
 
 const State = {
@@ -559,6 +567,29 @@ function draftHTML(t){
   `;
 }
 
+/* Two-axis voice/trend meter — the headline feature, framed as strength + opportunity */
+function twoAxisMeter(){
+  const bar = (label, val, c1, c2) => `
+    <div style="margin:10px 0;">
+      <div style="display:flex;justify-content:space-between;font-size:12px;letter-spacing:.02em;color:#C4B5FD;margin-bottom:5px;">
+        <span>${label}</span><span style="font-weight:700;color:#F8F0FF;">${val}</span>
+      </div>
+      <div style="height:8px;border-radius:6px;background:rgba(124,92,252,.16);overflow:hidden;">
+        <div style="height:100%;width:${val}%;border-radius:6px;background:linear-gradient(90deg,${c1},${c2});"></div>
+      </div>
+    </div>`;
+  return `
+  <div style="margin:14px 0 4px;padding:14px 16px;border:1px solid rgba(124,92,252,.28);border-radius:14px;background:rgba(22,15,40,.5);">
+    <div style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#A78BFA;margin-bottom:8px;">Voice &amp; trend check</div>
+    ${bar("Sounds like you", VOICE_MATCH, "#67E8F9", "#A78BFA")}
+    ${bar("Fits a rising trend", TREND_FIT, "#A78BFA", "#E879B0")}
+    <p style="margin:10px 0 0;font-size:13px;line-height:1.5;color:#D8CCEA;">
+      Your voice is <strong style="color:#F8F0FF;">crystal clear</strong> — ${VOICE_MATCH}% on-brand. And this idea rides a
+      trend your audience already loves, so you can grow reach <em>while staying 100% you</em>. 🎯
+    </p>
+  </div>`;
+}
+
 function renderForYou(){
   const t = TRENDS[State.activeTrend];
   return `
@@ -570,7 +601,8 @@ function renderForYou(){
     <section class="section" aria-labelledby="mission-heading">
       <div class="focus-card">
         <div class="eyebrow" id="mission-heading">Today's mission</div>
-        <h2>Redesign video today · <span class="mission-lift">+22%</span></h2>
+        <h2>Post a ‘disappearing snacks’ countdown · <span class="mission-lift">+20%</span></h2>
+        ${twoAxisMeter()}
         <div class="focus-actions">
           <button type="button" class="btn primary" onclick="toast('Mission started.')">Start</button>
           <button type="button" class="btn" onclick="toast('Saved.')">Later</button>
