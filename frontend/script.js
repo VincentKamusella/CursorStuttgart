@@ -557,7 +557,7 @@ function closeEvidence(){
 
 function draftHTML(t){
   return `
-    <div class="dp-label">Draft predictor</div>
+    <div class="dp-label">Trend prediction</div>
     <div class="draft-metrics">
       <div class="dm"><div class="v">${t.predViews}</div><div class="l">Views</div></div>
       <div class="dm"><div class="v">${t.predEng}</div><div class="l">Lift</div></div>
@@ -590,6 +590,65 @@ function twoAxisMeter(){
   </div>`;
 }
 
+/* Draft predictor — paste a draft, get a two-axis review + enhanced suggestions */
+function reviewDraft(){
+  const box = document.getElementById("draftReview");
+  const btn = document.getElementById("reviewBtn");
+  const text = (document.getElementById("draftInput")?.value || "").toLowerCase();
+  if(!box) return;
+  btn && (btn.disabled = true, btn.textContent = "Reviewing…");
+  box.hidden = false;
+  box.innerHTML = `<div class="pr-loading"><span class="pr-spinner" aria-hidden="true"></span> Analysing voice &amp; trend fit…</div>`;
+
+  // light read of the draft so it feels responsive (all client-side, demo)
+  const hasHook = /\b(nobody|no one|only|you had|remember|forgot|which|did you)\b/.test(text);
+  const hasCTA  = /\b(comment|like|subscribe|vote|follow|below)\b/.test(text);
+  const short   = text.split(/\s+/).filter(Boolean).length <= 40;
+
+  const voice = Math.min(99, 78 + (hasHook?12:0) + (hasCTA?6:0));
+  const trend = Math.min(98, 70 + (hasHook?14:0) + (short?8:0));
+  const reach = trend >= 88 ? "300–380K" : trend >= 78 ? "180–260K" : "90–160K";
+
+  const bar = (label,val,c1,c2)=>`
+    <div class="pr-bar-row"><span>${label}</span><span class="pr-val">${val}</span></div>
+    <div class="pr-track"><div class="pr-fill" style="width:${val}%;background:linear-gradient(90deg,${c1},${c2});"></div></div>`;
+
+  const good = [], fix = [];
+  (hasHook ? good : fix).push(hasHook
+    ? "Strong opening hook — matches your nostalgia + challenge style. ✅"
+    : "Add a nostalgia hook (‘Nobody remembers these…’) — your top-performing opener.");
+  (hasCTA ? good : fix).push(hasCTA
+    ? "Nice engagement prompt — this rides the interactive trend. ✅"
+    : "End with a vote prompt (‘Which one wins? Comment below’) for +24% engagement.");
+  (short ? good : fix).push(short
+    ? "Great length for a Short — matches your best completion window. ✅"
+    : "Trim to ~16s — your shorter Shorts complete 89% of the time.");
+
+  const suggestions = [...good, ...fix].map(s=>{
+    const done = s.endsWith("✅");
+    return `<li class="${done?'pr-ok':'pr-fix'}"><span class="pr-dot" aria-hidden="true"></span>${s.replace(' ✅','')}</li>`;
+  }).join("");
+
+  setTimeout(()=>{
+    box.innerHTML = `
+      <div class="pr-scores">
+        ${bar("Sounds like you", voice, "#67E8F9", "#A78BFA")}
+        ${bar("Fits a rising trend", trend, "#A78BFA", "#E879B0")}
+      </div>
+      <div class="pr-verdict">
+        <span class="pr-reach">${reach}</span>
+        <span class="pr-reach-label">predicted views · looking great</span>
+      </div>
+      <div class="pr-suggest-title">Enhanced suggestions</div>
+      <ul class="pr-suggest">${suggestions}</ul>
+      <div class="predictor-actions">
+        <button type="button" class="btn primary" onclick="toast('Applied — draft enhanced ✨')">Apply suggestions</button>
+        <button type="button" class="btn" onclick="toast('Saved to drafts.')">Save</button>
+      </div>`;
+    btn && (btn.disabled = false, btn.textContent = "Review my draft");
+  }, 850);
+}
+
 function renderForYou(){
   const t = TRENDS[State.activeTrend];
   return `
@@ -607,6 +666,20 @@ function renderForYou(){
           <button type="button" class="btn primary" onclick="toast('Mission started.')">Start</button>
           <button type="button" class="btn" onclick="toast('Saved.')">Later</button>
         </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="predictor-heading">
+      <h2 class="section-title" id="predictor-heading">Draft predictor</h2>
+      <div class="card predictor-card">
+        <p class="predictor-lead">Paste your next script, caption, or a video link — get an instant voice &amp; trend review before you post.</p>
+        <textarea id="draftInput" class="predictor-input" rows="3" aria-label="Your draft"
+          placeholder="Paste your draft here…">These candies vanish in 2027 and nobody remembers them. Which one did you love? Comment below.</textarea>
+        <div class="predictor-actions">
+          <button type="button" class="btn primary" id="reviewBtn" onclick="reviewDraft()">Review my draft</button>
+          <span class="predictor-hint">Checks voice match, trend fit &amp; gives fixes</span>
+        </div>
+        <div id="draftReview" class="predictor-review" aria-live="polite" hidden></div>
       </div>
     </section>
 

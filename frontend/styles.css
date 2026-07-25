@@ -1256,3 +1256,49 @@ html[data-mode="performance"] .toast{
   background:linear-gradient(90deg, rgba(232,121,176,.12), rgba(124,92,252,.10));
   color:#F0E6F5;
 }
+
+/* ==========================================================================
+   Draft predictor — paste a draft, get a two-axis review + suggestions
+   ========================================================================== */
+.predictor-card{ padding:18px 20px; }
+.predictor-lead{ margin:0 0 12px; color:var(--ink-soft); font-size:14px; line-height:1.5; }
+.predictor-input{
+  width:100%; resize:vertical; min-height:74px;
+  padding:12px 14px; border-radius:12px;
+  border:1px solid var(--border); background:var(--surface-2); color:var(--ink);
+  font-family:var(--font-body); font-size:14px; line-height:1.5;
+}
+.predictor-input:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+.predictor-actions{ display:flex; align-items:center; gap:12px; margin-top:12px; flex-wrap:wrap; }
+.predictor-hint{ font-size:12px; color:var(--ink-faint); }
+
+.predictor-review{ margin-top:16px; padding-top:16px; border-top:1px solid var(--border-soft); }
+.pr-loading{ display:flex; align-items:center; gap:10px; color:var(--accent); font-size:14px; padding:6px 0; }
+.pr-spinner{
+  width:16px; height:16px; border-radius:50%;
+  border:2px solid var(--accent-soft-2); border-top-color:var(--accent-strong);
+  animation:pr-spin .7s linear infinite;
+}
+@keyframes pr-spin{ to{ transform:rotate(360deg); } }
+
+.pr-scores{ margin-bottom:14px; }
+.pr-bar-row{ display:flex; justify-content:space-between; font-size:12.5px; color:var(--accent); margin:10px 0 5px; }
+.pr-val{ font-weight:700; color:var(--ink); }
+.pr-track{ height:8px; border-radius:6px; background:var(--accent-soft); overflow:hidden; }
+.pr-fill{ height:100%; border-radius:6px; transition:width .6s var(--ease); }
+
+.pr-verdict{ display:flex; align-items:baseline; gap:10px; margin:14px 0 4px; }
+.pr-reach{ font-size:26px; font-weight:800; color:var(--ink); font-family:var(--font-brand); }
+.pr-reach-label{ font-size:12px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.05em; }
+
+.pr-suggest-title{ margin:16px 0 8px; font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--accent-strong); }
+.pr-suggest{ display:grid; gap:8px; }
+.pr-suggest li{
+  display:flex; align-items:flex-start; gap:10px;
+  font-size:13.5px; line-height:1.45; color:var(--ink-soft);
+  padding:10px 12px; border-radius:10px; background:var(--surface-2);
+}
+.pr-dot{ width:8px; height:8px; border-radius:50%; margin-top:5px; flex:0 0 auto; }
+.pr-ok .pr-dot{ background:var(--up-strong); }
+.pr-fix .pr-dot{ background:var(--pink-strong); }
+.pr-fix{ border:1px solid var(--pink-soft); }
