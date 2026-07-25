@@ -63,12 +63,33 @@ The two scorer axes are **two independent LLM calls** — never blended. A singl
 
 ## It works — real output
 
-Fingerprint generated end‑to‑end from a real creator (German food/comedy Shorts, 15 videos):
+Both halves ran end‑to‑end on n8n Cloud against a real creator (German food/comedy Shorts, 15 videos).
 
-- **Voice traits** (each with a cited excerpt) — the model correctly identified that his real voice isn't "candy reviewer" but **engagement‑bait machinery**: it caught that *"like and subscribe if this cat deserves a home"* and *"5 YouTubers had a serious accident, click below"* repeat **verbatim across every video**.
-- **Hook archetypes**, **pacing**, **signature phrases**, and **taboos** ("never delivers topic content without pivoting to engagement bait").
+### 1 · Fingerprint — `data/fingerprint.json`
 
-See `data/fingerprint.json` and `data/corpus.json` for the full artifacts.
+The LLM saw past the surface topic and caught the *mechanics*: his real voice isn't "candy reviewer," it's **engagement‑bait machinery** — it detected that *"like and subscribe if this cat deserves a home"* and *"5 YouTubers had a serious accident, click below"* repeat **verbatim across every video**.
+
+- **6 voice traits** (each with a cited excerpt), **3 hook archetypes**, **pacing**, **signature phrases**, and **3 taboos** ("never delivers topic content without pivoting to engagement bait").
+
+### 2 · Two‑axis score — `data/scorecard.json` ⭐ the headline feature
+
+The same on‑voice, clickbait‑heavy draft, scored on both axes independently:
+
+| Axis | Score |
+|---|---|
+| **Voice match** | **98 / 100** — nails his hook + engagement‑bait + clickbait style |
+| **Trend alignment** | **0 / 100** — that manipulative style is out of step with current trends |
+| **Divergence** | **98** → tension gate fires |
+
+Instead of averaging those into a meaningless **49**, the system surfaces the **tension**:
+
+> **The conflict:** *"The creator's voice relies on aggressive, sensationalist clickbait and engagement bait, which is completely out of step with current trends that favor more authentic, less manipulative content."*
+>
+> **Where it clashes:** *"…5 YouTubers had a serious accident, click the link below. But beware, you will cry."*
+>
+> **Recommendation:** *"Remove all engagement bait and external clickbait links. Focus on delivering value within the content itself."*
+
+That trade‑off — shown as two numbers plus a human‑readable explanation — is what no competing tool does, and it runs on real data today.
 
 ---
 
@@ -87,9 +108,11 @@ See `data/fingerprint.json` and `data/corpus.json` for the full artifacts.
 ## Repo layout
 
 ```
-n8n/            voiceprint_merged_cloud.workflow.json   — extraction + fingerprint (working)
+n8n/            voiceprint_merged_cloud.workflow.json    — extraction + fingerprint (working)
+                voiceprint_scorer_raw.workflow.json      — two-axis scorer (working)
+                voiceprint_orchestrator.workflow.json    — links the pipelines
 n8nWorkflows/   creator.json · trends.json · contentAnalysis.json  — scrapers + scorer
-data/           fingerprint.json · corpus.json · trends.json       — real outputs
+data/           fingerprint.json · corpus.json · trends.json · scorecard.json  — real outputs
 backend/        ingest.py · map_sources.py               — reference logic / Excel→schema mapping
 docs/           BUILD_SPEC.md · INGEST_PLAN.md · SCHEMA_MAPPING.md
                 SCORER_BUILD_PROMPT.md · CREDENTIALS.md
