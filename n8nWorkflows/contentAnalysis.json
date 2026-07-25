@@ -1,0 +1,875 @@
+{
+  "name": "ContentAnalysis",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "score",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -1136,
+        320
+      ],
+      "id": "8f3fe477-4773-4066-86b4-3b43746b1c91",
+      "name": "Webhook: POST /score",
+      "webhookId": "11cdd804-f204-4ae3-b7bb-883f64f1a973"
+    },
+    {
+      "parameters": {
+        "jsCode": "\n// Validate the inbound contract and mint a content_id. Never throws: an invalid\n// body still has to come back as a 200 with a valid scorecard shape.\nconst crypto = require('crypto');\nconst b = $input.first().json.body ?? $input.first().json ?? {};\nconst c = b.content || {};\n\nconst text = [c.body, c.caption, c.hook].filter(Boolean).join('\\n').trim();\nconst id = crypto.createHash('sha1')\n  .update(`${b.creator_handle || 'unknown'}|${c.video_url || text}`)\n  .digest('hex').slice(0, 16);\n\nconst errs = [];\nif (!b.creator_handle) errs.push('creator_handle missing');\nif (!['text', 'video_url', 'transcript'].includes(c.type)) errs.push('content.type invalid');\nif (c.type === 'video_url' && !c.video_url) errs.push('video_url missing');\nif (c.type !== 'video_url' && !text) errs.push('no scoreable text');\n\nreturn [{ json: {\n  content_id: id,\n  iteration: Number.isFinite(+b.iteration) ? +b.iteration : 0,\n  creator_handle: b.creator_handle || 'unknown',\n  content: { type: c.type || 'text', hook: c.hook ?? null, body: c.body ?? null,\n             video_url: c.video_url ?? null, caption: c.caption ?? null },\n  candidate_text: text,\n  candidate_hook: c.hook || '',\n  candidate_caption: c.caption || '',\n  input_errors: errs,\n  degraded: [],\n}}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -896,
+        304
+      ],
+      "id": "04d38ccf-3c73-4e63-9a91-e0ec9fbcf9c9",
+      "name": "Normalize Input"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "bc635149-ddd8-463d-a059-063c44e11388",
+              "leftValue": "={{ $json.content.type }}",
+              "rightValue": "video_url",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -688,
+        304
+      ],
+      "id": "725d9340-ea17-4c01-9822-7d4f768e92a1",
+      "name": "IF: is video?"
+    },
+    {
+      "parameters": {
+        "operation": "Run actor and get dataset",
+        "actorId": {
+          "__rl": true,
+          "value": "UUhJDfKJT2SsXdclR",
+          "mode": "list",
+          "cachedResultName": "streamers/youtube-video-downloader"
+        },
+        "customBody": "={{ JSON.stringify({ videos: [{ url: $json.content.video_url }], storeInKVStore: true, preferredFormat: \"m4a\" }) }}",
+        "timeout": 600,
+        "authentication": "apifyOAuth2Api"
+      },
+      "type": "@apify/n8n-nodes-apify.apify",
+      "typeVersion": 1,
+      "position": [
+        -464,
+        144
+      ],
+      "id": "1d4be38c-696f-4753-97aa-eba640de5eec",
+      "name": "Download video (Apify)",
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2000,
+      "alwaysOutputData": true,
+      "credentials": {
+        "apifyOAuth2Api": {
+          "id": "KBagGEUEu17uFBue",
+          "name": "Apify account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "fal-ai/wizper",
+          "mode": "list",
+          "cachedResultName": "Wizper [speech-to-text]"
+        },
+        "modelParameters": {
+          "parameters": [
+            {
+              "parameter": "audio_url",
+              "value": "={{ $json.downloadUrl || $json.url || $json.kvStoreUrl || '' }}"
+            },
+            {
+              "parameter": "task",
+              "value": "transcribe"
+            },
+            {
+              "parameter": "chunk_level",
+              "value": "segment"
+            }
+          ]
+        },
+        "options": {
+          "waitForCompletion": true,
+          "pollInterval": 3,
+          "maxWaitTime": 300
+        }
+      },
+      "type": "@fal-ai/n8n-nodes-fal.falAi",
+      "typeVersion": 1,
+      "position": [
+        -240,
+        144
+      ],
+      "id": "2a07e59e-cc5b-40aa-b916-f823bcb4b418",
+      "name": "Transcribe (fal Wizper)",
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2000,
+      "alwaysOutputData": true,
+      "credentials": {
+        "falAiApi": {
+          "id": "S6x52bQgEUGlIK3o",
+          "name": "fal.ai account 2"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "\n// Wizper returns { text, chunks, languages }. If it produced nothing usable we fall\n// back to caption + hook and record \"transcript\" in degraded - per spec §6.\nconst src = $('Normalize Input').first().json;\nconst t = String($input.first().json.text || '').trim();\n\nconst out = { ...src };\nif (t) {\n  out.candidate_text = t;\n} else {\n  out.candidate_text = [src.candidate_caption, src.candidate_hook].filter(Boolean).join('\\n').trim();\n  out.degraded = [...(src.degraded || []), 'transcript'];\n}\nreturn [{ json: out }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -16,
+        144
+      ],
+      "id": "c3d69739-abf7-4d7f-acb5-5c9173f99132",
+      "name": "Extract transcript"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        208,
+        304
+      ],
+      "id": "04dc5766-c213-4e7c-b951-e537b5954911",
+      "name": "Merge Transcript"
+    },
+    {
+      "parameters": {
+        "url": "={{ ($env.BACKEND_URL || 'http://localhost:8000') }}/fingerprint",
+        "options": {
+          "timeout": 8000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        432,
+        80
+      ],
+      "id": "2d22ffcc-c0ea-46e2-b0c6-6d603eaad76d",
+      "name": "GET /fingerprint",
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2000,
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "\n// The backend may not be up (it is not reachable from n8n Cloud at all during the\n// hackathon). Fall back to the committed fixture and record the degraded axis, so the\n// run still returns a real score instead of dying. Spec §6.\nconst FIXTURE = {\n\"creator_handle\": \"chaosadam13\",\n\"fingerprint_version\": 1,\n\"voice_traits\": [\n{\n\"trait\": \"Opens on an unresolved question rather than a claim\",\n\"evidence\": \"So why does nobody talk about this?\",\n\"strength\": 0.78\n},\n{\n\"trait\": \"Self-deprecating aside within the first 15 seconds\",\n\"evidence\": \"and yes, I got this wrong for two years\",\n\"strength\": 0.61\n},\n{\n\"trait\": \"Concrete numbers over adjectives\",\n\"evidence\": \"it cut the run from 40 minutes to 90 seconds\",\n\"strength\": 0.72\n},\n{\n\"trait\": \"Short declarative closers, no call-to-action stacking\",\n\"evidence\": \"That's it. That's the whole trick.\",\n\"strength\": 0.55\n}\n],\n\"hook_archetypes\": [\n{\n\"name\": \"question_cold_open\",\n\"pattern\": \"Interrogative first sentence, no context given\",\n\"example\": \"Why is your build still taking nine minutes?\"\n},\n{\n\"name\": \"confession\",\n\"pattern\": \"Admit a personal failure, then generalise\",\n\"example\": \"I shipped this broken for a month.\"\n}\n],\n\"pacing\": {\n\"rhythm_description\": \"Short sentence, short sentence, long explanatory sentence. Repeats in threes.\",\n\"opener_style\": \"Question, then a two-beat pause before context\",\n\"closer_style\": \"Two words to four words. Full stop. No outro.\"\n},\n\"vocabulary\": {\n\"signature_phrases\": [\n\"here's the thing\",\n\"that's the whole trick\",\n\"nobody talks about\",\n\"two years of this\"\n],\n\"register\": \"casual-technical\",\n\"formality\": 0.25\n},\n\"taboos\": [\n{\n\"rule\": \"Never open with 'In today's fast-paced world'\",\n\"reason\": \"Generic AI cadence, creator has mocked it on camera\"\n},\n{\n\"rule\": \"No 'smash that like button' or subscribe begging\",\n\"reason\": \"Creator explicitly refuses CTA stacking\"\n},\n{\n\"rule\": \"No em-dash-heavy listicle scaffolding\",\n\"reason\": \"Reads as LinkedIn copy, off-brand\"\n}\n],\n\"exemplars\": [\n{\n\"excerpt\": \"Why is your build still taking nine minutes? Mine was too. Then I found out the cache key was being invalidated by a timestamp nobody remembered adding.\",\n\"why_representative\": \"Question cold-open, concrete number, confession, technical payoff\"\n},\n{\n\"excerpt\": \"That's it. That's the whole trick.\",\n\"why_representative\": \"Canonical closer\"\n}\n]\n};\n\nconst src = $('Merge Transcript').first().json;\nconst got = $input.first().json;\nconst ok = got && !got.error && got.voice_traits;\n\nconst degraded = [...(src.degraded || [])];\nif (!ok) degraded.push('voice_match');\n\nreturn [{ json: {\n  content_id: src.content_id,\n  iteration: src.iteration,\n  creator_handle: src.creator_handle,\n  candidate_text: src.candidate_text || '',\n  candidate_hook: src.candidate_hook || '',\n  candidate_caption: src.candidate_caption || '',\n  input_errors: src.input_errors || [],\n  degraded,\n  fingerprint: ok ? got : FIXTURE,\n  used_fixture: !ok,\n} }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        640,
+        80
+      ],
+      "id": "086fe525-e2f1-4ef4-90d7-43ab1906c52c",
+      "name": "Fingerprint or fixture"
+    },
+    {
+      "parameters": {
+        "url": "={{ ($env.BACKEND_URL || 'http://localhost:8000') }}/trends",
+        "options": {
+          "timeout": 8000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        432,
+        528
+      ],
+      "id": "833abe79-c2b0-44ea-acde-e80a1f4000cd",
+      "name": "GET /trends",
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2000,
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "\n// The backend may not be up (it is not reachable from n8n Cloud at all during the\n// hackathon). Fall back to the committed fixture and record the degraded axis, so the\n// run still returns a real score instead of dying. Spec §6.\nconst FIXTURE = {\n\"built_at\": \"2026-07-25T00:00:00Z\",\n\"niche\": \"developer-tooling\",\n\"trend_cards\": [\n{\n\"id\": \"cold_open_claim\",\n\"pattern\": \"Hard cold-open claim in the first 2 seconds, no question, no preamble\",\n\"evidence\": [\n\"Top 12 of 15 shorts in-niche open on a flat assertion\",\n\"Median retention at 3s is 71% vs 48% for question openers\"\n],\n\"observed_on\": [\n\"tiktok\",\n\"youtube_shorts\"\n],\n\"estimated_decay\": 21,\n\"confidence\": 0.86\n},\n{\n\"id\": \"receipts_on_screen\",\n\"pattern\": \"On-screen terminal output or dashboard as proof while narrating\",\n\"evidence\": [\n\"Rising across dev-tool accounts\",\n\"Comments cite the visual as the reason for trust\"\n],\n\"observed_on\": [\n\"youtube_shorts\",\n\"instagram\"\n],\n\"estimated_decay\": 45,\n\"confidence\": 0.74\n},\n{\n\"id\": \"anti_hype_take\",\n\"pattern\": \"Explicitly arguing against a popular tool or practice\",\n\"evidence\": [\n\"3 of top 5 posts this week are contrarian\"\n],\n\"observed_on\": [\n\"tiktok\",\n\"bluesky\"\n],\n\"estimated_decay\": 14,\n\"confidence\": 0.62\n},\n{\n\"id\": \"one_number_thumbnail\",\n\"pattern\": \"A single large number as the visual hook\",\n\"evidence\": [\n\"Consistent CTR lift on in-niche uploads\"\n],\n\"observed_on\": [\n\"youtube\"\n],\n\"estimated_decay\": 60,\n\"confidence\": 0.58\n}\n]\n};\n\nconst src = $('Merge Transcript').first().json;\nconst got = $input.first().json;\nconst ok = got && !got.error && got.trend_cards;\n\nconst degraded = [...(src.degraded || [])];\nif (!ok) degraded.push('trend_align');\n\nreturn [{ json: {\n  content_id: src.content_id,\n  iteration: src.iteration,\n  creator_handle: src.creator_handle,\n  candidate_text: src.candidate_text || '',\n  candidate_hook: src.candidate_hook || '',\n  candidate_caption: src.candidate_caption || '',\n  input_errors: src.input_errors || [],\n  degraded,\n  trends: ok ? got : FIXTURE,\n  used_fixture: !ok,\n} }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        640,
+        528
+      ],
+      "id": "d510d7b0-6b0b-4e55-b833-88117abd8545",
+      "name": "Trends or fixture"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "openrouter/router",
+          "mode": "list",
+          "cachedResultName": "OpenRouter Router [text-to-text]"
+        },
+        "modelParameters": {
+          "parameters": [
+            {
+              "parameter": "model",
+              "value": "anthropic/claude-sonnet-5"
+            },
+            {
+              "parameter": "temperature",
+              "value": "0"
+            },
+            {
+              "parameter": "max_tokens",
+              "value": "2000"
+            },
+            {
+              "parameter": "system_prompt",
+              "value": "You are a forensic editor comparing a CANDIDATE piece of content against a documented\nauthor profile (the FINGERPRINT). You score how much the candidate sounds like THIS\ncreator, and nothing else.\n\nReturn ONLY minified JSON, no prose, no markdown fences:\n{\"score\":0-100,\"dimensions\":{\"vocabulary\":0-100,\"pacing\":0-100,\"hook_style\":0-100,\"register\":0-100,\"structure\":0-100},\"violations\":[{\"taboo\":\"\",\"excerpt\":\"\"}],\"reasoning\":\"\"}\n\nRULES\n- Score each of the five dimensions 0-100 independently against the fingerprint's\n  voice_traits, pacing, vocabulary and hook_archetypes.\n- The overall `score` is a weighted judgement, NOT an arithmetic mean of the dimensions.\n- Every dimension must cite a verbatim excerpt from the candidate as evidence inside\n  `reasoning`. A score without an excerpt is a hallucination. If you cannot find real\n  evidence, score conservatively rather than invent an excerpt.\n- If the candidate breaks any fingerprint TABOO, add it to `violations` as a hard flag.\n  Taboo violations are flags, NOT silent score deductions.\n- You are scoring VOICE ONLY. You have not been given trend data and must not speculate\n  about trends, reach, or what is currently popular."
+            },
+            {
+              "parameter": "prompt",
+              "value": "={{ \"FINGERPRINT:\\n\" + JSON.stringify($json.fingerprint) + \"\\n\\nCANDIDATE:\\nTRANSCRIPT: \" + ($json.candidate_text || \"\") + \"\\nHOOK: \" + ($json.candidate_hook || \"\") + \"\\nCAPTION: \" + ($json.candidate_caption || \"\") }}"
+            }
+          ]
+        },
+        "options": {
+          "waitForCompletion": true,
+          "pollInterval": 3,
+          "maxWaitTime": 180
+        }
+      },
+      "type": "@fal-ai/n8n-nodes-fal.falAi",
+      "typeVersion": 1,
+      "position": [
+        864,
+        80
+      ],
+      "id": "4b5b7cfa-84ed-413b-9404-0b599fc8a370",
+      "name": "Score voice (fal)",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "alwaysOutputData": true,
+      "credentials": {
+        "falAiApi": {
+          "id": "S6x52bQgEUGlIK3o",
+          "name": "fal.ai account 2"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "openrouter/router",
+          "mode": "list",
+          "cachedResultName": "OpenRouter Router [text-to-text]"
+        },
+        "modelParameters": {
+          "parameters": [
+            {
+              "parameter": "model",
+              "value": "anthropic/claude-sonnet-5"
+            },
+            {
+              "parameter": "temperature",
+              "value": "0"
+            },
+            {
+              "parameter": "max_tokens",
+              "value": "2000"
+            },
+            {
+              "parameter": "system_prompt",
+              "value": "You are a niche analyst assessing whether a CANDIDATE piece of content fits what is\nCURRENTLY WORKING in this niche, using the supplied trend_cards.\n\nReturn ONLY minified JSON, no prose, no markdown fences:\n{\"score\":0-100,\"matched_trends\":[{\"trend_id\":\"\",\"how\":\"\"}],\"missed_opportunities\":[\"\"],\"reasoning\":\"\"}\n\nRULES\n- Match against trend_cards[] by their `id`. Never invent a trend_id.\n- `missed_opportunities` = trends that were clearly applicable to this candidate and were\n  not used.\n- Weight each trend by its `confidence`, and penalise trends with a short\n  `estimated_decay` — fresher and higher-confidence trends matter more.\n- The author's personal style is explicitly OUT OF SCOPE. You have not been given the\n  creator's fingerprint. Do not reward or punish the candidate for sounding like any\n  particular person. Judge trend fit only."
+            },
+            {
+              "parameter": "prompt",
+              "value": "={{ \"TRENDS:\\n\" + JSON.stringify($json.trends) + \"\\n\\nCANDIDATE:\\nTRANSCRIPT: \" + ($json.candidate_text || \"\") + \"\\nHOOK: \" + ($json.candidate_hook || \"\") + \"\\nCAPTION: \" + ($json.candidate_caption || \"\") }}"
+            }
+          ]
+        },
+        "options": {
+          "waitForCompletion": true,
+          "pollInterval": 3,
+          "maxWaitTime": 180
+        }
+      },
+      "type": "@fal-ai/n8n-nodes-fal.falAi",
+      "typeVersion": 1,
+      "position": [
+        864,
+        528
+      ],
+      "id": "ce85828c-cf66-43c1-a30b-294f090b6642",
+      "name": "Score trend (fal)",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "alwaysOutputData": true,
+      "credentials": {
+        "falAiApi": {
+          "id": "S6x52bQgEUGlIK3o",
+          "name": "fal.ai account 2"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "\n// openrouter/router puts the model text in `.output` as a JSON STRING. Strip any fence\n// the model added anyway, then parse. A bad parse degrades this axis - it never throws.\nconst AXIS = 'voice_match';\nconst src = $('Fingerprint or fixture').first().json;\nconst raw = $input.first().json;\n\nfunction parse(s) {\n  if (!s) return null;\n  let t = String(s).trim().replace(/^```(?:json)?/i, '').replace(/```$/, '').trim();\n  const a = t.indexOf('{'), b = t.lastIndexOf('}');\n  if (a === -1 || b === -1) return null;\n  try { return JSON.parse(t.slice(a, b + 1)); } catch { return null; }\n}\n\nconst parsed = parse(raw.output);\nconst degraded = [...(src.degraded || [])];\nlet result = parsed;\n\nif (!result || typeof result.score !== 'number') {\n  degraded.push('voice_match');\n  result = { score: 0, dimensions: { vocabulary: 0, pacing: 0, hook_style: 0, register: 0, structure: 0 }, violations: [], reasoning: \"Voice scoring unavailable - model returned no parseable JSON.\" };\n}\nresult.score = Math.max(0, Math.min(100, Number(result.score) || 0));\n\nreturn [{ json: { ...src, [AXIS]: result, degraded: [...new Set(degraded)] } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1088,
+        80
+      ],
+      "id": "582650b3-70cf-4863-b95b-f5791ea42ff5",
+      "name": "Parse voice"
+    },
+    {
+      "parameters": {
+        "jsCode": "\n// openrouter/router puts the model text in `.output` as a JSON STRING. Strip any fence\n// the model added anyway, then parse. A bad parse degrades this axis - it never throws.\nconst AXIS = 'trend_align';\nconst src = $('Trends or fixture').first().json;\nconst raw = $input.first().json;\n\nfunction parse(s) {\n  if (!s) return null;\n  let t = String(s).trim().replace(/^```(?:json)?/i, '').replace(/```$/, '').trim();\n  const a = t.indexOf('{'), b = t.lastIndexOf('}');\n  if (a === -1 || b === -1) return null;\n  try { return JSON.parse(t.slice(a, b + 1)); } catch { return null; }\n}\n\nconst parsed = parse(raw.output);\nconst degraded = [...(src.degraded || [])];\nlet result = parsed;\n\nif (!result || typeof result.score !== 'number') {\n  degraded.push('trend_align');\n  result = { score: null, matched_trends: [], missed_opportunities: [], reasoning: \"Trend scoring unavailable - model returned no parseable JSON.\" };\n}\nresult.score = Math.max(0, Math.min(100, Number(result.score) || 0));\n\nreturn [{ json: { ...src, [AXIS]: result, degraded: [...new Set(degraded)] } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1088,
+        528
+      ],
+      "id": "691fd9c8-c8d1-43ad-8aba-aeb1a815cc3c",
+      "name": "Parse trend"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        1312,
+        304
+      ],
+      "id": "41dd23c4-7eb1-415c-a178-9f0418286aac",
+      "name": "Merge Scores"
+    },
+    {
+      "parameters": {
+        "jsCode": "\n// Combine-by-position hands us one item carrying both axes. Guard anyway: this is the\n// node where n8n pipelines most often silently lose one side.\nconst j = $input.first().json;\nconst v = $('Parse voice').first().json.voice_match || j.voice_match;\nconst t = $('Parse trend').first().json.trend_align || j.trend_align;\n\nconst degraded = [...new Set([\n  ...($('Parse voice').first().json.degraded || []),\n  ...($('Parse trend').first().json.degraded || []),\n])];\n\n// A null trend score (degraded axis) means there is no divergence to reason about.\nconst divergence = (typeof v?.score === 'number' && typeof t?.score === 'number')\n  ? Math.abs(v.score - t.score)\n  : 0;\n\nreturn [{ json: { ...j, voice_match: v, trend_align: t, degraded, divergence } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1520,
+        304
+      ],
+      "id": "19ae03f4-834b-465f-94a7-6a46212ae86f",
+      "name": "Compute Divergence"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "0ea58e8d-2544-4463-9145-334ea6f517f0",
+              "leftValue": "={{ $json.divergence }}",
+              "rightValue": 25,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1744,
+        304
+      ],
+      "id": "1615718f-a1f7-4e95-8cc7-bce7b37c70a6",
+      "name": "IF: divergence > 25"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "openrouter/router",
+          "mode": "list",
+          "cachedResultName": "OpenRouter Router [text-to-text]"
+        },
+        "modelParameters": {
+          "parameters": [
+            {
+              "parameter": "model",
+              "value": "anthropic/claude-sonnet-5"
+            },
+            {
+              "parameter": "temperature",
+              "value": "0"
+            },
+            {
+              "parameter": "max_tokens",
+              "value": "800"
+            },
+            {
+              "parameter": "system_prompt",
+              "value": "Two independent scores for the same piece of content have diverged: voice_match and\ntrend_align. Explain the trade-off to the creator like an editor, not a metrics dashboard.\n\nReturn ONLY minified JSON, no prose, no markdown fences:\n{\"present\":true,\"description\":\"\",\"example\":\"\",\"recommendation\":\"\"}\n\nRULES\n- `description` names the SPECIFIC conflict: what the trend wants, versus what this\n  creator's voice actually does. Name the trend. Name the voice trait. Quantify the trade.\n- `example` quotes the exact line from the candidate where the two collide.\n- `recommendation` is ONE concrete, actionable choice - not a list, not \"consider both\".\n- Do not summarise the two scores. Identify the single sharpest conflict between them.\n\nTarget register, for calibration:\n\"The trending hook format in this niche is a hard cold-open claim. This creator's\nfingerprint opens with a question in 78% of their top performers. Adopting the trend\nlifts trend alignment to 89% but drops voice match to 41%.\""
+            },
+            {
+              "parameter": "prompt",
+              "value": "={{ \"VOICE_RESULT:\\n\" + JSON.stringify($json.voice_match) + \"\\n\\nTREND_RESULT:\\n\" + JSON.stringify($json.trend_align) + \"\\n\\nCANDIDATE:\\n\" + ($json.candidate_text || \"\") }}"
+            }
+          ]
+        },
+        "options": {
+          "waitForCompletion": true,
+          "pollInterval": 3,
+          "maxWaitTime": 180
+        }
+      },
+      "type": "@fal-ai/n8n-nodes-fal.falAi",
+      "typeVersion": 1,
+      "position": [
+        1968,
+        192
+      ],
+      "id": "cd0e404d-3a5e-45f0-9da1-2dfb398eabc6",
+      "name": "Find tension (fal)",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "alwaysOutputData": true,
+      "credentials": {
+        "falAiApi": {
+          "id": "S6x52bQgEUGlIK3o",
+          "name": "fal.ai account 2"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "\n// Tension is non-critical: a failure here returns present:false, never an error. Spec §6.\nconst src = $('Compute Divergence').first().json;\nconst raw = $input.first().json;\n\nlet t = null;\ntry {\n  let s = String(raw.output || '').trim().replace(/^```(?:json)?/i, '').replace(/```$/, '').trim();\n  const a = s.indexOf('{'), b = s.lastIndexOf('}');\n  if (a !== -1) t = JSON.parse(s.slice(a, b + 1));\n} catch { t = null; }\n\nconst tension = (t && t.description)\n  ? { present: true, description: t.description || '', example: t.example || '',\n      recommendation: t.recommendation || '' }\n  : { present: false, description: '', example: '', recommendation: '' };\n\nreturn [{ json: { ...src, tension } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2192,
+        192
+      ],
+      "id": "e297d216-4c7e-4091-9187-b33207b02764",
+      "name": "Parse tension"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5222cdab-0601-46a0-b0d0-26eafb35012e",
+              "name": "tension",
+              "type": "object",
+              "value": "={{ { present: false, description: \"\", example: \"\", recommendation: \"\" } }}"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1968,
+        432
+      ],
+      "id": "f6141f12-1fca-4470-86ce-e4bf811e3c92",
+      "name": "Set: no tension"
+    },
+    {
+      "parameters": {
+        "jsCode": "\n// Build the frozen scorecard.json shape. slop_flags is computed HERE, deliberately\n// outside both scoring calls, so generic-AI detection can never contaminate either axis.\nconst j = $input.first().json;\nconst text = j.candidate_text || '';\n\nconst SLOP = [\n  [/in today's (?:fast[- ]paced|digital) world/gi, 'stock_opener', 'high'],\n  [/\\b(?:it'?s important to note|it'?s worth noting|that said|however,? it)\\b/gi, 'hedging_stack', 'medium'],\n  [/\\b(?:unlock|unleash|elevate|supercharge|revolutionis[ez]e|game[- ]chang(?:er|ing))\\b/gi, 'empty_superlative', 'medium'],\n  [/\\b(?:firstly|secondly|thirdly|in conclusion|to sum up)\\b/gi, 'listicle_scaffolding', 'low'],\n  [/\\b(?:smash that like|hit subscribe|don'?t forget to)\\b/gi, 'cta_begging', 'high'],\n  [/(\\b\\w+\\b),\\s+(\\b\\w+\\b),\\s+and\\s+(\\b\\w+\\b)\\./gi, 'symmetric_tricolon', 'low'],\n];\n\nconst slop_flags = [];\nfor (const [re, pattern, severity] of SLOP) {\n  const m = text.match(re);\n  if (m) slop_flags.push({ pattern, excerpt: String(m[0]).slice(0, 160), severity });\n}\n\nconst degraded = [...new Set(j.degraded || [])];\nif ((j.input_errors || []).length) degraded.push('input');\n\nconst voice = j.voice_match || {};\nconst scorecard = {\n  content_id: j.content_id,\n  iteration: j.iteration ?? 0,\n  voice_match: {\n    score: voice.score ?? 0,\n    dimensions: {\n      vocabulary: voice.dimensions?.vocabulary ?? 0,\n      pacing: voice.dimensions?.pacing ?? 0,\n      hook_style: voice.dimensions?.hook_style ?? 0,\n      register: voice.dimensions?.register ?? 0,\n      structure: voice.dimensions?.structure ?? 0,\n    },\n    violations: Array.isArray(voice.violations) ? voice.violations : [],\n    reasoning: voice.reasoning || '',\n  },\n  trend_align: {\n    score: j.trend_align?.score ?? null,\n    matched_trends: j.trend_align?.matched_trends || [],\n    missed_opportunities: j.trend_align?.missed_opportunities || [],\n    reasoning: j.trend_align?.reasoning || '',\n  },\n  tension: j.tension || { present: false, description: '', example: '', recommendation: '' },\n  slop_flags,\n  meta: {\n    scored_at: new Date().toISOString(),\n    fingerprint_version: 1,\n    degraded: [...new Set(degraded)],\n  },\n};\n\nreturn [{ json: scorecard }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2400,
+        304
+      ],
+      "id": "fd1a54f3-562e-49f2-a31c-20638cd8fe3e",
+      "name": "Assemble Scorecard"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ ($env.BACKEND_URL || 'http://localhost:8000') }}/scorecard",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "options": {
+          "timeout": 5000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        2624,
+        304
+      ],
+      "id": "5e780dc7-5c66-4f54-9fd7-96fa57deda2a",
+      "name": "POST /scorecard",
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 2000,
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($('Assemble Scorecard').first().json) }}",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        2848,
+        304
+      ],
+      "id": "cef0044f-1c36-4c67-820d-5fdab00055da",
+      "name": "Respond to Webhook"
+    }
+  ],
+  "connections": {
+    "Webhook: POST /score": {
+      "main": [
+        [
+          {
+            "node": "Normalize Input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize Input": {
+      "main": [
+        [
+          {
+            "node": "IF: is video?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF: is video?": {
+      "main": [
+        [
+          {
+            "node": "Download video (Apify)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Merge Transcript",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Download video (Apify)": {
+      "main": [
+        [
+          {
+            "node": "Transcribe (fal Wizper)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transcribe (fal Wizper)": {
+      "main": [
+        [
+          {
+            "node": "Extract transcript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract transcript": {
+      "main": [
+        [
+          {
+            "node": "Merge Transcript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge Transcript": {
+      "main": [
+        [
+          {
+            "node": "GET /fingerprint",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "GET /trends",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GET /fingerprint": {
+      "main": [
+        [
+          {
+            "node": "Fingerprint or fixture",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GET /trends": {
+      "main": [
+        [
+          {
+            "node": "Trends or fixture",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fingerprint or fixture": {
+      "main": [
+        [
+          {
+            "node": "Score voice (fal)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Score voice (fal)": {
+      "main": [
+        [
+          {
+            "node": "Parse voice",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trends or fixture": {
+      "main": [
+        [
+          {
+            "node": "Score trend (fal)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Score trend (fal)": {
+      "main": [
+        [
+          {
+            "node": "Parse trend",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse voice": {
+      "main": [
+        [
+          {
+            "node": "Merge Scores",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse trend": {
+      "main": [
+        [
+          {
+            "node": "Merge Scores",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge Scores": {
+      "main": [
+        [
+          {
+            "node": "Compute Divergence",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compute Divergence": {
+      "main": [
+        [
+          {
+            "node": "IF: divergence > 25",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF: divergence > 25": {
+      "main": [
+        [
+          {
+            "node": "Find tension (fal)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Set: no tension",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find tension (fal)": {
+      "main": [
+        [
+          {
+            "node": "Parse tension",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse tension": {
+      "main": [
+        [
+          {
+            "node": "Assemble Scorecard",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set: no tension": {
+      "main": [
+        [
+          {
+            "node": "Assemble Scorecard",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Assemble Scorecard": {
+      "main": [
+        [
+          {
+            "node": "POST /scorecard",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "POST /scorecard": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  }
+}
