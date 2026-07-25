@@ -1,0 +1,193 @@
+{
+  "name": "Voiceprint — Orchestrator (scrape → fingerprint → score)",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "trig",
+      "name": "Run full pipeline",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "IsXD1qUzNGdpnbya",
+          "mode": "id",
+          "cachedResultName": "crawlCreatorContent"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "id": "s1",
+      "name": "1 · Scrape creator",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        60,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "JOeW9mrdasJO4459",
+          "mode": "id",
+          "cachedResultName": "SocialTrends - Ingest Pipeline"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "id": "s2",
+      "name": "2 · Scrape trends",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        320,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "TWsHkWTjygxxhKBD",
+          "mode": "id",
+          "cachedResultName": "Voiceprint — MERGED"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "id": "s3",
+      "name": "3 · Extract + Fingerprint",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        580,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// The candidate content to score (draft script/caption about to be published).\n// Edit this, or POST to the scorer directly. Fingerprint/trends default to fixtures in the scorer.\nreturn [{ json: {\n  content_id: 'candidate-001',\n  candidate_text: 'These candies are gone forever. Like and subscribe if you agree, and check the link below.',\n  candidate_caption: 'RIP these snacks',\n  candidate_hook: 'These candies are gone forever'\n} }];"
+      },
+      "id": "cand",
+      "name": "Candidate to score",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        580,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://mulaydm10.app.n8n.cloud/webhook/score",
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "options": {
+          "timeout": 180000
+        }
+      },
+      "id": "scorecall",
+      "name": "Call Scorer (POST /score)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1120,
+        480
+      ],
+      "onError": "continueRegularOutput",
+      "alwaysOutputData": true
+    }
+  ],
+  "connections": {
+    "Run full pipeline": {
+      "main": [
+        [
+          {
+            "node": "1 · Scrape creator",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Candidate to score",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "1 · Scrape creator": {
+      "main": [
+        [
+          {
+            "node": "2 · Scrape trends",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "2 · Scrape trends": {
+      "main": [
+        [
+          {
+            "node": "3 · Extract + Fingerprint",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Candidate to score": {
+      "main": [
+        [
+          {
+            "node": "Call Scorer (POST /score)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
