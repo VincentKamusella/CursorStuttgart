@@ -55,7 +55,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const S = v => (v==null?'':String(v)).trim();\nconst vid = u => { const m=String(u||'').match(/shorts\\/([\\w-]{11})|v=([\\w-]{11})|youtu\\.be\\/([\\w-]{11})|\\/([\\w-]{11})(?:\\?|$)/); return m?(m[1]||m[2]||m[3]||m[4]):''; };\nconst rows = $('Load creator data').all().map(i=>i.json);\nlet dl = $('Apify · Download media').all().map(i=>i.json);\nif (dl.length===1 && Array.isArray(dl[0])) dl = dl[0];\nconst map = {};\nfor (const d of dl) {\n  const id = S(d.id) || vid(d.input) || vid(d.downloadedFileUrl);\n  if (!id) continue;\n  map[id] = {\n    audio_url: S(d.audioOnlyUrl) || S(d.downloadedFileUrl) || '',\n    video_url: S(d.downloadedFileUrl) || S(d.videoOnlyUrl) || '',\n  };\n}\nreturn rows.map(r => {\n  const m = map[S(r.id)] || {};\n  return { json: { ...r, audio_url: m.audio_url || '', video_url: m.video_url || '' } };\n});"
+        "jsCode": "const S = v => (v==null?'':String(v)).trim();\nconst vid = u => { const m=String(u||'').match(/shorts\\/([\\w-]{11})|v=([\\w-]{11})|youtu\\.be\\/([\\w-]{11})|\\/([\\w-]{11})(?:\\?|$)/); return m?(m[1]||m[2]||m[3]||m[4]):''; };\nconst rows = $('Load creator data').all().map(i=>i.json);\nlet dl = $('Apify · Download media').all().map(i=>i.json);\nif (dl.length===1 && Array.isArray(dl[0])) dl = dl[0];\nconst map = {};\nfor (const d of dl) {\n  const id = S(d.id) || vid(d.input) || vid(d.downloadedFileUrl);\n  if (!id) continue;\n  map[id] = {\n    audio_url: S(d.downloadedFileUrl) || S(d.audioOnlyUrl) || '',\n    video_url: S(d.downloadedFileUrl) || S(d.videoOnlyUrl) || '',\n  };\n}\nreturn rows.map(r => {\n  const m = map[S(r.id)] || {};\n  return { json: { ...r, audio_url: m.audio_url || '', video_url: m.video_url || '' } };\n});"
       },
       "id": "enrich",
       "name": "Enrich rows",
@@ -256,7 +256,8 @@
     },
     {
       "parameters": {
-        "jsCode": "const row = { ...$('Enrich rows').item.json };\nrow._transcript = String(($('Wizper · video (speech)').item.json.text)||'').trim() || null;\nconst out = String(($json && $json.output)||'');\nconst g = (lab)=>{const m=out.match(new RegExp(lab+':([\\\\s\\\\S]*?)(?=SCENE:|TEXT:|$)','i'));return m?m[1].trim():'';};\nrow._visual_desc = g('SCENE') || null;\nrow._overlay = g('TEXT') || null;\nreturn [{ json: row }];"
+        "jsCode": "const row = { ...$('Enrich rows').item.json };\nrow._transcript = String(($('Wizper · video (speech)').item.json.text)||'').trim() || null;\nconst out = String(($json && $json.output)||'');\nconst g = (lab)=>{const m=out.match(new RegExp(lab+':([\\\\s\\\\S]*?)(?=SCENE:|TEXT:|$)','i'));return m?m[1].trim():'';};\nrow._visual_desc = g('SCENE') || null;\nrow._overlay = g('TEXT') || null;\nreturn { json: row };",
+        "mode": "runOnceForEachItem"
       },
       "id": "shV",
       "name": "Shape video",
@@ -297,7 +298,8 @@
     },
     {
       "parameters": {
-        "jsCode": "const row = { ...$('Enrich rows').item.json };\nrow._transcript = String(($json && $json.text)||'').trim() || null;\nrow._visual_desc = null; row._overlay = null;\nreturn [{ json: row }];"
+        "jsCode": "const row = { ...$('Enrich rows').item.json };\nrow._transcript = String(($json && $json.text)||'').trim() || null;\nrow._visual_desc = null; row._overlay = null;\nreturn { json: row };",
+        "mode": "runOnceForEachItem"
       },
       "id": "shA",
       "name": "Shape audio",
@@ -338,7 +340,8 @@
     },
     {
       "parameters": {
-        "jsCode": "const row = { ...$('Enrich rows').item.json };\nconst out = String(($json && $json.output)||'');\nconst i = out.indexOf('TEXT:');\nlet vd=null,ov=null; if(i>=0){vd=out.slice(0,i).trim()||null;ov=out.slice(i+5).trim()||null;} else {vd=out.trim()||null;}\nrow._transcript = String(row.transcript||'').trim()||null; row._visual_desc=vd; row._overlay=ov;\nreturn [{ json: row }];"
+        "jsCode": "const row = { ...$('Enrich rows').item.json };\nconst out = String(($json && $json.output)||'');\nconst i = out.indexOf('TEXT:');\nlet vd=null,ov=null; if(i>=0){vd=out.slice(0,i).trim()||null;ov=out.slice(i+5).trim()||null;} else {vd=out.trim()||null;}\nrow._transcript = String(row.transcript||'').trim()||null; row._visual_desc=vd; row._overlay=ov;\nreturn { json: row };",
+        "mode": "runOnceForEachItem"
       },
       "id": "shI",
       "name": "Shape image",
@@ -407,7 +410,8 @@
     },
     {
       "parameters": {
-        "jsCode": "const row = { ...$('Enrich rows').item.json };\nrow._transcript = String(($('Wizper · story (speech)').item.json.text)||'').trim() || null;\nconst out = String(($json && $json.output)||'');\nconst g = (lab)=>{const m=out.match(new RegExp(lab+':([\\\\s\\\\S]*?)(?=SCENE:|TEXT:|$)','i'));return m?m[1].trim():'';};\nrow._visual_desc = g('SCENE') || null;\nrow._overlay = g('TEXT') || null;\nreturn [{ json: row }];"
+        "jsCode": "const row = { ...$('Enrich rows').item.json };\nrow._transcript = String(($('Wizper · story (speech)').item.json.text)||'').trim() || null;\nconst out = String(($json && $json.output)||'');\nconst g = (lab)=>{const m=out.match(new RegExp(lab+':([\\\\s\\\\S]*?)(?=SCENE:|TEXT:|$)','i'));return m?m[1].trim():'';};\nrow._visual_desc = g('SCENE') || null;\nrow._overlay = g('TEXT') || null;\nreturn { json: row };",
+        "mode": "runOnceForEachItem"
       },
       "id": "shS",
       "name": "Shape story",
@@ -420,7 +424,8 @@
     },
     {
       "parameters": {
-        "jsCode": "const row = { ...$json };\nrow._transcript = String(row.transcript||'').trim()||null; row._visual_desc=null; row._overlay=null;\nreturn [{ json: row }];"
+        "jsCode": "const row = { ...$json };\nrow._transcript = String(row.transcript||'').trim()||null; row._visual_desc=null; row._overlay=null;\nreturn { json: row };",
+        "mode": "runOnceForEachItem"
       },
       "id": "shC",
       "name": "Shape comment",
