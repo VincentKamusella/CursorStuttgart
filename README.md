@@ -1,8 +1,8 @@
-# Voiceprint
+# Spotlight
 
-**The quality-control layer between a creator's AI generator and the publish button.**
+**For creators who shine — the quality-control layer between a creator's AI generator and the publish button.**
 
-AI-generated content is becoming a *legal* liability in Europe — EU AI Act Article 50 transparency obligations start **2 August 2026** — and an *audience* liability everywhere: consumer preference for AI-generated creator content fell from **60% (2023) to 26% (2026)**. Voiceprint defends a creator's authentic voice against generic AI slop.
+AI-generated content is becoming a *legal* liability in Europe — EU AI Act Article 50 transparency obligations start **2 August 2026** — and an *audience* liability everywhere: consumer preference for AI-generated creator content fell from **60% (2023) to 26% (2026)**. Spotlight defends a creator's authentic voice against generic AI slop.
 
 > Built at the Cursor Social Media Hack, Stuttgart — 25 July 2026.
 
@@ -10,7 +10,7 @@ AI-generated content is becoming a *legal* liability in Europe — EU AI Act Art
 
 ## The idea
 
-Voiceprint is **not** a content generator (the market has ~258 of those). It's a **critic**.
+Spotlight is **not** a content generator (the market has ~258 of those). It's a **critic**.
 
 1. **Fingerprint** — it builds a *voice fingerprint* of a specific creator by transcribing and analysing their best‑performing videos (weighted by engagement).
 2. **Score on two independent axes** — for any new piece of content it measures, separately:

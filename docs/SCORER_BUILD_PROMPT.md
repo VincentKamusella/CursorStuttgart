@@ -6,7 +6,7 @@ Copy everything in the fenced block below into Claude Code (the teammate should 
 
 ```
 ROLE
-You are building an n8n Cloud workflow for the "Voiceprint" hackathon project. Read
+You are building an n8n Cloud workflow for the "Spotlight" hackathon project. Read
 docs/BUILD_SPEC.md (esp. §4 data contracts and §5 Stage 4) and docs/INGEST_PLAN.md
 first. The ingestion + fingerprint pipeline already exists (see
 n8n/voiceprint_merged_cloud.workflow.json for the exact n8n patterns to copy: fal

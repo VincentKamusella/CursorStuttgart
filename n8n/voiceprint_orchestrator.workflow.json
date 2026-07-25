@@ -1,5 +1,5 @@
 {
-  "name": "Voiceprint — Orchestrator (scrape → fingerprint → score)",
+  "name": "Spotlight — Orchestrator (scrape → fingerprint → score)",
   "nodes": [
     {
       "parameters": {},
@@ -76,7 +76,7 @@
           "__rl": true,
           "value": "TWsHkWTjygxxhKBD",
           "mode": "id",
-          "cachedResultName": "Voiceprint — MERGED"
+          "cachedResultName": "Spotlight — Extract + Fingerprint"
         },
         "workflowInputs": {
           "mappingMode": "defineBelow",

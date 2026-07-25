@@ -2,7 +2,7 @@
    Spotlight — Pitch demo (Statistics · For You)
    ========================================================================== */
 
-/* Wired to real Voiceprint output for ChaosAdam13 (15 Shorts, fingerprint + two-axis score). */
+/* Wired to real Spotlight output for ChaosAdam13 (15 Shorts, voice fingerprint + two-axis score). */
 
 /* Two-axis voice/trend result from the scorer (data/scorecard.json), framed as a strength + opportunity */
 const VOICE_MATCH = 98;   // how unmistakably "you" the content is

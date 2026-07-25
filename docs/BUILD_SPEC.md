@@ -1,4 +1,4 @@
-# Voiceprint — Build Spec
+# Spotlight — Build Spec
 
 **Context for the agent:** This is a 5-hour hackathon build (Cursor Social Media Hack, Stuttgart, 25 July 2026). Hard stop on development at 15:00. Everything below is scoped to that window. When in doubt, choose the option that ships and degrades gracefully over the option that is more complete.
 
