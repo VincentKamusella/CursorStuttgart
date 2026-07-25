@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" data-mode="performance">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<title>Spotlight — AI Content Strategist</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#landingCta">Skip to get started</a>
+
+<!-- ============ LANDING ============ -->
+<section class="landing" id="landing" aria-label="Spotlight introduction">
+  <div class="landing-bg" aria-hidden="true">
+    <span class="streak s1"></span>
+    <span class="streak s2"></span>
+    <span class="streak s3"></span>
+    <span class="streak s4"></span>
+    <span class="streak s5"></span>
+    <span class="streak s6"></span>
+  </div>
+
+  <header class="landing-top">
+    <div class="landing-brand">
+      <div class="brand-mark landing-mark" aria-hidden="true">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+          <defs>
+            <linearGradient id="landBeam" x1="20" y1="8" x2="20" y2="36" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#E8D5FF" stop-opacity="0.95"/>
+              <stop offset="0.45" stop-color="#B794F6" stop-opacity="0.55"/>
+              <stop offset="1" stop-color="#7C5CFC" stop-opacity="0.08"/>
+            </linearGradient>
+            <filter id="landGlow" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="1.6" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <rect width="40" height="40" rx="11" fill="#160F28"/>
+          <path filter="url(#landGlow)" d="M20 9.5L8.5 34.5h23L20 9.5Z" fill="url(#landBeam)"/>
+          <circle cx="20" cy="10" r="4.2" fill="#FFFFFF"/>
+        </svg>
+      </div>
+      <div class="landing-brand-text">
+        <div class="landing-logo">Spotlight</div>
+        <div class="landing-logo-sub">For creators who shine</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="landing-stage">
+    <div class="landing-hero" aria-hidden="true">
+      <div class="phone-scene" id="phoneScene">
+        <div class="orbit-ring" id="orbitRing">
+          <div class="orbit-item" data-icon="0" style="--i:0">
+            <svg viewBox="0 0 48 48" fill="none"><defs><linearGradient id="ig1" x1="4" y1="4" x2="44" y2="44"><stop stop-color="#67E8F9"/><stop offset="1" stop-color="#E879B0"/></linearGradient></defs>
+              <path d="M24 40s-14-8.5-14-18a8 8 0 0 1 14-5.2A8 8 0 0 1 38 22c0 9.5-14 18-14 18Z" stroke="url(#ig1)" stroke-width="1.6" stroke-linejoin="round"/>
+              <path d="M16 20.5c1.2-2.2 3.2-3 5-2.2" stroke="url(#ig1)" stroke-width="1.2" stroke-linecap="round" opacity=".7"/>
+            </svg>
+          </div>
+          <div class="orbit-item" data-icon="1" style="--i:1">
+            <svg viewBox="0 0 48 48" fill="none"><defs><linearGradient id="ig2" x1="4" y1="8" x2="44" y2="40"><stop stop-color="#A78BFA"/><stop offset="1" stop-color="#67E8F9"/></linearGradient></defs>
+              <path d="M12 22a12 12 0 1 1 8.5 11.5L12 38l2.2-7.2A12 12 0 0 1 12 22Z" stroke="url(#ig2)" stroke-width="1.6" stroke-linejoin="round"/>
+              <circle cx="19" cy="22" r="1.3" fill="#C4B5FD"/><circle cx="24" cy="22" r="1.3" fill="#C4B5FD"/><circle cx="29" cy="22" r="1.3" fill="#C4B5FD"/>
+            </svg>
+          </div>
+          <div class="orbit-item" data-icon="2" style="--i:2">
+            <svg viewBox="0 0 48 48" fill="none"><defs><linearGradient id="ig3" x1="8" y1="8" x2="40" y2="40"><stop stop-color="#E879B0"/><stop offset="1" stop-color="#A78BFA"/></linearGradient></defs>
+              <path d="M12 36 36 12l-6 22-6-8-8 4 6-14" stroke="url(#ig3)" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="orbit-item" data-icon="3" style="--i:3">
+            <svg viewBox="0 0 48 48" fill="none"><defs><linearGradient id="ig4" x1="12" y1="6" x2="36" y2="42"><stop stop-color="#FDBA74"/><stop offset="1" stop-color="#A78BFA"/></linearGradient></defs>
+              <path d="M16 8h16a2 2 0 0 1 2 2v28l-10-7-10 7V10a2 2 0 0 1 2-2Z" stroke="url(#ig4)" stroke-width="1.6" stroke-linejoin="round"/>
+              <path d="M19 12v14" stroke="url(#ig4)" stroke-width="1.2" stroke-linecap="round" opacity=".65"/>
+            </svg>
+          </div>
+        </div>
+
+        <svg class="phone-hand" viewBox="0 0 320 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="phGrad" x1="60" y1="20" x2="260" y2="400" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#67E8F9"/>
+              <stop offset=".35" stop-color="#A78BFA"/>
+              <stop offset=".7" stop-color="#E879B0"/>
+              <stop offset="1" stop-color="#FDBA74"/>
+            </linearGradient>
+            <clipPath id="screenClip">
+              <rect x="118" y="58" width="96" height="168" rx="8"/>
+            </clipPath>
+          </defs>
+
+          <!-- Phone body -->
+          <rect x="110" y="42" width="112" height="200" rx="16" stroke="url(#phGrad)" stroke-width="1.8"/>
+          <rect x="118" y="58" width="96" height="168" rx="8" stroke="url(#phGrad)" stroke-width="1.2" opacity=".85"/>
+          <rect x="148" y="48" width="36" height="5" rx="2.5" stroke="url(#phGrad)" stroke-width="1.1"/>
+          <rect x="150" y="232" width="32" height="4" rx="2" stroke="url(#phGrad)" stroke-width="1.1"/>
+
+          <!-- Screen content: line aesthetic feed -->
+          <g clip-path="url(#screenClip)" stroke="url(#phGrad)" stroke-width="1" opacity=".75">
+            <path d="M124 70h84M124 78h84M124 86h70"/>
+            <rect x="128" y="96" width="76" height="52" rx="4"/>
+            <path d="M132 106h20M132 114h28M132 122h16"/>
+            <path d="M132 160h18M156 160h14M178 160h12"/>
+            <path d="M132 172h68M132 180h52M132 188h60"/>
+            <path d="M132 204h24M164 204h20"/>
+          </g>
+
+          <!-- Hand holding phone (line silhouette) -->
+          <g stroke="url(#phGrad)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <!-- thumb -->
+            <path d="M214 168c18 4 30 18 32 36 2 16-4 30-16 38"/>
+            <path d="M218 176c12 4 20 14 22 28"/>
+            <!-- palm / fingers behind & side -->
+            <path d="M108 150c-18 10-28 28-30 50-2 28 8 52 28 70l18 16"/>
+            <path d="M100 170c-10 14-14 32-12 50 2 16 10 30 22 40"/>
+            <path d="M96 198c-8 12-10 28-6 42 4 14 14 26 28 34"/>
+            <path d="M102 228c-4 10-4 22 2 32 8 14 22 24 38 28"/>
+            <!-- fingers curling over left edge -->
+            <path d="M116 128c-16-2-28 8-32 22-4 12 0 24 10 30"/>
+            <path d="M114 148c-14 0-24 10-26 22-2 12 4 22 14 26"/>
+            <path d="M116 168c-12 2-20 12-20 24s8 20 18 22"/>
+            <path d="M118 188c-10 4-16 14-14 24 2 10 12 16 22 16"/>
+            <!-- wrist / sleeve -->
+            <path d="M130 300c20 18 48 28 78 24 22-2 40-12 52-28"/>
+            <path d="M142 312c18 12 42 18 66 14 18-2 34-10 44-22"/>
+            <path d="M156 324c16 8 36 12 54 8"/>
+            <path d="M210 292c8 10 10 24 4 36"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="landing-copy">
+      <h1 class="landing-title">
+        <span class="lt-dot" aria-hidden="true"></span>
+        <span class="lt-line">Beyond the scroll</span>
+        <span class="lt-accent">into every second</span>
+      </h1>
+      <p class="landing-lead">
+        A cross-platform AI coach that connects exact moments and creative elements inside a creator’s videos with their real performance data.
+      </p>
+    </div>
+  </div>
+
+  <div class="landing-bottom">
+    <button type="button" class="landing-cta" id="landingCta">Get Started</button>
+  </div>
+</section>
+
+<!-- ============ APP ============ -->
+<div class="app" id="app" hidden>
+  <div class="main">
+
+    <header class="topbar">
+      <div class="topbar-left">
+        <a class="brand brand-inline" href="#" id="brandHome" aria-label="Spotlight home">
+          <div class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+              <defs>
+                <linearGradient id="beamGrad" x1="20" y1="8" x2="20" y2="36" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#E8D5FF" stop-opacity="0.95"/>
+                  <stop offset="0.45" stop-color="#B794F6" stop-opacity="0.55"/>
+                  <stop offset="1" stop-color="#7C5CFC" stop-opacity="0.08"/>
+                </linearGradient>
+                <filter id="beamGlow" x="-40%" y="-40%" width="180%" height="180%">
+                  <feGaussianBlur stdDeviation="1.6" result="b"/>
+                  <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+                <filter id="bulbGlow" x="-80%" y="-80%" width="260%" height="260%">
+                  <feGaussianBlur stdDeviation="2.2" result="b"/>
+                  <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
+              <rect width="40" height="40" rx="11" fill="#160F28"/>
+              <path filter="url(#beamGlow)" d="M20 9.5L8.5 34.5h23L20 9.5Z" fill="url(#beamGrad)"/>
+              <circle filter="url(#bulbGlow)" cx="20" cy="10" r="4.2" fill="#FFFFFF"/>
+              <circle cx="20" cy="10" r="2.1" fill="#F8F0FF"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <div class="brand-name">Spotlight</div>
+            <div class="brand-tag">For creators who shine</div>
+          </div>
+        </a>
+        <div class="profile">
+          <div class="avatar" aria-hidden="true">MO</div>
+          <div>
+            <div class="profile-name">Maya Ortiz</div>
+            <div class="profile-role">Design & lifestyle</div>
+          </div>
+        </div>
+        <div class="platform-pill" aria-label="Connected platforms: TikTok and Instagram Reels">
+          <span class="platform-dot tt" aria-hidden="true"></span>
+          <span class="platform-dot ig" aria-hidden="true"></span>
+          TikTok · Reels
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <div class="mode-toggle" role="tablist" aria-label="Page views">
+          <div class="glider" aria-hidden="true"></div>
+          <button type="button" role="tab" class="active" data-mode="performance" aria-selected="true" aria-controls="viewRoot" id="tab-statistics">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 19V9M12 19V4M20 19v-6"/></svg>
+            Statistics
+          </button>
+          <button type="button" role="tab" data-mode="coach" aria-selected="false" aria-controls="viewRoot" id="tab-foryou">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg>
+            For You
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="view-root" id="viewRoot" role="tabpanel" tabindex="-1" aria-labelledby="tab-statistics"></main>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+<dialog class="evidence-dialog" id="evidenceDialog" aria-labelledby="evidenceTitle">
+  <div class="evidence-sheet">
+    <div class="evidence-head">
+      <h2 id="evidenceTitle">Where this statistic comes from</h2>
+      <button type="button" class="evidence-close" id="evidenceClose" aria-label="Close evidence" onclick="closeEvidence()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    <div class="evidence-body" id="evidenceBody"></div>
+  </div>
+</dialog>
+
+<script src="script.js"></script>
+</body>
+</html>
