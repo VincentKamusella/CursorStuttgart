@@ -1249,3 +1249,10 @@ html[data-mode="performance"] .toast{
 @media (max-width:720px){
   .landing-features{ max-width:100%; }
 }
+
+/* Receipts — the explainability differentiator (subtle emphasis) */
+.landing-features li.lf-highlight{
+  border-color:rgba(232,121,176,.45);
+  background:linear-gradient(90deg, rgba(232,121,176,.12), rgba(124,92,252,.10));
+  color:#F0E6F5;
+}
