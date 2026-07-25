@@ -1,0 +1,349 @@
+{
+  "name": "Voiceprint — Scorer (raw-HTTP, two-axis)",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "trig",
+      "name": "Run scorer",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return [{ json: {\n  candidate: {\"content_id\": \"candidate-002\", \"text\": \"You had no childhood if you never tried these 3 candies, and nobody remembers them anymore, not even you. But before that, like and subscribe if this dog deserves a home. And if you want to see how 5 YouTubers had a serious accident, click the link below. But beware, you will cry.\", \"caption\": \"You forgot these 3 candies\", \"hook\": \"You had no childhood if you never tried these 3 candies\"},\n  fingerprint: {\"creator_handle\": \"ChaosAdam13\", \"voice_traits\": [{\"trait\": \"Direct Address\", \"evidence\": \"99% of people have forgotten these sweets, you too.\", \"strength\": \"High\"}, {\"trait\": \"Call to Action (Engagement Bait)\", \"evidence\": \"But before that, like and subscribe if you find this cat sweet.\", \"strength\": \"Very High\"}, {\"trait\": \"Sensationalist Clickbait (External Link)\", \"evidence\": \"If you want to see how 5 YouTubers had a serious accident, then click on the link below. But beware, you will cry.\", \"strength\": \"Very High\"}, {\"trait\": \"Rhetorical Questions\", \"evidence\": \"Geh\\u00f6rst du zu den 99% \\ud83d\\ude02\\ud83e\\udd14\", \"strength\": \"Medium\"}, {\"trait\": \"Emotional Language\", \"evidence\": \"But beware, you will cry.\", \"strength\": \"Medium\"}, {\"trait\": \"Nostalgia Trigger\", \"evidence\": \"You had no childhood if you never tried these snacks.\", \"strength\": \"Medium\"}], \"hook_archetypes\": [{\"name\": \"Nostalgia/Relatability Hook\", \"pattern\": \"You had a [negative childhood experience] if you [action related to product].\", \"example\": \"You had a SCHLECHTE Kindheit, wenn du diese S\\u00dcSSIGKEITEN nicht KENNST.\"}, {\"name\": \"Controversial/Opinion-Based Hook\", \"pattern\": \"[Product category] that [strong opinion/negative sentiment] by everyone, including you.\", \"example\": \"Diese Schokoladensorten mag einfach niemand, auch du nicht.\"}, {\"name\": \"Exclusivity/Gatekeeping Hook\", \"pattern\": \"Only people who are [trait] know these [product category].\", \"example\": \"Diese S\\u00fc\\u00dfigkeiten kennen nur Leute die \\u2026 sind.\"}], \"pacing\": {\"rhythm_description\": \"Rapid-fire delivery, often with a quick transition from the main topic to the engagement bait and external link.\", \"opener_style\": \"Direct statement or question about the topic, often with a strong opinion or claim.\", \"closer_style\": \"Immediate pivot to engagement bait (like/subscribe) followed by a sensationalist external link call to action.\"}, \"vocabulary\": {\"signature_phrases\": [\"like and subscribe if this [animal] deserves a home\", \"If you want to see how 5 YouTubers had a serious accident, then click on the link below.\"], \"register\": \"Informal, conversational\", \"formality\": \"Very informal\"}, \"taboos\": [{\"rule\": \"No direct, unadulterated content about the main topic without an immediate pivot to engagement bait and external clickbait.\", \"reason\": \"The creator consistently interjects engagement bait and sensationalist external links into every piece of content, suggesting a strong reliance on these elements for performance.\"}, {\"rule\": \"No long-form explanations or detailed discussions of the candy/food items.\", \"reason\": \"All content is in 'shorts' format, and the speech is brief and to the point, focusing on the hook and call to action rather than in-depth analysis.\"}, {\"rule\": \"No content without a visual element (even if just text on screen).\", \"reason\": \"The nature of 'shorts' and the use of captions even when no speech is present indicates a visual-first approach.\"}], \"exemplars\": [{\"excerpt\": \"99% of people have forgotten these sweets, you too. But before that, like and subscribe if you find this cat sweet. If you want to see how 5 YouTubers had a serious accident, then click on the link below. But beware, you will cry.\", \"why_representative\": \"This excerpt perfectly encapsulates the creator's core voice: a direct, attention-grabbing statement about the topic, immediately followed by the 'like and subscribe' engagement bait, and then the highly sensationalist external link call to action, complete with an emotional warning. This structure is repeated across almost all high-performing content.\"}, {\"excerpt\": \"EISSORTEN DIE ES BALD NICHT MEHR GEBEN WIRD ABER DAVOR LIKE UND ABONNIERE WENN DIESE S\\u00dc\\u00dfE KATZE 1 ZUHAUSE VERDIENT UND DU SEHN M\\u00d6CHTEST WIE 5 YOUTUBER EN SCHWAREN KAFATTON DANN KLICKE AUF DIE ABER ACHTUNG EMOTIONAL Schlumpf Eis KAKTUS Eis Kaugummi Eis\", \"why_representative\": \"Even in content with no spoken words, the caption follows the exact same pattern: a bold claim about the topic, followed by the 'like and subscribe' bait, and then the sensationalist external link. This demonstrates the consistency of the voice fingerprint even when only text is present.\"}]},\n  trends: [{\"id\": \"bluesky|global|https://bsky.app/profile/\", \"pattern\": \"Got the chance to see these talented players in action today! It was great having the @wnba.com at Home Court at the Oba\", \"platform\": \"bluesky\", \"confidence\": 1.0, \"category\": \"whats_hot\"}, {\"id\": \"bluesky|global|https://bsky.app/profile/\", \"pattern\": \"Taran Shoutouts\", \"platform\": \"bluesky\", \"confidence\": 1.0, \"category\": \"trending_topic\"}, {\"id\": \"mastodon|global|https://mastodon.social/\", \"pattern\": \"#1960sLifeASongOrPoem\", \"platform\": \"mastodon\", \"confidence\": 1.0, \"category\": \"trending_hashtag\"}, {\"id\": \"mastodon|global|https://masto.deoan.org/\", \"pattern\": \"RE: https:// dair-community.social/@alex/11 6977123749133116 I was a 911 dispatcher for a decade. To really understand h\", \"platform\": \"mastodon\", \"confidence\": 1.0, \"category\": \"trending_post\"}, {\"id\": \"bluesky|global|https://bsky.app/profile/\", \"pattern\": \"SpaceX\", \"platform\": \"bluesky\", \"confidence\": 0.929, \"category\": \"trending_topic\"}, {\"id\": \"bluesky|global|https://bsky.app/profile/\", \"pattern\": \"Queer Writers\", \"platform\": \"bluesky\", \"confidence\": 0.857, \"category\": \"trending_topic\"}, {\"id\": \"bluesky|global|https://bsky.app/profile/\", \"pattern\": \"Deltarune\", \"platform\": \"bluesky\", \"confidence\": 0.786, \"category\": \"trending_topic\"}, {\"id\": \"bluesky|global|https://bsky.app/profile/\", \"pattern\": \"My husband texted me \\\"IT HAPPENED\\\" but it turned out to be about LeBron going to the 76ers. I had 2 minutes of beautiful\", \"platform\": \"bluesky\", \"confidence\": 0.785, \"category\": \"whats_hot\"}, {\"id\": \"bluesky|global|https://bsky.app/profile/\", \"pattern\": \"NEW: James Talarico accused Ken Paxton of committing voter fraud after ProPublica and @texastribune.org found that the T\", \"platform\": \"bluesky\", \"confidence\": 0.763, \"category\": \"whats_hot\"}, {\"id\": \"bluesky|global|https://bsky.app/profile/\", \"pattern\": \"Art Fight\", \"platform\": \"bluesky\", \"confidence\": 0.714, \"category\": \"trending_topic\"}, {\"id\": \"bluesky|global|https://bsky.app/profile/\", \"pattern\": \"WWE\", \"platform\": \"bluesky\", \"confidence\": 0.643, \"category\": \"trending_topic\"}, {\"id\": \"bluesky|global|https://bsky.app/profile/\", \"pattern\": \"#booksky #books #Kindleunlimited #thriller #suspense #romance #novels #geopolitical #mythological #darkromance #women #c\", \"platform\": \"bluesky\", \"confidence\": 0.618, \"category\": \"booksky\"}, {\"id\": \"bluesky|global|https://bsky.app/profile/\", \"pattern\": \"Sunset Boulevard\", \"platform\": \"bluesky\", \"confidence\": 0.571, \"category\": \"trending_topic\"}, {\"id\": \"bluesky|global|https://bsky.app/profile/\", \"pattern\": \"Happy Caturday from the other side of the planet.\\ud83d\\udc08\\u200d\\u2b1b\", \"platform\": \"bluesky\", \"confidence\": 0.54, \"category\": \"whats_hot\"}, {\"id\": \"mastodon|global|https://layer8.space/@ki\", \"pattern\": \"\\ud83d\\udcaf\", \"platform\": \"mastodon\", \"confidence\": 0.52, \"category\": \"trending_post\"}]\n} }];"
+      },
+      "id": "load",
+      "name": "Load data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        40,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://fal.run/openrouter/router",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ model: \"google/gemini-2.5-flash\", temperature: 0, system_prompt: \"You score how much a CANDIDATE piece of content sounds like THIS creator, using their voice fingerprint. Return ONLY minified JSON: {\\\"score\\\":0-100,\\\"dimensions\\\":{\\\"vocabulary\\\":0-100,\\\"pacing\\\":0-100,\\\"hook_style\\\":0-100,\\\"register\\\":0-100,\\\"structure\\\":0-100},\\\"violations\\\":[{\\\"taboo\\\":\\\"\\\",\\\"excerpt\\\":\\\"\\\"}],\\\"reasoning\\\":\\\"\\\"}. Score each dimension against the fingerprint's voice_traits/pacing/vocabulary/hook_archetypes. Cite a verbatim excerpt from the candidate as evidence in reasoning. If the candidate violates a fingerprint TABOO, add it to violations. Do NOT consider trends. No prose, no markdown.\", prompt: ('FINGERPRINT:\\n' + JSON.stringify($('Load data').item.json.fingerprint) + '\\n\\nCANDIDATE:\\nTRANSCRIPT: ' + $('Load data').item.json.candidate.text + '\\nHOOK: ' + $('Load data').item.json.candidate.hook + '\\nCAPTION: ' + $('Load data').item.json.candidate.caption) }) }}",
+        "options": {
+          "timeout": 120000
+        }
+      },
+      "id": "sv",
+      "name": "Score voice (fal)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        280,
+        220
+      ],
+      "onError": "continueRegularOutput",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2500,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://fal.run/openrouter/router",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ model: \"google/gemini-2.5-flash\", temperature: 0, system_prompt: \"You score how well a CANDIDATE fits what is CURRENTLY WORKING in this niche, using the trend cards. Return ONLY minified JSON: {\\\"score\\\":0-100,\\\"matched_trends\\\":[{\\\"trend_id\\\":\\\"\\\",\\\"how\\\":\\\"\\\"}],\\\"missed_opportunities\\\":[\\\"\\\"],\\\"reasoning\\\":\\\"\\\"}. Weight each trend by its confidence. Do NOT consider the creator's personal voice \\u2014 only trend fit. No prose, no markdown.\", prompt: ('TRENDS:\\n' + JSON.stringify($('Load data').item.json.trends) + '\\n\\nCANDIDATE:\\nTRANSCRIPT: ' + $('Load data').item.json.candidate.text + '\\nHOOK: ' + $('Load data').item.json.candidate.hook + '\\nCAPTION: ' + $('Load data').item.json.candidate.caption) }) }}",
+        "options": {
+          "timeout": 120000
+        }
+      },
+      "id": "st",
+      "name": "Score trend (fal)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        280,
+        500
+      ],
+      "onError": "continueRegularOutput",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2500,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw=($json.output||'{}').replace(/```json|```/g,'').trim();\nlet v; try{v=JSON.parse(raw);}catch(e){v={score:0,error:'parse failed',raw};}\nreturn [{ json: { voice_match: v } }];"
+      },
+      "id": "pv",
+      "name": "Parse voice",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        520,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw=($json.output||'{}').replace(/```json|```/g,'').trim();\nlet t; try{t=JSON.parse(raw);}catch(e){t={score:0,error:'parse failed',raw};}\nreturn [{ json: { trend_align: t } }];"
+      },
+      "id": "pt",
+      "name": "Parse trend",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        520,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "numberInputs": 2
+      },
+      "id": "mrg",
+      "name": "Merge scores",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        760,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const v=$('Parse voice').first().json.voice_match;\nconst t=$('Parse trend').first().json.trend_align;\nconst cand=$('Load data').first().json.candidate;\nconst divergence=Math.abs((v.score||0)-(t.score||0));\nreturn [{ json: { content_id: cand.content_id, voice_match: v, trend_align: t, divergence } }];"
+      },
+      "id": "div",
+      "name": "Compute divergence",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1000,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "c1",
+              "leftValue": "={{ $json.divergence }}",
+              "rightValue": 25,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        }
+      },
+      "id": "ifdiv",
+      "name": "IF divergence > 25",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1240,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://fal.run/openrouter/router",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ model: \"google/gemini-2.5-flash\", temperature: 0, system_prompt: \"Two independent scores diverge: voice_match and trend_align. In ONE JSON object explain the tradeoff for the creator. Return ONLY: {\\\"present\\\":true,\\\"description\\\":\\\"\\\",\\\"example\\\":\\\"\\\",\\\"recommendation\\\":\\\"\\\"}. description names the specific conflict (what the trend wants vs what the voice does); example quotes the exact candidate line where they clash; recommendation is one concrete actionable choice. No prose, no markdown.\", prompt: ('VOICE_RESULT:\\n' + JSON.stringify($json.voice_match) + '\\n\\nTREND_RESULT:\\n' + JSON.stringify($json.trend_align) + '\\n\\nCANDIDATE:\\n' + $('Load data').item.json.candidate.text) }) }}",
+        "options": {
+          "timeout": 120000
+        }
+      },
+      "id": "ft",
+      "name": "Find tension (fal)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1280,
+        240
+      ],
+      "onError": "continueRegularOutput",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2500,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw=($json.output||'{}').replace(/```json|```/g,'').trim();\nlet ten; try{ten=JSON.parse(raw);}catch(e){ten={present:true,description:'',raw};}\nconst b=$('Compute divergence').first().json;\nreturn [{ json: { content_id:b.content_id, iteration:0, voice_match:b.voice_match, trend_align:b.trend_align, divergence:b.divergence, tension:ten } }];"
+      },
+      "id": "ptn",
+      "name": "Assemble scorecard (tension)",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1520,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const b=$('Compute divergence').first().json;\nreturn [{ json: { content_id:b.content_id, iteration:0, voice_match:b.voice_match, trend_align:b.trend_align, divergence:b.divergence, tension:{present:false} } }];"
+      },
+      "id": "ant",
+      "name": "Assemble scorecard (no tension)",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1280,
+        480
+      ]
+    }
+  ],
+  "connections": {
+    "Run scorer": {
+      "main": [
+        [
+          {
+            "node": "Load data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load data": {
+      "main": [
+        [
+          {
+            "node": "Score voice (fal)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Score trend (fal)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Score voice (fal)": {
+      "main": [
+        [
+          {
+            "node": "Parse voice",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Score trend (fal)": {
+      "main": [
+        [
+          {
+            "node": "Parse trend",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse voice": {
+      "main": [
+        [
+          {
+            "node": "Merge scores",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse trend": {
+      "main": [
+        [
+          {
+            "node": "Merge scores",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge scores": {
+      "main": [
+        [
+          {
+            "node": "Compute divergence",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compute divergence": {
+      "main": [
+        [
+          {
+            "node": "IF divergence > 25",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF divergence > 25": {
+      "main": [
+        [
+          {
+            "node": "Find tension (fal)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Assemble scorecard (no tension)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find tension (fal)": {
+      "main": [
+        [
+          {
+            "node": "Assemble scorecard (tension)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "content_id": "candidate-002",
+  "iteration": 0,
+  "voice_match": {
+    "score": 98,
+    "dimensions": {
+      "vocabulary": 99,
+      "pacing": 99,
+      "hook_style": 98,
+      "register": 99,
+      "structure": 99
+    },
+    "violations": [],
+    "reasoning": "The candidate piece perfectly matches the creator's voice fingerprint. It uses the 'Nostalgia/Relatability Hook' archetype with the phrase 'You had no childhood if you never tried these 3 candies'. The pacing is rapid-fire, transitioning quickly from the topic to engagement bait ('like and subscribe if this dog deserves a home') and then to a sensationalist external link call to action ('And if you want to see how 5 YouTubers had a serious accident, click the link below. But beware, you will cry.'). The vocabulary includes signature phrases like 'like and subscribe if this [animal] deserves a home' and 'If you want to see how 5 YouTubers had a serious accident, then click on the link below. But beware, you will cry.' The register is informal and conversational. The structure is identical to the exemplars provided in the fingerprint."
+  },
+  "trend_align": {
+    "score": 0,
+    "matched_trends": [],
+    "missed_opportunities": [
+      "bluesky|global|https://bsky.app/profile/",
+      "mastodon|global|https://mastodon.social/",
+      "mastodon|global|https://masto.deoan.org/",
+      "bluesky|global|https://bsky.app/profile/",
+      "bluesky|global|https://bsky.app/profile/",
+      "bluesky|global|https://bsky.app/profile/",
+      "bluesky|global|https://bsky.app/profile/",
+      "bluesky|global|https://bsky.app/profile/",
+      "bluesky|global|https://bsky.app/profile/",
+      "bluesky|global|https://bsky.app/profile/",
+      "bluesky|global|https://bsky.app/profile/",
+      "bluesky|global|https://bsky.app/profile/",
+      "bluesky|global|https://bsky.app/profile/",
+      "mastodon|global|https://layer8.space/@ki"
+    ],
+    "reasoning": "The candidate's content about childhood candies and clickbait-style calls to action does not align with any of the provided trends, which cover topics like sports, politics, specific media, and general social media engagement patterns."
+  },
+  "divergence": 98,
+  "tension": {
+    "present": true,
+    "description": "The creator's voice relies on aggressive, sensationalist clickbait and engagement bait, which is completely out of step with current social media trends that favor more authentic and less manipulative content.",
+    "example": "And if you want to see how 5 YouTubers had a serious accident, click the link below. But beware, you will cry.",
+    "recommendation": "Remove all engagement bait and external clickbait links. Focus on delivering value within the content itself."
+  }
+}
