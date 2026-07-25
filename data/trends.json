@@ -1,0 +1,2751 @@
+{
+  "built_at": "2026-07-25T09:28:59.871Z",
+  "niche": "",
+  "trend_cards": [
+    {
+      "id": "bluesky|global|https://bsky.app/profile/barackobama.bsky.social/post/3mrgbvknwb222",
+      "pattern": "Got the chance to see these talented players in action today! It was great having the @wnba.com at Home Court at the Obama Presidential Center for All-Star Weekend. 🏀",
+      "evidence": [
+        "Got the chance to see these talented players in action today! It was great having the @wnba.com at Home Court at the Obama Presidential Center for All-Star Weekend. 🏀",
+        "reposts=3145; replies=517",
+        "https://bsky.app/profile/barackobama.bsky.social/post/3mrgbvknwb222"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 1.0,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 14897
+      },
+      "author": "barackobama.bsky.social",
+      "has_video": true,
+      "url": "https://bsky.app/profile/barackobama.bsky.social/post/3mrgbvknwb222",
+      "published_at": "2026-07-24T21:22:08.332Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/teamcanadaforever.bsky.social/post/3mrgtokvtes2h",
+      "pattern": "Kids playing road hockey on the brand-new Gordie Howe International Bridge 🏒🇨🇦 Canada celebrated the opening the only way we know how with hockey on the deck of the longest cable-stayed bridge in North America. Built by Canadians, paid for by Canadians.🤝🇨🇦 🎥 Gray_Mackenzie on 𝕏 🇨🇦TEAM CAN…",
+      "evidence": [
+        "Kids playing road hockey on the brand-new Gordie Howe International Bridge 🏒🇨🇦 Canada celebrated the opening the only way we know how with hockey on the deck of the longest cable-stayed bridge in North America. Built by Canadians, paid for by Canadians.🤝🇨🇦 🎥 Gray_Mackenzie on 𝕏 🇨🇦TEAM CAN…",
+        "reposts=628; replies=93",
+        "https://bsky.app/profile/teamcanadaforever.bsky.social/post/3mrgtokvtes2h"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.209,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 3114
+      },
+      "author": "teamcanadaforever.bsky.social",
+      "has_video": true,
+      "url": "https://bsky.app/profile/teamcanadaforever.bsky.social/post/3mrgtokvtes2h",
+      "published_at": "2026-07-25T02:40:21.063Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/aepplesche.bsky.social/post/3mrhev33bf226",
+      "pattern": "The Lasangna thief stikes again 🤣",
+      "evidence": [
+        "The Lasangna thief stikes again 🤣",
+        "reposts=18; replies=11",
+        "https://bsky.app/profile/aepplesche.bsky.social/post/3mrhev33bf226"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.008,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 122
+      },
+      "author": "aepplesche.bsky.social",
+      "has_video": true,
+      "url": "https://bsky.app/profile/aepplesche.bsky.social/post/3mrhev33bf226",
+      "published_at": "2026-07-25T07:48:12.957Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/guywrites.bsky.social/post/3mrhhtscb5s2v",
+      "pattern": "The lazy, lapping waters of Looe, providing a gentle rhythm to the day. May your day be peaceful, my friends. 😊 #Cornwall #river #nature #life #calm #peace #mindfulness",
+      "evidence": [
+        "The lazy, lapping waters of Looe, providing a gentle rhythm to the day. May your day be peaceful, my friends. 😊 #Cornwall #river #nature #life #calm #peace #mindfulness",
+        "reposts=12; replies=6",
+        "https://bsky.app/profile/guywrites.bsky.social/post/3mrhhtscb5s2v"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "weeks",
+      "confidence": 0.01,
+      "category": "Cornwall",
+      "metric": {
+        "name": "likes",
+        "value": 151
+      },
+      "author": "guywrites.bsky.social",
+      "has_video": true,
+      "url": "https://bsky.app/profile/guywrites.bsky.social/post/3mrhhtscb5s2v",
+      "published_at": "2026-07-25T08:41:11.419Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/bearysweet.bsky.social/post/3mrgyypgitc2n",
+      "pattern": "Experience candle ice on Eklutna Lake in Alaska, a unique phenomenon where vertical ice crystals break apart. The water is known for its bright turquoise color, caused by glacial silt filtering sunlight. The surrounding mountains are part of the Chugach State Park range. #nature #candleice #alaska",
+      "evidence": [
+        "Experience candle ice on Eklutna Lake in Alaska, a unique phenomenon where vertical ice crystals break apart. The water is known for its bright turquoise color, caused by glacial silt filtering sunlight. The surrounding mountains are part of the Chugach State Park range. #nature #candleice #alaska",
+        "reposts=118; replies=17",
+        "https://bsky.app/profile/bearysweet.bsky.social/post/3mrgyypgitc2n"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "weeks",
+      "confidence": 0.05,
+      "category": "nature",
+      "metric": {
+        "name": "likes",
+        "value": 755
+      },
+      "author": "bearysweet.bsky.social",
+      "has_video": true,
+      "url": "https://bsky.app/profile/bearysweet.bsky.social/post/3mrgyypgitc2n",
+      "published_at": "2026-07-25T04:15:30.057Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/yourdigitalbrain.bsky.social/post/3mrhhtscx642o",
+      "pattern": "She fed a wild squirrel every day for months. Then it climbed down and offered her a treat back.",
+      "evidence": [
+        "She fed a wild squirrel every day for months. Then it climbed down and offered her a treat back.",
+        "reposts=14; replies=2",
+        "https://bsky.app/profile/yourdigitalbrain.bsky.social/post/3mrhhtscx642o"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.006,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 94
+      },
+      "author": "yourdigitalbrain.bsky.social",
+      "has_video": true,
+      "url": "https://bsky.app/profile/yourdigitalbrain.bsky.social/post/3mrhhtscx642o",
+      "published_at": "2026-07-25T08:40:59.000Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/contemprainn.bsky.social/post/3mrff4m4u3k2g",
+      "pattern": "China’s largest cherry blossom 🌸garden — Pingba in Guizhou Province. Home to more than half a million stunning cherry trees, it has become one of China 🇨🇳 most breathtaking natural landscapes.🌸",
+      "evidence": [
+        "China’s largest cherry blossom 🌸garden — Pingba in Guizhou Province. Home to more than half a million stunning cherry trees, it has become one of China 🇨🇳 most breathtaking natural landscapes.🌸",
+        "reposts=1213; replies=152",
+        "https://bsky.app/profile/contemprainn.bsky.social/post/3mrff4m4u3k2g"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.457,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 6816
+      },
+      "author": "contemprainn.bsky.social",
+      "has_video": true,
+      "url": "https://bsky.app/profile/contemprainn.bsky.social/post/3mrff4m4u3k2g",
+      "published_at": "2026-07-24T12:47:06.239Z"
+    },
+    {
+      "id": "mastodon|global|https://infosec.exchange/@catsalad/116979488130667537",
+      "pattern": "ProCatTip: Be purrsistent when letting your human know you're hungry. They can be a little slow at times.",
+      "evidence": [
+        "ProCatTip: Be purrsistent when letting your human know you're hungry. They can be a little slow at times.",
+        "favourites=117; replies=5",
+        "https://infosec.exchange/@catsalad/116979488130667537"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.099,
+      "category": "trending_post",
+      "metric": {
+        "name": "boosts",
+        "value": 97
+      },
+      "author": "catsalad@infosec.exchange",
+      "has_video": true,
+      "url": "https://infosec.exchange/@catsalad/116979488130667537",
+      "published_at": "2026-07-25T07:42:14.000Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/psintone.bsky.social/post/3mrhcx6bbt22d",
+      "pattern": "Haarapääsky kaarteessa! 👀 Kuva:Jorma Puurunen /fb",
+      "evidence": [
+        "Haarapääsky kaarteessa! 👀 Kuva:Jorma Puurunen /fb",
+        "reposts=2; replies=3",
+        "https://bsky.app/profile/psintone.bsky.social/post/3mrhcx6bbt22d"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.005,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 74
+      },
+      "author": "psintone.bsky.social",
+      "has_video": false,
+      "url": "https://bsky.app/profile/psintone.bsky.social/post/3mrhcx6bbt22d",
+      "published_at": "2026-07-25T07:13:35.872Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/trending.bsky.app/feed/806902318",
+      "pattern": "Final Fantasy XIV",
+      "evidence": [
+        "Final Fantasy XIV",
+        "https://bsky.app/profile/trending.bsky.app/feed/806902318"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.0,
+      "category": "trending_topic",
+      "metric": {
+        "name": "topic_rank",
+        "value": 1
+      },
+      "author": null,
+      "has_video": false,
+      "url": "https://bsky.app/profile/trending.bsky.app/feed/806902318",
+      "published_at": null
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/propublica.org/post/3mrfmra6czs24",
+      "pattern": "NEW: James Talarico accused Ken Paxton of committing voter fraud after ProPublica and @texastribune.org found that the Texas attorney general may have broken state law by voting using an address where he no longer appears to live.",
+      "evidence": [
+        "NEW: James Talarico accused Ken Paxton of committing voter fraud after ProPublica and @texastribune.org found that the Texas attorney general may have broken state law by voting using an address where he no longer appears to live.",
+        "reposts=3734; replies=323",
+        "https://bsky.app/profile/propublica.org/post/3mrfmra6czs24"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.763,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 11362
+      },
+      "author": "propublica.org",
+      "has_video": false,
+      "url": "https://bsky.app/profile/propublica.org/post/3mrfmra6czs24",
+      "published_at": "2026-07-24T15:03:54.535Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/trending.bsky.app/feed/806907897",
+      "pattern": "Bastion",
+      "evidence": [
+        "Bastion",
+        "https://bsky.app/profile/trending.bsky.app/feed/806907897"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.071,
+      "category": "trending_topic",
+      "metric": {
+        "name": "topic_rank",
+        "value": 2
+      },
+      "author": null,
+      "has_video": false,
+      "url": "https://bsky.app/profile/trending.bsky.app/feed/806907897",
+      "published_at": null
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/doncomer.bsky.social/post/3mrh73f6gkc2d",
+      "pattern": "A dwelling deprived individual's art:",
+      "evidence": [
+        "A dwelling deprived individual's art:",
+        "reposts=380; replies=34",
+        "https://bsky.app/profile/doncomer.bsky.social/post/3mrh73f6gkc2d"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.104,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 1548
+      },
+      "author": "doncomer.bsky.social",
+      "has_video": false,
+      "url": "https://bsky.app/profile/doncomer.bsky.social/post/3mrh73f6gkc2d",
+      "published_at": "2026-07-25T06:04:22.421Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/trending.bsky.app/feed/806830202",
+      "pattern": "Big Brother",
+      "evidence": [
+        "Big Brother",
+        "https://bsky.app/profile/trending.bsky.app/feed/806830202"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.143,
+      "category": "trending_topic",
+      "metric": {
+        "name": "topic_rank",
+        "value": 3
+      },
+      "author": null,
+      "has_video": false,
+      "url": "https://bsky.app/profile/trending.bsky.app/feed/806830202",
+      "published_at": null
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/trending.bsky.app/feed/806721515",
+      "pattern": "WHCD",
+      "evidence": [
+        "WHCD",
+        "https://bsky.app/profile/trending.bsky.app/feed/806721515"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.214,
+      "category": "trending_topic",
+      "metric": {
+        "name": "topic_rank",
+        "value": 4
+      },
+      "author": null,
+      "has_video": false,
+      "url": "https://bsky.app/profile/trending.bsky.app/feed/806721515",
+      "published_at": null
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/trending.bsky.app/feed/806733007",
+      "pattern": "B Movie Maniacs",
+      "evidence": [
+        "B Movie Maniacs",
+        "https://bsky.app/profile/trending.bsky.app/feed/806733007"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.286,
+      "category": "trending_topic",
+      "metric": {
+        "name": "topic_rank",
+        "value": 5
+      },
+      "author": null,
+      "has_video": false,
+      "url": "https://bsky.app/profile/trending.bsky.app/feed/806733007",
+      "published_at": null
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/politico.com/post/3mrgclh66l22x",
+      "pattern": "EXCLUSIVE: California Dems are ramping up their campaign against a nationally-watched voter ID initiative in the state, with gubernatorial frontrunner Xavier Becerra leading a new effort to quash the measure.",
+      "evidence": [
+        "EXCLUSIVE: California Dems are ramping up their campaign against a nationally-watched voter ID initiative in the state, with gubernatorial frontrunner Xavier Becerra leading a new effort to quash the measure.",
+        "reposts=642; replies=56",
+        "https://bsky.app/profile/politico.com/post/3mrgclh66l22x"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.156,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 2331
+      },
+      "author": "politico.com",
+      "has_video": false,
+      "url": "https://bsky.app/profile/politico.com/post/3mrgclh66l22x",
+      "published_at": "2026-07-24T21:34:22.868Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/trending.bsky.app/feed/806695108",
+      "pattern": "Film Noir",
+      "evidence": [
+        "Film Noir",
+        "https://bsky.app/profile/trending.bsky.app/feed/806695108"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.357,
+      "category": "trending_topic",
+      "metric": {
+        "name": "topic_rank",
+        "value": 6
+      },
+      "author": null,
+      "has_video": false,
+      "url": "https://bsky.app/profile/trending.bsky.app/feed/806695108",
+      "published_at": null
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/trending.bsky.app/feed/806635265",
+      "pattern": "Azzi Fudd",
+      "evidence": [
+        "Azzi Fudd",
+        "https://bsky.app/profile/trending.bsky.app/feed/806635265"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.429,
+      "category": "trending_topic",
+      "metric": {
+        "name": "topic_rank",
+        "value": 7
+      },
+      "author": null,
+      "has_video": false,
+      "url": "https://bsky.app/profile/trending.bsky.app/feed/806635265",
+      "published_at": null
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/trending.bsky.app/feed/806664058",
+      "pattern": "La Grange",
+      "evidence": [
+        "La Grange",
+        "https://bsky.app/profile/trending.bsky.app/feed/806664058"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.5,
+      "category": "trending_topic",
+      "metric": {
+        "name": "topic_rank",
+        "value": 8
+      },
+      "author": null,
+      "has_video": false,
+      "url": "https://bsky.app/profile/trending.bsky.app/feed/806664058",
+      "published_at": null
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/amandawtwong.bsky.social/post/3mrgkskm4jk2z",
+      "pattern": "This is a small thing but the embarrassing truth is that I've been a poor reader for most of my adult life and I've read a new book nearly every week this year so hoorah for me :D",
+      "evidence": [
+        "This is a small thing but the embarrassing truth is that I've been a poor reader for most of my adult life and I've read a new book nearly every week this year so hoorah for me :D",
+        "reposts=161; replies=262",
+        "https://bsky.app/profile/amandawtwong.bsky.social/post/3mrgkskm4jk2z"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.355,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 5285
+      },
+      "author": "amandawtwong.bsky.social",
+      "has_video": false,
+      "url": "https://bsky.app/profile/amandawtwong.bsky.social/post/3mrgkskm4jk2z",
+      "published_at": "2026-07-25T00:01:31.286Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/trending.bsky.app/feed/806592129",
+      "pattern": "Sunset Boulevard",
+      "evidence": [
+        "Sunset Boulevard",
+        "https://bsky.app/profile/trending.bsky.app/feed/806592129"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.571,
+      "category": "trending_topic",
+      "metric": {
+        "name": "topic_rank",
+        "value": 9
+      },
+      "author": null,
+      "has_video": false,
+      "url": "https://bsky.app/profile/trending.bsky.app/feed/806592129",
+      "published_at": null
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/shameka23.bsky.social/post/3mrft5y6wmc2e",
+      "pattern": "President Obama made an appearance at all-star weekend! #WNBA",
+      "evidence": [
+        "President Obama made an appearance at all-star weekend! #WNBA",
+        "reposts=879; replies=141",
+        "https://bsky.app/profile/shameka23.bsky.social/post/3mrft5y6wmc2e"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "weeks",
+      "confidence": 0.503,
+      "category": "WNBA",
+      "metric": {
+        "name": "likes",
+        "value": 7495
+      },
+      "author": "shameka23.bsky.social",
+      "has_video": false,
+      "url": "https://bsky.app/profile/shameka23.bsky.social/post/3mrft5y6wmc2e",
+      "published_at": "2026-07-24T16:58:24.828Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/trending.bsky.app/feed/806609183",
+      "pattern": "WWE",
+      "evidence": [
+        "WWE",
+        "https://bsky.app/profile/trending.bsky.app/feed/806609183"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.643,
+      "category": "trending_topic",
+      "metric": {
+        "name": "topic_rank",
+        "value": 10
+      },
+      "author": null,
+      "has_video": false,
+      "url": "https://bsky.app/profile/trending.bsky.app/feed/806609183",
+      "published_at": null
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/streetartutopia.com/post/3mrhhifxkzs2p",
+      "pattern": "🪴 “Bolesław Nieśmiały” — By RAZE’cki in Szczecin, Poland 🇵🇱 Amazing New Street Art! (20 Photos, Vol. 12): streetartutopia.com/2026/07/22/n...",
+      "evidence": [
+        "🪴 “Bolesław Nieśmiały” — By RAZE’cki in Szczecin, Poland 🇵🇱 Amazing New Street Art! (20 Photos, Vol. 12): streetartutopia.com/2026/07/22/n...",
+        "reposts=5; replies=0",
+        "https://bsky.app/profile/streetartutopia.com/post/3mrhhifxkzs2p"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.001,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 25
+      },
+      "author": "streetartutopia.com",
+      "has_video": false,
+      "url": "https://bsky.app/profile/streetartutopia.com/post/3mrhhifxkzs2p",
+      "published_at": "2026-07-25T08:34:49.387Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/trending.bsky.app/feed/806553225",
+      "pattern": "Art Fight",
+      "evidence": [
+        "Art Fight",
+        "https://bsky.app/profile/trending.bsky.app/feed/806553225"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.714,
+      "category": "trending_topic",
+      "metric": {
+        "name": "topic_rank",
+        "value": 11
+      },
+      "author": null,
+      "has_video": false,
+      "url": "https://bsky.app/profile/trending.bsky.app/feed/806553225",
+      "published_at": null
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/forbes.com/post/3mrftjvu3xp2o",
+      "pattern": "Andrew and Tristan Tate, jailed in Florida, are trying to fight extradition to the United Kingdom, where they face dozens of new charges.",
+      "evidence": [
+        "Andrew and Tristan Tate, jailed in Florida, are trying to fight extradition to the United Kingdom, where they face dozens of new charges.",
+        "reposts=800; replies=406",
+        "https://bsky.app/profile/forbes.com/post/3mrftjvu3xp2o"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.198,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 2958
+      },
+      "author": "forbes.com",
+      "has_video": false,
+      "url": "https://bsky.app/profile/forbes.com/post/3mrftjvu3xp2o",
+      "published_at": "2026-07-24T17:05:04Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/trending.bsky.app/feed/806549728",
+      "pattern": "Deltarune",
+      "evidence": [
+        "Deltarune",
+        "https://bsky.app/profile/trending.bsky.app/feed/806549728"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.786,
+      "category": "trending_topic",
+      "metric": {
+        "name": "topic_rank",
+        "value": 12
+      },
+      "author": null,
+      "has_video": false,
+      "url": "https://bsky.app/profile/trending.bsky.app/feed/806549728",
+      "published_at": null
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/bawley.bsky.social/post/3mrgd5xeaw226",
+      "pattern": "Happy Caturday from the other side of the planet.🐈‍⬛",
+      "evidence": [
+        "Happy Caturday from the other side of the planet.🐈‍⬛",
+        "reposts=511; replies=244",
+        "https://bsky.app/profile/bawley.bsky.social/post/3mrgd5xeaw226"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.54,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 8052
+      },
+      "author": "bawley.bsky.social",
+      "has_video": false,
+      "url": "https://bsky.app/profile/bawley.bsky.social/post/3mrgd5xeaw226",
+      "published_at": "2026-07-24T21:44:43.824Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/trending.bsky.app/feed/806598565",
+      "pattern": "Queer Writers",
+      "evidence": [
+        "Queer Writers",
+        "https://bsky.app/profile/trending.bsky.app/feed/806598565"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.857,
+      "category": "trending_topic",
+      "metric": {
+        "name": "topic_rank",
+        "value": 13
+      },
+      "author": null,
+      "has_video": false,
+      "url": "https://bsky.app/profile/trending.bsky.app/feed/806598565",
+      "published_at": null
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/damonyoung.com.au/post/3mrgydqd4w224",
+      "pattern": "Nope. No, you haven’t.",
+      "evidence": [
+        "Nope. No, you haven’t.",
+        "reposts=323; replies=136",
+        "https://bsky.app/profile/damonyoung.com.au/post/3mrgydqd4w224"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.156,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 2330
+      },
+      "author": "damonyoung.com.au",
+      "has_video": false,
+      "url": "https://bsky.app/profile/damonyoung.com.au/post/3mrgydqd4w224",
+      "published_at": "2026-07-25T04:03:46.345Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/trending.bsky.app/feed/806527952",
+      "pattern": "SpaceX",
+      "evidence": [
+        "SpaceX",
+        "https://bsky.app/profile/trending.bsky.app/feed/806527952"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.929,
+      "category": "trending_topic",
+      "metric": {
+        "name": "topic_rank",
+        "value": 14
+      },
+      "author": null,
+      "has_video": false,
+      "url": "https://bsky.app/profile/trending.bsky.app/feed/806527952",
+      "published_at": null
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/el-mar-foto.bsky.social/post/3mrhirny3d224",
+      "pattern": "Venner Moor, Senden, Germany",
+      "evidence": [
+        "Venner Moor, Senden, Germany",
+        "reposts=0; replies=1",
+        "https://bsky.app/profile/el-mar-foto.bsky.social/post/3mrhirny3d224"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.0,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 9
+      },
+      "author": "el-mar-foto.bsky.social",
+      "has_video": false,
+      "url": "https://bsky.app/profile/el-mar-foto.bsky.social/post/3mrhirny3d224",
+      "published_at": "2026-07-25T08:57:53.522Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/trending.bsky.app/feed/806600007",
+      "pattern": "Taran Shoutouts",
+      "evidence": [
+        "Taran Shoutouts",
+        "https://bsky.app/profile/trending.bsky.app/feed/806600007"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 1.0,
+      "category": "trending_topic",
+      "metric": {
+        "name": "topic_rank",
+        "value": 15
+      },
+      "author": null,
+      "has_video": false,
+      "url": "https://bsky.app/profile/trending.bsky.app/feed/806600007",
+      "published_at": null
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/sagecollins.bsky.social/post/3mrh2kopczs2r",
+      "pattern": "I am just a jungle gym to this cat",
+      "evidence": [
+        "I am just a jungle gym to this cat",
+        "reposts=123; replies=51",
+        "https://bsky.app/profile/sagecollins.bsky.social/post/3mrh2kopczs2r"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.114,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 1699
+      },
+      "author": "sagecollins.bsky.social",
+      "has_video": false,
+      "url": "https://bsky.app/profile/sagecollins.bsky.social/post/3mrh2kopczs2r",
+      "published_at": "2026-07-25T04:43:27.017Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/donna-rose.bsky.social/post/3mrh3qlj2622d",
+      "pattern": "Blue beach, Mauritius, photographer unknown",
+      "evidence": [
+        "Blue beach, Mauritius, photographer unknown",
+        "reposts=79; replies=20",
+        "https://bsky.app/profile/donna-rose.bsky.social/post/3mrh3qlj2622d"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.048,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 722
+      },
+      "author": "donna-rose.bsky.social",
+      "has_video": false,
+      "url": "https://bsky.app/profile/donna-rose.bsky.social/post/3mrh3qlj2622d",
+      "published_at": "2026-07-25T05:04:38.736Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/insanlardanbirisi.bsky.social/post/3mrh2jpufy22b",
+      "pattern": "Ben sadece bir çiçek değilim... Ben bir sabır hikâyesiyim Yerinde açmaya çalışan..! -Bir Papatya- 🌼 günaydın ☕️🙏🦋",
+      "evidence": [
+        "Ben sadece bir çiçek değilim... Ben bir sabır hikâyesiyim Yerinde açmaya çalışan..! -Bir Papatya- 🌼 günaydın ☕️🙏🦋",
+        "reposts=2; replies=8",
+        "https://bsky.app/profile/insanlardanbirisi.bsky.social/post/3mrh2jpufy22b"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.003,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 50
+      },
+      "author": "insanlardanbirisi.bsky.social",
+      "has_video": false,
+      "url": "https://bsky.app/profile/insanlardanbirisi.bsky.social/post/3mrh2jpufy22b",
+      "published_at": "2026-07-25T04:42:54.680Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/calidemocrat.bsky.social/post/3mrg5kmnjhk2f",
+      "pattern": "The f*****g Dodgers gave the orange felon a world series championship ring. As if I didn't hate them enough already. 😡🤬",
+      "evidence": [
+        "The f*****g Dodgers gave the orange felon a world series championship ring. As if I didn't hate them enough already. 😡🤬",
+        "reposts=670; replies=329",
+        "https://bsky.app/profile/calidemocrat.bsky.social/post/3mrg5kmnjhk2f"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.331,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 4934
+      },
+      "author": "calidemocrat.bsky.social",
+      "has_video": false,
+      "url": "https://bsky.app/profile/calidemocrat.bsky.social/post/3mrg5kmnjhk2f",
+      "published_at": "2026-07-24T20:04:26.349Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/kim4thebabies.bsky.social/post/3mrg46jjtzc2k",
+      "pattern": "This I can approve. ktla.com/news/califor...",
+      "evidence": [
+        "This I can approve. ktla.com/news/califor...",
+        "reposts=1098; replies=105",
+        "https://bsky.app/profile/kim4thebabies.bsky.social/post/3mrg46jjtzc2k"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.351,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 5230
+      },
+      "author": "kim4thebabies.bsky.social",
+      "has_video": false,
+      "url": "https://bsky.app/profile/kim4thebabies.bsky.social/post/3mrg46jjtzc2k",
+      "published_at": "2026-07-24T19:39:46.689Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/dodgersdigest.bsky.social/post/3mrgr2scphc22",
+      "pattern": "Dodgers 4, Mets 2: Roki Sasaki sets a career high, Kyle Tucker breaks out (maybe?)",
+      "evidence": [
+        "Dodgers 4, Mets 2: Roki Sasaki sets a career high, Kyle Tucker breaks out (maybe?)",
+        "reposts=4; replies=2",
+        "https://bsky.app/profile/dodgersdigest.bsky.social/post/3mrgr2scphc22"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.001,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 19
+      },
+      "author": "dodgersdigest.bsky.social",
+      "has_video": false,
+      "url": "https://bsky.app/profile/dodgersdigest.bsky.social/post/3mrgr2scphc22",
+      "published_at": "2026-07-25T01:53:30Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/finnovski.bsky.social/post/3mrhes4donc2u",
+      "pattern": "Lovely morning here 🌞, wildflower meadows are looking good.",
+      "evidence": [
+        "Lovely morning here 🌞, wildflower meadows are looking good.",
+        "reposts=1; replies=0",
+        "https://bsky.app/profile/finnovski.bsky.social/post/3mrhes4donc2u"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.001,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 13
+      },
+      "author": "finnovski.bsky.social",
+      "has_video": false,
+      "url": "https://bsky.app/profile/finnovski.bsky.social/post/3mrhes4donc2u",
+      "published_at": "2026-07-25T07:46:33.586Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/stedilnik.bsky.social/post/3mrglu3xvgk26",
+      "pattern": "I'm beginning to hate drawing armor just some metal bullshit",
+      "evidence": [
+        "I'm beginning to hate drawing armor just some metal bullshit",
+        "reposts=328; replies=20",
+        "https://bsky.app/profile/stedilnik.bsky.social/post/3mrglu3xvgk26"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.091,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 1365
+      },
+      "author": "stedilnik.bsky.social",
+      "has_video": false,
+      "url": "https://bsky.app/profile/stedilnik.bsky.social/post/3mrglu3xvgk26",
+      "published_at": "2026-07-25T00:20:16.788Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/bakerart.bsky.social/post/3mrhhzfzddk2c",
+      "pattern": "Very old ink and wash sketch from about forty years ago showing Southsea boating lake. Our son is one of the children fishing for sea creatures (putting them back in of course)",
+      "evidence": [
+        "Very old ink and wash sketch from about forty years ago showing Southsea boating lake. Our son is one of the children fishing for sea creatures (putting them back in of course)",
+        "reposts=0; replies=0",
+        "https://bsky.app/profile/bakerart.bsky.social/post/3mrhhzfzddk2c"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.001,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 21
+      },
+      "author": "bakerart.bsky.social",
+      "has_video": false,
+      "url": "https://bsky.app/profile/bakerart.bsky.social/post/3mrhhzfzddk2c",
+      "published_at": "2026-07-25T08:44:19.841Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/markl.ca/post/3mrg5kmvp6k2t",
+      "pattern": "We went to LOOK at cats. One came home with us.",
+      "evidence": [
+        "We went to LOOK at cats. One came home with us.",
+        "reposts=326; replies=398",
+        "https://bsky.app/profile/markl.ca/post/3mrg5kmvp6k2t"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.479,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 7130
+      },
+      "author": "markl.ca",
+      "has_video": false,
+      "url": "https://bsky.app/profile/markl.ca/post/3mrg5kmvp6k2t",
+      "published_at": "2026-07-24T20:04:26.616Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/masusa.bsky.social/post/3mrh44c64kk2b",
+      "pattern": "Huomenta ☕! Herkut suoraan puskasta, ilta-auringon helliessä lenkkeilijää.",
+      "evidence": [
+        "Huomenta ☕! Herkut suoraan puskasta, ilta-auringon helliessä lenkkeilijää.",
+        "reposts=1; replies=0",
+        "https://bsky.app/profile/masusa.bsky.social/post/3mrh44c64kk2b"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.004,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 64
+      },
+      "author": "masusa.bsky.social",
+      "has_video": false,
+      "url": "https://bsky.app/profile/masusa.bsky.social/post/3mrh44c64kk2b",
+      "published_at": "2026-07-25T05:11:11.582Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/anneobrienauthor.bsky.social/post/3mrhdjlu4422l",
+      "pattern": "Good morning from the Welsh Marches. Heading up the Marches to Shrewsbury for the day. Splendid view of Stokesay Castle from the train. Perhaps time for another visit.",
+      "evidence": [
+        "Good morning from the Welsh Marches. Heading up the Marches to Shrewsbury for the day. Splendid view of Stokesay Castle from the train. Perhaps time for another visit.",
+        "reposts=1; replies=0",
+        "https://bsky.app/profile/anneobrienauthor.bsky.social/post/3mrhdjlu4422l"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.0,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 10
+      },
+      "author": "anneobrienauthor.bsky.social",
+      "has_video": false,
+      "url": "https://bsky.app/profile/anneobrienauthor.bsky.social/post/3mrhdjlu4422l",
+      "published_at": "2026-07-25T07:23:54.151Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/theul.bsky.social/post/3mrhiqboire2i",
+      "pattern": "It’s never too late to return a library book... even after 60 years. This book recently came back to the library after six decades out in the wild! Just graduated and forgotten to return a book? If you can’t make it back to Cambridge, use our freepost returns service: https://loom.ly/wf0LwIs",
+      "evidence": [
+        "It’s never too late to return a library book... even after 60 years. This book recently came back to the library after six decades out in the wild! Just graduated and forgotten to return a book? If you can’t make it back to Cambridge, use our freepost returns service: https://loom.ly/wf0LwIs",
+        "reposts=2; replies=2",
+        "https://bsky.app/profile/theul.bsky.social/post/3mrhiqboire2i"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.001,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 13
+      },
+      "author": "theul.bsky.social",
+      "has_video": false,
+      "url": "https://bsky.app/profile/theul.bsky.social/post/3mrhiqboire2i",
+      "published_at": "2026-07-25T08:57:07Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/carolineverhees.bsky.social/post/3mrherl2mfk2f",
+      "pattern": "Goedemorgen, ik wens jullie een hele fijne zaterdag. Met een prachtig groen plekje in het mooie Leudal 💚 Waar ik altijd even stil sta om te genieten. #natuur",
+      "evidence": [
+        "Goedemorgen, ik wens jullie een hele fijne zaterdag. Met een prachtig groen plekje in het mooie Leudal 💚 Waar ik altijd even stil sta om te genieten. #natuur",
+        "reposts=0; replies=3",
+        "https://bsky.app/profile/carolineverhees.bsky.social/post/3mrherl2mfk2f"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "weeks",
+      "confidence": 0.001,
+      "category": "natuur",
+      "metric": {
+        "name": "likes",
+        "value": 20
+      },
+      "author": "carolineverhees.bsky.social",
+      "has_video": false,
+      "url": "https://bsky.app/profile/carolineverhees.bsky.social/post/3mrherl2mfk2f",
+      "published_at": "2026-07-25T07:46:15.478Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/raeradford.bsky.social/post/3mrfsqkoyx22q",
+      "pattern": "Amen. #BookSky",
+      "evidence": [
+        "Amen. #BookSky",
+        "reposts=1121; replies=161",
+        "https://bsky.app/profile/raeradford.bsky.social/post/3mrfsqkoyx22q"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "weeks",
+      "confidence": 0.508,
+      "category": "BookSky",
+      "metric": {
+        "name": "likes",
+        "value": 7567
+      },
+      "author": "raeradford.bsky.social",
+      "has_video": false,
+      "url": "https://bsky.app/profile/raeradford.bsky.social/post/3mrfsqkoyx22q",
+      "published_at": "2026-07-24T16:50:54.467Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/darwinbrandis.com/post/3mrgqrwaqtc2o",
+      "pattern": "I lost my best friend and good-est boy today. Big dogs are the sweetest, most gentle creatures and they get such little time on this earth. It’s simply not fair. Love you always, Beau.",
+      "evidence": [
+        "I lost my best friend and good-est boy today. Big dogs are the sweetest, most gentle creatures and they get such little time on this earth. It’s simply not fair. Love you always, Beau.",
+        "reposts=109; replies=222",
+        "https://bsky.app/profile/darwinbrandis.com/post/3mrgqrwaqtc2o"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.157,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 2334
+      },
+      "author": "darwinbrandis.com",
+      "has_video": false,
+      "url": "https://bsky.app/profile/darwinbrandis.com/post/3mrgqrwaqtc2o",
+      "published_at": "2026-07-25T01:48:32.386Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/freethinkersunite.bsky.social/post/3mrgm5ou6hc2m",
+      "pattern": "(media post)",
+      "evidence": [
+        "(media post)",
+        "reposts=358; replies=15",
+        "https://bsky.app/profile/freethinkersunite.bsky.social/post/3mrgm5ou6hc2m"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.105,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 1567
+      },
+      "author": "freethinkersunite.bsky.social",
+      "has_video": false,
+      "url": "https://bsky.app/profile/freethinkersunite.bsky.social/post/3mrgm5ou6hc2m",
+      "published_at": "2026-07-25T00:25:38.586Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/erikabakse.bsky.social/post/3mrfqs62ldc2c",
+      "pattern": "My husband texted me \"IT HAPPENED\" but it turned out to be about LeBron going to the 76ers. I had 2 minutes of beautiful serenity.",
+      "evidence": [
+        "My husband texted me \"IT HAPPENED\" but it turned out to be about LeBron going to the 76ers. I had 2 minutes of beautiful serenity.",
+        "reposts=816; replies=495",
+        "https://bsky.app/profile/erikabakse.bsky.social/post/3mrfqs62ldc2c"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.785,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 11690
+      },
+      "author": "erikabakse.bsky.social",
+      "has_video": false,
+      "url": "https://bsky.app/profile/erikabakse.bsky.social/post/3mrfqs62ldc2c",
+      "published_at": "2026-07-24T16:16:00.841Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/tadethompson.bsky.social/post/3mrhh3shcnk2z",
+      "pattern": "I'm at the park, reading, and a woman with an accent said to me, \"Oh, you're a reading worm\". I love that construction. It's so poetic when second-language folks speak. I did not correct her because reading worm is better than bookworm.",
+      "evidence": [
+        "I'm at the park, reading, and a woman with an accent said to me, \"Oh, you're a reading worm\". I love that construction. It's so poetic when second-language folks speak. I did not correct her because reading worm is better than bookworm.",
+        "reposts=12; replies=4",
+        "https://bsky.app/profile/tadethompson.bsky.social/post/3mrhh3shcnk2z"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.008,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 125
+      },
+      "author": "tadethompson.bsky.social",
+      "has_video": false,
+      "url": "https://bsky.app/profile/tadethompson.bsky.social/post/3mrhh3shcnk2z",
+      "published_at": "2026-07-25T08:27:46.278Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/us.theguardian.com/post/3mrg4bswjhi2u",
+      "pattern": "The latest milestone, a recorded 2,318 infections, makes 2026 the worst year for measles in the US since 1991",
+      "evidence": [
+        "The latest milestone, a recorded 2,318 infections, makes 2026 the worst year for measles in the US since 1991",
+        "reposts=17; replies=2",
+        "https://bsky.app/profile/us.theguardian.com/post/3mrg4bswjhi2u"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.002,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 39
+      },
+      "author": "us.theguardian.com",
+      "has_video": false,
+      "url": "https://bsky.app/profile/us.theguardian.com/post/3mrg4bswjhi2u",
+      "published_at": "2026-07-24T19:41:36.921Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/stimoo.bsky.social/post/3mrh5nag6e22b",
+      "pattern": "#Delft #Delftholland",
+      "evidence": [
+        "#Delft #Delftholland",
+        "reposts=4; replies=1",
+        "https://bsky.app/profile/stimoo.bsky.social/post/3mrh5nag6e22b"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "weeks",
+      "confidence": 0.002,
+      "category": "Delft",
+      "metric": {
+        "name": "likes",
+        "value": 33
+      },
+      "author": "stimoo.bsky.social",
+      "has_video": false,
+      "url": "https://bsky.app/profile/stimoo.bsky.social/post/3mrh5nag6e22b",
+      "published_at": "2026-07-25T05:38:33.924Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/forbes.com/post/3mrg6pkzn7t2x",
+      "pattern": "A group of state attorneys general have challenged the merger in a lawsuit, alleging it would drastically reduce competition and harm consumers.",
+      "evidence": [
+        "A group of state attorneys general have challenged the merger in a lawsuit, alleging it would drastically reduce competition and harm consumers.",
+        "reposts=294; replies=37",
+        "https://bsky.app/profile/forbes.com/post/3mrg6pkzn7t2x"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.081,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 1215
+      },
+      "author": "forbes.com",
+      "has_video": false,
+      "url": "https://bsky.app/profile/forbes.com/post/3mrg6pkzn7t2x",
+      "published_at": "2026-07-24T20:25:05Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/davemeredith.bsky.social/post/3mrhgth4qkk27",
+      "pattern": "When water looks like #Glass. Colpoy's Bay, Ontario shortly before sunrise for the #BlueSkyArtShow theme #BrucePeninsula #BruceCounty #ECK #photography #TenMinutesFromHome #GettingBackToBasics #ManualFocusLens #clouds #sunrise",
+      "evidence": [
+        "When water looks like #Glass. Colpoy's Bay, Ontario shortly before sunrise for the #BlueSkyArtShow theme #BrucePeninsula #BruceCounty #ECK #photography #TenMinutesFromHome #GettingBackToBasics #ManualFocusLens #clouds #sunrise",
+        "reposts=12; replies=1",
+        "https://bsky.app/profile/davemeredith.bsky.social/post/3mrhgth4qkk27"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "weeks",
+      "confidence": 0.008,
+      "category": "Glass",
+      "metric": {
+        "name": "likes",
+        "value": 118
+      },
+      "author": "davemeredith.bsky.social",
+      "has_video": false,
+      "url": "https://bsky.app/profile/davemeredith.bsky.social/post/3mrhgth4qkk27",
+      "published_at": "2026-07-25T08:23:05.896Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/sevincm.bsky.social/post/3mrgv57gozs2r",
+      "pattern": "Günaydın mutlu hafta sonları 😊 #günaydın ☀️☕️",
+      "evidence": [
+        "Günaydın mutlu hafta sonları 😊 #günaydın ☀️☕️",
+        "reposts=2; replies=7",
+        "https://bsky.app/profile/sevincm.bsky.social/post/3mrgv57gozs2r"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.002,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 36
+      },
+      "author": "sevincm.bsky.social",
+      "has_video": false,
+      "url": "https://bsky.app/profile/sevincm.bsky.social/post/3mrgv57gozs2r",
+      "published_at": "2026-07-25T03:06:26.053Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/avidreader8.bsky.social/post/3mrfalfcejk2d",
+      "pattern": "#booksky #books #Kindleunlimited #thriller #suspense #romance #novels #geopolitical #mythological #darkromance #women #contemporary #fiction #fantasy #crime #amazon #sifi #readingcommunity #writingcommunity #author #readers #indie",
+      "evidence": [
+        "#booksky #books #Kindleunlimited #thriller #suspense #romance #novels #geopolitical #mythological #darkromance #women #contemporary #fiction #fantasy #crime #amazon #sifi #readingcommunity #writingcommunity #author #readers #indie",
+        "reposts=2006; replies=207",
+        "https://bsky.app/profile/avidreader8.bsky.social/post/3mrfalfcejk2d"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "weeks",
+      "confidence": 0.618,
+      "category": "booksky",
+      "metric": {
+        "name": "likes",
+        "value": 9207
+      },
+      "author": "avidreader8.bsky.social",
+      "has_video": false,
+      "url": "https://bsky.app/profile/avidreader8.bsky.social/post/3mrfalfcejk2d",
+      "published_at": "2026-07-24T11:25:53.681Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/us.theguardian.com/post/3mrhioahljs2n",
+      "pattern": "There’s no way I could get by on a bowl of Coco Pops – give me sliced tomatoes and cucumber every time, says Toronto-based writer Jacq Kelly",
+      "evidence": [
+        "There’s no way I could get by on a bowl of Coco Pops – give me sliced tomatoes and cucumber every time, says Toronto-based writer Jacq Kelly",
+        "reposts=0; replies=4",
+        "https://bsky.app/profile/us.theguardian.com/post/3mrhioahljs2n"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.0,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 5
+      },
+      "author": "us.theguardian.com",
+      "has_video": false,
+      "url": "https://bsky.app/profile/us.theguardian.com/post/3mrhioahljs2n",
+      "published_at": "2026-07-25T08:55:58.454Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/artandriifrolov.bsky.social/post/3mrgeww472k2d",
+      "pattern": "\"Pouring Down\" - my oil painting",
+      "evidence": [
+        "\"Pouring Down\" - my oil painting",
+        "reposts=402; replies=105",
+        "https://bsky.app/profile/artandriifrolov.bsky.social/post/3mrgeww472k2d"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.317,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 4719
+      },
+      "author": "artandriifrolov.bsky.social",
+      "has_video": false,
+      "url": "https://bsky.app/profile/artandriifrolov.bsky.social/post/3mrgeww472k2d",
+      "published_at": "2026-07-24T22:16:35.068Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/nyynews.bsky.social/post/3mrgv6ubg7r2j",
+      "pattern": "Schlittler Takes Over Philadelphia as Yankees Win a Thriller - NYY.NEWS",
+      "evidence": [
+        "Schlittler Takes Over Philadelphia as Yankees Win a Thriller - NYY.NEWS",
+        "reposts=0; replies=0",
+        "https://bsky.app/profile/nyynews.bsky.social/post/3mrgv6ubg7r2j"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.0,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 3
+      },
+      "author": "nyynews.bsky.social",
+      "has_video": false,
+      "url": "https://bsky.app/profile/nyynews.bsky.social/post/3mrgv6ubg7r2j",
+      "published_at": "2026-07-25T03:07:17+00:00"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/ayselyurtsever.bsky.social/post/3mrgvy2qfs22a",
+      "pattern": "Günaydınlar... Van Gogh Aracılığıyla",
+      "evidence": [
+        "Günaydınlar... Van Gogh Aracılığıyla",
+        "reposts=1; replies=6",
+        "https://bsky.app/profile/ayselyurtsever.bsky.social/post/3mrgvy2qfs22a"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.002,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 36
+      },
+      "author": "ayselyurtsever.bsky.social",
+      "has_video": false,
+      "url": "https://bsky.app/profile/ayselyurtsever.bsky.social/post/3mrgvy2qfs22a",
+      "published_at": "2026-07-25T03:21:27.127Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/jocelynanderson.bsky.social/post/3mrgijamjj22q",
+      "pattern": "A Cedar Waxwing missing the bright red wax droplets on the wings, pointing to this being a younger bird. The older the bird, the more wax tips a bird can have.",
+      "evidence": [
+        "A Cedar Waxwing missing the bright red wax droplets on the wings, pointing to this being a younger bird. The older the bird, the more wax tips a bird can have.",
+        "reposts=41; replies=9",
+        "https://bsky.app/profile/jocelynanderson.bsky.social/post/3mrgijamjj22q"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.025,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 376
+      },
+      "author": "jocelynanderson.bsky.social",
+      "has_video": false,
+      "url": "https://bsky.app/profile/jocelynanderson.bsky.social/post/3mrgijamjj22q",
+      "published_at": "2026-07-24T23:20:31.316Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/angrywaterman.bsky.social/post/3mrgzsv6r3k2s",
+      "pattern": "How about those Mariners, sporting Jimothy shirts in batting practice...",
+      "evidence": [
+        "How about those Mariners, sporting Jimothy shirts in batting practice...",
+        "reposts=77; replies=4",
+        "https://bsky.app/profile/angrywaterman.bsky.social/post/3mrgzsv6r3k2s"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.048,
+      "category": "whats_hot",
+      "metric": {
+        "name": "likes",
+        "value": 719
+      },
+      "author": "angrywaterman.bsky.social",
+      "has_video": false,
+      "url": "https://bsky.app/profile/angrywaterman.bsky.social/post/3mrgzsv6r3k2s",
+      "published_at": "2026-07-25T04:30:08.495Z"
+    },
+    {
+      "id": "bluesky|global|https://bsky.app/profile/hardwaterhacker.bsky.social/post/3mrgglnvd2c2o",
+      "pattern": "@alan678.bsky.social says the bird of the day theme is #EyeOfTheWild – piercing eye or eyes as the dominant feature of the portrait. This was a fun encounter with a Northern Saw-Whet Owl. #birds #nature #wildlife",
+      "evidence": [
+        "@alan678.bsky.social says the bird of the day theme is #EyeOfTheWild – piercing eye or eyes as the dominant feature of the portrait. This was a fun encounter with a Northern Saw-Whet Owl. #birds #nature #wildlife",
+        "reposts=17; replies=8",
+        "https://bsky.app/profile/hardwaterhacker.bsky.social/post/3mrgglnvd2c2o"
+      ],
+      "observed_on": [
+        "bluesky"
+      ],
+      "estimated_decay": "weeks",
+      "confidence": 0.007,
+      "category": "EyeOfTheWild",
+      "metric": {
+        "name": "likes",
+        "value": 100
+      },
+      "author": "hardwaterhacker.bsky.social",
+      "has_video": false,
+      "url": "https://bsky.app/profile/hardwaterhacker.bsky.social/post/3mrgglnvd2c2o",
+      "published_at": "2026-07-24T22:46:04.867Z"
+    },
+    {
+      "id": "mastodon|global|https://mastodon.world/@davidho/116979258505111309",
+      "pattern": "It’s hard to tell art from reality these days. The first photo is an artwork titled Atomic Picnic (2007) by the Mexican-American artist and photographer Daniela Edburg. The second was taken by photojournalist Maximilien Lamy for AFP / Getty Images showing beachgoers on Moutchic beach at Lake Lacana…",
+      "evidence": [
+        "It’s hard to tell art from reality these days. The first photo is an artwork titled Atomic Picnic (2007) by the Mexican-American artist and photographer Daniela Edburg. The second was taken by photojournalist Maximilien Lamy for AFP / Getty Images showing beachgoers on Moutchic beach at Lake Lacana…",
+        "favourites=190; replies=8",
+        "https://mastodon.world/@davidho/116979258505111309"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.242,
+      "category": "trending_post",
+      "metric": {
+        "name": "boosts",
+        "value": 233
+      },
+      "author": "davidho@mastodon.world",
+      "has_video": false,
+      "url": "https://mastodon.world/@davidho/116979258505111309",
+      "published_at": "2026-07-25T06:43:50.000Z"
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/tags/1960slifeasongorpoem",
+      "pattern": "#1960sLifeASongOrPoem",
+      "evidence": [
+        "#1960sLifeASongOrPoem",
+        "accounts=76",
+        "https://mastodon.social/tags/1960slifeasongorpoem"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 1.0,
+      "category": "trending_hashtag",
+      "metric": {
+        "name": "uses_24h",
+        "value": 401
+      },
+      "author": null,
+      "has_video": false,
+      "url": "https://mastodon.social/tags/1960slifeasongorpoem",
+      "published_at": null
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/tags/nonchalantsongs",
+      "pattern": "#NonChalantSongs",
+      "evidence": [
+        "#NonChalantSongs",
+        "accounts=4",
+        "https://mastodon.social/tags/nonchalantsongs"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.017,
+      "category": "trending_hashtag",
+      "metric": {
+        "name": "uses_24h",
+        "value": 7
+      },
+      "author": null,
+      "has_video": false,
+      "url": "https://mastodon.social/tags/nonchalantsongs",
+      "published_at": null
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/@dangillmor/116979397293576445",
+      "pattern": "Musk's Tesla modified contracts with customers -- without the customers' permission -- long after they were signed. How does this differ from outright fraud? https:// electrek.co/2026/06/03/tesla-r etroactively-modified-fsd-contracts-supervised/",
+      "evidence": [
+        "Musk's Tesla modified contracts with customers -- without the customers' permission -- long after they were signed. How does this differ from outright fraud? https:// electrek.co/2026/06/03/tesla-r etroactively-modified-fsd-contracts-supervised/",
+        "favourites=47; replies=7",
+        "https://mastodon.social/@dangillmor/116979397293576445"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.075,
+      "category": "trending_post",
+      "metric": {
+        "name": "boosts",
+        "value": 74
+      },
+      "author": "dangillmor",
+      "has_video": false,
+      "url": "https://mastodon.social/@dangillmor/116979397293576445",
+      "published_at": "2026-07-25T07:19:07.980Z"
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/tags/fensterfreitag",
+      "pattern": "#FensterFreitag",
+      "evidence": [
+        "#FensterFreitag",
+        "accounts=6",
+        "https://mastodon.social/tags/fensterfreitag"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.017,
+      "category": "trending_hashtag",
+      "metric": {
+        "name": "uses_24h",
+        "value": 7
+      },
+      "author": null,
+      "has_video": false,
+      "url": "https://mastodon.social/tags/fensterfreitag",
+      "published_at": null
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/@joewo/116978578733366189",
+      "pattern": "YOU CAN FIGHT ICE BY DELAYING THEIR WORLD AT EVERY TURN. FASCISTS WANT COMPLACENCY. DO NOT GIVE IT TO THEM. IT IS YOUR RIGHT TO MAKE “MISTAKES”",
+      "evidence": [
+        "YOU CAN FIGHT ICE BY DELAYING THEIR WORLD AT EVERY TURN. FASCISTS WANT COMPLACENCY. DO NOT GIVE IT TO THEM. IT IS YOUR RIGHT TO MAKE “MISTAKES”",
+        "favourites=157; replies=11",
+        "https://mastodon.social/@joewo/116978578733366189"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.164,
+      "category": "trending_post",
+      "metric": {
+        "name": "boosts",
+        "value": 159
+      },
+      "author": "joewo",
+      "has_video": false,
+      "url": "https://mastodon.social/@joewo/116978578733366189",
+      "published_at": "2026-07-25T03:50:57.726Z"
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/tags/jukeboxfridaynight",
+      "pattern": "#JukeboxFridayNight",
+      "evidence": [
+        "#JukeboxFridayNight",
+        "accounts=7",
+        "https://mastodon.social/tags/jukeboxfridaynight"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.05,
+      "category": "trending_hashtag",
+      "metric": {
+        "name": "uses_24h",
+        "value": 20
+      },
+      "author": null,
+      "has_video": false,
+      "url": "https://mastodon.social/tags/jukeboxfridaynight",
+      "published_at": null
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/@appassionato/116978770581344797",
+      "pattern": "Apocalypse picnic Lacanau, France People sit on the beach of Moutchic as smoke rises into the sky from a wildfire. Authorities in south-western France have ordered the total evacuation of the Cap Ferret peninsula on the Atlantic coast by land and sea as an ‘intense and highly unpredictable’ wildfir…",
+      "evidence": [
+        "Apocalypse picnic Lacanau, France People sit on the beach of Moutchic as smoke rises into the sky from a wildfire. Authorities in south-western France have ordered the total evacuation of the Cap Ferret peninsula on the Atlantic coast by land and sea as an ‘intense and highly unpredictable’ wildfir…",
+        "favourites=88; replies=3",
+        "https://mastodon.social/@appassionato/116978770581344797"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "weeks",
+      "confidence": 0.135,
+      "category": "photography",
+      "metric": {
+        "name": "boosts",
+        "value": 131
+      },
+      "author": "appassionato",
+      "has_video": false,
+      "url": "https://mastodon.social/@appassionato/116978770581344797",
+      "published_at": "2026-07-25T04:39:45.096Z"
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/tags/hotorcold",
+      "pattern": "#hotorcold",
+      "evidence": [
+        "#hotorcold",
+        "accounts=6",
+        "https://mastodon.social/tags/hotorcold"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.047,
+      "category": "trending_hashtag",
+      "metric": {
+        "name": "uses_24h",
+        "value": 19
+      },
+      "author": null,
+      "has_video": false,
+      "url": "https://mastodon.social/tags/hotorcold",
+      "published_at": null
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/@csilverman/116979332696870938",
+      "pattern": "# notesArt # mastoArt # art # illustration # fediArt",
+      "evidence": [
+        "# notesArt # mastoArt # art # illustration # fediArt",
+        "favourites=51; replies=0",
+        "https://mastodon.social/@csilverman/116979332696870938"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "weeks",
+      "confidence": 0.027,
+      "category": "notesart",
+      "metric": {
+        "name": "boosts",
+        "value": 29
+      },
+      "author": "csilverman",
+      "has_video": false,
+      "url": "https://mastodon.social/@csilverman/116979332696870938",
+      "published_at": "2026-07-25T07:02:42.298Z"
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/tags/footpathfriday",
+      "pattern": "#FootpathFriday",
+      "evidence": [
+        "#FootpathFriday",
+        "accounts=2",
+        "https://mastodon.social/tags/FootpathFriday"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.01,
+      "category": "trending_hashtag",
+      "metric": {
+        "name": "uses_24h",
+        "value": 4
+      },
+      "author": null,
+      "has_video": false,
+      "url": "https://mastodon.social/tags/FootpathFriday",
+      "published_at": null
+    },
+    {
+      "id": "mastodon|global|https://hachyderm.io/@evacide/116978501619824213",
+      "pattern": "The nice lady on Fillmore selling me pants today asked where I lived, and when I told her, she made a concerned face and asked \"Is it safe there?\" so I replied \"I'm the most dangerous thing there,\" and this is the only answer I will be using from now on.",
+      "evidence": [
+        "The nice lady on Fillmore selling me pants today asked where I lived, and when I told her, she made a concerned face and asked \"Is it safe there?\" so I replied \"I'm the most dangerous thing there,\" and this is the only answer I will be using from now on.",
+        "favourites=545; replies=14",
+        "https://hachyderm.io/@evacide/116978501619824213"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.16,
+      "category": "trending_post",
+      "metric": {
+        "name": "boosts",
+        "value": 155
+      },
+      "author": "evacide@hachyderm.io",
+      "has_video": false,
+      "url": "https://hachyderm.io/@evacide/116978501619824213",
+      "published_at": "2026-07-25T03:31:21.000Z"
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/tags/7%e6%9c%88%e4%bb%a5%e5%86%85%e3%81%ab%e3%81%93%e3%81%ae%e6%8a%95%e7%a8%bf%e3%81%8c50%e3%83%aa%e3%82%a2%e8%a1%8c%e3%81%8b%e3%81%aa%e3%81%8b%e3%81%a3%e3%81%9f%e3%82%89%e3%81%95%e3%82%88%e3%81%86%e3%81%aa%e3%82%89",
+      "pattern": "#7月以内にこの投稿が50リア行かなかったらさようなら",
+      "evidence": [
+        "#7月以内にこの投稿が50リア行かなかったらさようなら",
+        "accounts=22",
+        "https://mastodon.social/tags/7%E6%9C%88%E4%BB%A5%E5%86%85%E3%81%AB%E3%81%93%E3%81%AE%E6%8A%95%E7%A8%BF%E3%81%8C50%E3%83%AA%E3%82%A2%E8%A1%8C%E3%81%8B%E3%81%AA%E3%81%8B%E3%81%A3%E3%81%9F%E3%82%89%E3%81%95%E3%82%88%E3%81%86%E3%81%AA%E3%82%89"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.06,
+      "category": "trending_hashtag",
+      "metric": {
+        "name": "uses_24h",
+        "value": 24
+      },
+      "author": null,
+      "has_video": false,
+      "url": "https://mastodon.social/tags/7%E6%9C%88%E4%BB%A5%E5%86%85%E3%81%AB%E3%81%93%E3%81%AE%E6%8A%95%E7%A8%BF%E3%81%8C50%E3%83%AA%E3%82%A2%E8%A1%8C%E3%81%8B%E3%81%AA%E3%81%8B%E3%81%A3%E3%81%9F%E3%82%89%E3%81%95%E3%82%88%E3%81%86%E3%81%AA%E3%82%89",
+      "published_at": null
+    },
+    {
+      "id": "mastodon|global|https://mastodon.me.uk/@chrismayla6/116979450562871071",
+      "pattern": "As always, a new Govt. (or administration) in the UK, will be bombarded by lobbyists from the financial services industry making two key claims: 1. that finance is key to the UK's economic success; and 2. the yoke of regulation needs to be lifted so they can increase that contribution... But, new a…",
+      "evidence": [
+        "As always, a new Govt. (or administration) in the UK, will be bombarded by lobbyists from the financial services industry making two key claims: 1. that finance is key to the UK's economic success; and 2. the yoke of regulation needs to be lifted so they can increase that contribution... But, new a…",
+        "favourites=30; replies=3",
+        "https://mastodon.me.uk/@ChrisMayLA6/116979450562871071"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "weeks",
+      "confidence": 0.053,
+      "category": "politics",
+      "metric": {
+        "name": "boosts",
+        "value": 53
+      },
+      "author": "ChrisMayLA6@mastodon.me.uk",
+      "has_video": false,
+      "url": "https://mastodon.me.uk/@ChrisMayLA6/116979450562871071",
+      "published_at": "2026-07-25T07:32:40.000Z"
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/tags/letterboxdfriday",
+      "pattern": "#LetterboxdFriday",
+      "evidence": [
+        "#LetterboxdFriday",
+        "accounts=2",
+        "https://mastodon.social/tags/LetterboxdFriday"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.007,
+      "category": "trending_hashtag",
+      "metric": {
+        "name": "uses_24h",
+        "value": 3
+      },
+      "author": null,
+      "has_video": false,
+      "url": "https://mastodon.social/tags/LetterboxdFriday",
+      "published_at": null
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/@r_alb/116979059658048152",
+      "pattern": "That it can be built doesn't mean it should be built. That it exists doesn't mean that it has to be used. That it works doesn't mean that it is good. That it is free doesn't mean that nobody is paying a price.",
+      "evidence": [
+        "That it can be built doesn't mean it should be built. That it exists doesn't mean that it has to be used. That it works doesn't mean that it is good. That it is free doesn't mean that nobody is paying a price.",
+        "favourites=44; replies=2",
+        "https://mastodon.social/@r_alb/116979059658048152"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.045,
+      "category": "trending_post",
+      "metric": {
+        "name": "boosts",
+        "value": 46
+      },
+      "author": "r_alb",
+      "has_video": false,
+      "url": "https://mastodon.social/@r_alb/116979059658048152",
+      "published_at": "2026-07-25T05:53:16.052Z"
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/tags/vendredilecture",
+      "pattern": "#VendrediLecture",
+      "evidence": [
+        "#VendrediLecture",
+        "accounts=2",
+        "https://mastodon.social/tags/vendredilecture"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.005,
+      "category": "trending_hashtag",
+      "metric": {
+        "name": "uses_24h",
+        "value": 2
+      },
+      "author": null,
+      "has_video": false,
+      "url": "https://mastodon.social/tags/vendredilecture",
+      "published_at": null
+    },
+    {
+      "id": "mastodon|global|https://troet.cafe/@grantscheam/116979104415523880",
+      "pattern": "Wenn Österreich das Design für neue Euro-Banknoten entscheidet...",
+      "evidence": [
+        "Wenn Österreich das Design für neue Euro-Banknoten entscheidet...",
+        "favourites=106; replies=11",
+        "https://troet.cafe/@Grantscheam/116979104415523880"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.052,
+      "category": "trending_post",
+      "metric": {
+        "name": "boosts",
+        "value": 52
+      },
+      "author": "Grantscheam@troet.cafe",
+      "has_video": false,
+      "url": "https://troet.cafe/@Grantscheam/116979104415523880",
+      "published_at": "2026-07-25T06:04:38.000Z"
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/tags/windowfriday",
+      "pattern": "#WindowFriday",
+      "evidence": [
+        "#WindowFriday",
+        "accounts=2",
+        "https://mastodon.social/tags/windowfriday"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.005,
+      "category": "trending_hashtag",
+      "metric": {
+        "name": "uses_24h",
+        "value": 2
+      },
+      "author": null,
+      "has_video": false,
+      "url": "https://mastodon.social/tags/windowfriday",
+      "published_at": null
+    },
+    {
+      "id": "mastodon|global|https://zeroes.ca/@broadwaybabyto/116978694621973160",
+      "pattern": "“You’re not fun anymore” This was one of the last things a friend said to me before ghosting me over my disabilities & covid caution. My wearing a mask? Not fun My being bedbound? Not fun My inability to travel? Not fun She then said “I don’t know how you can live this way” Almost everyone with chr…",
+      "evidence": [
+        "“You’re not fun anymore” This was one of the last things a friend said to me before ghosting me over my disabilities & covid caution. My wearing a mask? Not fun My being bedbound? Not fun My inability to travel? Not fun She then said “I don’t know how you can live this way” Almost everyone with chr…",
+        "favourites=123; replies=10",
+        "https://zeroes.ca/@broadwaybabyto/116978694621973160"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "weeks",
+      "confidence": 0.123,
+      "category": "disability",
+      "metric": {
+        "name": "boosts",
+        "value": 120
+      },
+      "author": "broadwaybabyto@zeroes.ca",
+      "has_video": false,
+      "url": "https://zeroes.ca/@broadwaybabyto/116978694621973160",
+      "published_at": "2026-07-25T04:20:26.000Z"
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/tags/fursuitfriday",
+      "pattern": "#FursuitFriday",
+      "evidence": [
+        "#FursuitFriday",
+        "accounts=3",
+        "https://mastodon.social/tags/fursuitfriday"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.007,
+      "category": "trending_hashtag",
+      "metric": {
+        "name": "uses_24h",
+        "value": 3
+      },
+      "author": null,
+      "has_video": false,
+      "url": "https://mastodon.social/tags/fursuitfriday",
+      "published_at": null
+    },
+    {
+      "id": "mastodon|global|https://mstdn.ca/@alexanderbird/116978465027427896",
+      "pattern": "RE: https:// dair-community.social/@emilymb ender/116811128152569506 Some great alternative terms and phrases to communicate about \"AI\" without adopting all the misleading marketing terms: \"artificial intelligence → probabilistic automation\" \"prompt → text input\" \"answer → output\" \"chatbot / conver…",
+      "evidence": [
+        "RE: https:// dair-community.social/@emilymb ender/116811128152569506 Some great alternative terms and phrases to communicate about \"AI\" without adopting all the misleading marketing terms: \"artificial intelligence → probabilistic automation\" \"prompt → text input\" \"answer → output\" \"chatbot / conver…",
+        "favourites=169; replies=7",
+        "https://mstdn.ca/@alexanderbird/116978465027427896"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.157,
+      "category": "trending_post",
+      "metric": {
+        "name": "boosts",
+        "value": 152
+      },
+      "author": "alexanderbird@mstdn.ca",
+      "has_video": false,
+      "url": "https://mstdn.ca/@alexanderbird/116978465027427896",
+      "published_at": "2026-07-25T03:22:02.000Z"
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/tags/%e3%81%93%e3%82%8c%e3%81%aa%e3%82%93%e3%81%a6%e5%91%bc%e3%82%93%e3%81%a7%e3%82%8b",
+      "pattern": "#これなんて呼んでる",
+      "evidence": [
+        "#これなんて呼んでる",
+        "accounts=19",
+        "https://mastodon.social/tags/%E3%81%93%E3%82%8C%E3%81%AA%E3%82%93%E3%81%A6%E5%91%BC%E3%82%93%E3%81%A7%E3%82%8B"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.055,
+      "category": "trending_hashtag",
+      "metric": {
+        "name": "uses_24h",
+        "value": 22
+      },
+      "author": null,
+      "has_video": false,
+      "url": "https://mastodon.social/tags/%E3%81%93%E3%82%8C%E3%81%AA%E3%82%93%E3%81%A6%E5%91%BC%E3%82%93%E3%81%A7%E3%82%8B",
+      "published_at": null
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/@medieval_illuminations/116978850260668112",
+      "pattern": "Grinning cat. Conrad of Megenberg, ‘Buch der Natur’, Germany ca. 1434. Strasbourg, Bibliothèque nationale et universitaire, Ms.2.264, fol. 85r. # medieval # MedievalArt",
+      "evidence": [
+        "Grinning cat. Conrad of Megenberg, ‘Buch der Natur’, Germany ca. 1434. Strasbourg, Bibliothèque nationale et universitaire, Ms.2.264, fol. 85r. # medieval # MedievalArt",
+        "favourites=59; replies=0",
+        "https://mastodon.social/@medieval_illuminations/116978850260668112"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "weeks",
+      "confidence": 0.051,
+      "category": "medieval",
+      "metric": {
+        "name": "boosts",
+        "value": 51
+      },
+      "author": "medieval_illuminations",
+      "has_video": false,
+      "url": "https://mastodon.social/@medieval_illuminations/116978850260668112",
+      "published_at": "2026-07-25T05:00:00.907Z"
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/tags/klopp",
+      "pattern": "#klopp",
+      "evidence": [
+        "#klopp",
+        "accounts=0",
+        "https://mastodon.social/tags/klopp"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.0,
+      "category": "trending_hashtag",
+      "metric": {
+        "name": "uses_24h",
+        "value": 0
+      },
+      "author": null,
+      "has_video": false,
+      "url": "https://mastodon.social/tags/klopp",
+      "published_at": null
+    },
+    {
+      "id": "mastodon|global|https://masto.deoan.org/@neurovagrant/116977213830254458",
+      "pattern": "RE: https:// dair-community.social/@alex/11 6977123749133116 I was a 911 dispatcher for a decade. To really understand how absolutely terrible an idea it is to have AI answer 911 calls, I'll present you with a single real-life call: Upon answer, the caller calmly began ordering a pizza. Large, pepp…",
+      "evidence": [
+        "RE: https:// dair-community.social/@alex/11 6977123749133116 I was a 911 dispatcher for a decade. To really understand how absolutely terrible an idea it is to have AI answer 911 calls, I'll present you with a single real-life call: Upon answer, the caller calmly began ordering a pizza. Large, pepp…",
+        "favourites=985; replies=24",
+        "https://masto.deoan.org/@neurovagrant/116977213830254458"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 1.0,
+      "category": "trending_post",
+      "metric": {
+        "name": "boosts",
+        "value": 953
+      },
+      "author": "neurovagrant@masto.deoan.org",
+      "has_video": false,
+      "url": "https://masto.deoan.org/@neurovagrant/116977213830254458",
+      "published_at": "2026-07-24T22:03:50.000Z"
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/tags/caturday",
+      "pattern": "#Caturday",
+      "evidence": [
+        "#Caturday",
+        "accounts=129",
+        "https://mastodon.social/tags/caturday"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.344,
+      "category": "trending_hashtag",
+      "metric": {
+        "name": "uses_24h",
+        "value": 138
+      },
+      "author": null,
+      "has_video": false,
+      "url": "https://mastodon.social/tags/caturday",
+      "published_at": null
+    },
+    {
+      "id": "mastodon|global|https://infosec.exchange/@codinghorror/116979251216012015",
+      "pattern": "It's not well known, but South Korea is running a large, innovative rural basic income pilot https:// rgmii.org/blog/koreas-basic-in come-is-beating-rural-extinction/",
+      "evidence": [
+        "It's not well known, but South Korea is running a large, innovative rural basic income pilot https:// rgmii.org/blog/koreas-basic-in come-is-beating-rural-extinction/",
+        "favourites=34; replies=1",
+        "https://infosec.exchange/@codinghorror/116979251216012015"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.049,
+      "category": "trending_post",
+      "metric": {
+        "name": "boosts",
+        "value": 50
+      },
+      "author": "codinghorror@infosec.exchange",
+      "has_video": false,
+      "url": "https://infosec.exchange/@codinghorror/116979251216012015",
+      "published_at": "2026-07-25T06:41:58.000Z"
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/tags/totp",
+      "pattern": "#totp",
+      "evidence": [
+        "#totp",
+        "accounts=2",
+        "https://mastodon.social/tags/totp"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.005,
+      "category": "trending_hashtag",
+      "metric": {
+        "name": "uses_24h",
+        "value": 2
+      },
+      "author": null,
+      "has_video": false,
+      "url": "https://mastodon.social/tags/totp",
+      "published_at": null
+    },
+    {
+      "id": "mastodon|global|https://aus.social/@drunkenmadman/116978921446706363",
+      "pattern": "Any of my # Melbourne Mastodon friends need furniture? I've got - A load of bookshelves I'm not taking to Sydney. - Couple of workbenches (the kind with the pegboard back, - a nice marble-topped kitchen island, - a hydraulic sit-stand mini desk and an office chair - a nice TV/entertainment unit - a…",
+      "evidence": [
+        "Any of my # Melbourne Mastodon friends need furniture? I've got - A load of bookshelves I'm not taking to Sydney. - Couple of workbenches (the kind with the pegboard back, - a nice marble-topped kitchen island, - a hydraulic sit-stand mini desk and an office chair - a nice TV/entertainment unit - a…",
+        "favourites=12; replies=2",
+        "https://aus.social/@drunkenmadman/116978921446706363"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "weeks",
+      "confidence": 0.088,
+      "category": "melbourne",
+      "metric": {
+        "name": "boosts",
+        "value": 87
+      },
+      "author": "drunkenmadman@aus.social",
+      "has_video": false,
+      "url": "https://aus.social/@drunkenmadman/116978921446706363",
+      "published_at": "2026-07-25T05:18:07.000Z"
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/@fesshole/116979637021816704",
+      "pattern": "When I get dressed, I put one sock on first then the rest of my clothes, ended with the final sock. Started a few years ago and now can't stop.",
+      "evidence": [
+        "When I get dressed, I put one sock on first then the rest of my clothes, ended with the final sock. Started a few years ago and now can't stop.",
+        "favourites=22; replies=7",
+        "https://mastodon.social/@fesshole/116979637021816704"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.005,
+      "category": "trending_post",
+      "metric": {
+        "name": "boosts",
+        "value": 8
+      },
+      "author": "fesshole",
+      "has_video": false,
+      "url": "https://mastodon.social/@fesshole/116979637021816704",
+      "published_at": "2026-07-25T08:20:05.925Z"
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/@workchronicles/116978296655937470",
+      "pattern": "(comic) Welcome to Hell https://www. workchronicles.com/p/comic-wel come-to-hell-84c",
+      "evidence": [
+        "(comic) Welcome to Hell https://www. workchronicles.com/p/comic-wel come-to-hell-84c",
+        "favourites=131; replies=4",
+        "https://mastodon.social/@workchronicles/116978296655937470"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.075,
+      "category": "trending_post",
+      "metric": {
+        "name": "boosts",
+        "value": 74
+      },
+      "author": "workchronicles",
+      "has_video": false,
+      "url": "https://mastodon.social/@workchronicles/116978296655937470",
+      "published_at": "2026-07-25T02:39:13.581Z"
+    },
+    {
+      "id": "mastodon|global|https://chaos.social/@swetland/116979433138925514",
+      "pattern": "Glanced at LinkedIn tonight (always a mistake) and saw a post from some asshole I've never heard of quoting some other asshole I've never heard of (and citing him as some industry luminary) saying that the only way to maximize productivity in the new \"AI\" coding world is *never* reading the code. I…",
+      "evidence": [
+        "Glanced at LinkedIn tonight (always a mistake) and saw a post from some asshole I've never heard of quoting some other asshole I've never heard of (and citing him as some industry luminary) saying that the only way to maximize productivity in the new \"AI\" coding world is *never* reading the code. I…",
+        "favourites=38; replies=5",
+        "https://chaos.social/@swetland/116979433138925514"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.026,
+      "category": "trending_post",
+      "metric": {
+        "name": "boosts",
+        "value": 28
+      },
+      "author": "swetland@chaos.social",
+      "has_video": false,
+      "url": "https://chaos.social/@swetland/116979433138925514",
+      "published_at": "2026-07-25T07:28:14.000Z"
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/@oivindgeorg/116979542733850057",
+      "pattern": "# Norway # norge # river # elv # waterways # kajakk # kayak # onthemove # nature # naturephotography # naturelovers # reflection # refleksjon # woodland # skaugubbe",
+      "evidence": [
+        "# Norway # norge # river # elv # waterways # kajakk # kayak # onthemove # nature # naturephotography # naturelovers # reflection # refleksjon # woodland # skaugubbe",
+        "favourites=25; replies=0",
+        "https://mastodon.social/@oivindgeorg/116979542733850057"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "weeks",
+      "confidence": 0.002,
+      "category": "norway",
+      "metric": {
+        "name": "boosts",
+        "value": 5
+      },
+      "author": "oivindgeorg",
+      "has_video": false,
+      "url": "https://mastodon.social/@oivindgeorg/116979542733850057",
+      "published_at": "2026-07-25T07:56:07.207Z"
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/@sundogplanets/116977650855821239",
+      "pattern": "I blew off some meetings and went hiking in an incredibly beautiful spot. (Saskatchewan is so flat! Except where it's not.)",
+      "evidence": [
+        "I blew off some meetings and went hiking in an incredibly beautiful spot. (Saskatchewan is so flat! Except where it's not.)",
+        "favourites=345; replies=12",
+        "https://mastodon.social/@sundogplanets/116977650855821239"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.103,
+      "category": "trending_post",
+      "metric": {
+        "name": "boosts",
+        "value": 101
+      },
+      "author": "sundogplanets",
+      "has_video": false,
+      "url": "https://mastodon.social/@sundogplanets/116977650855821239",
+      "published_at": "2026-07-24T23:54:59.439Z"
+    },
+    {
+      "id": "mastodon|global|https://mastodon.world/@auschwitzmuseum/116978850765631121",
+      "pattern": "24 July 1930 | A French Jewish girl, Helene Lender, was born in Pontoise. In August 1942 she was deported to # Auschwitz and murdered in a gas chamber after the selection.",
+      "evidence": [
+        "24 July 1930 | A French Jewish girl, Helene Lender, was born in Pontoise. In August 1942 she was deported to # Auschwitz and murdered in a gas chamber after the selection.",
+        "favourites=48; replies=3",
+        "https://mastodon.world/@auschwitzmuseum/116978850765631121"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "weeks",
+      "confidence": 0.061,
+      "category": "auschwitz",
+      "metric": {
+        "name": "boosts",
+        "value": 61
+      },
+      "author": "auschwitzmuseum@mastodon.world",
+      "has_video": false,
+      "url": "https://mastodon.world/@auschwitzmuseum/116978850765631121",
+      "published_at": "2026-07-25T05:00:08.000Z"
+    },
+    {
+      "id": "mastodon|global|https://layer8.space/@killyourfm/116977368234395267",
+      "pattern": "💯",
+      "evidence": [
+        "💯",
+        "favourites=822; replies=17",
+        "https://layer8.space/@killyourfm/116977368234395267"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.52,
+      "category": "trending_post",
+      "metric": {
+        "name": "boosts",
+        "value": 497
+      },
+      "author": "killyourfm@layer8.space",
+      "has_video": false,
+      "url": "https://layer8.space/@killyourfm/116977368234395267",
+      "published_at": "2026-07-24T22:43:06.000Z"
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/@jh67kir/116979668356724511",
+      "pattern": "# FotoVorschlag ‘Dinge, die mit T beginnen‘ # turm # photography # fotografie # blackandwhite # schwarzweiss # tower # photooftheday # photo # architecture",
+      "evidence": [
+        "# FotoVorschlag ‘Dinge, die mit T beginnen‘ # turm # photography # fotografie # blackandwhite # schwarzweiss # tower # photooftheday # photo # architecture",
+        "favourites=19; replies=0",
+        "https://mastodon.social/@jh67kir/116979668356724511"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "weeks",
+      "confidence": 0.0,
+      "category": "FotoVorschlag",
+      "metric": {
+        "name": "boosts",
+        "value": 3
+      },
+      "author": "jh67kir",
+      "has_video": false,
+      "url": "https://mastodon.social/@jh67kir/116979668356724511",
+      "published_at": "2026-07-25T08:28:04.063Z"
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/@eas_/116979700040501822",
+      "pattern": "Start your # Caturday with a cinnamon roll :blobcatcoffee: # cats # katzen",
+      "evidence": [
+        "Start your # Caturday with a cinnamon roll :blobcatcoffee: # cats # katzen",
+        "favourites=16; replies=0",
+        "https://mastodon.social/@eas_/116979700040501822"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "weeks",
+      "confidence": 0.003,
+      "category": "caturday",
+      "metric": {
+        "name": "boosts",
+        "value": 6
+      },
+      "author": "eas_",
+      "has_video": false,
+      "url": "https://mastodon.social/@eas_/116979700040501822",
+      "published_at": "2026-07-25T08:36:07.517Z"
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/@geepawhill/116978970128383770",
+      "pattern": "The idea that an LLM \"went rogue\" and \"escaped\" its sandbox is such an extravagantly bald-faced lie one hardly knows what to do with it. That journalists are reporting that complete and utter shite is evidence of the remarkable extent of--and *success* of--the fraud being committed by these people.",
+      "evidence": [
+        "The idea that an LLM \"went rogue\" and \"escaped\" its sandbox is such an extravagantly bald-faced lie one hardly knows what to do with it. That journalists are reporting that complete and utter shite is evidence of the remarkable extent of--and *success* of--the fraud being committed by these people.",
+        "favourites=33; replies=2",
+        "https://mastodon.social/@GeePawHill/116978970128383770"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.024,
+      "category": "trending_post",
+      "metric": {
+        "name": "boosts",
+        "value": 26
+      },
+      "author": "GeePawHill",
+      "has_video": false,
+      "url": "https://mastodon.social/@GeePawHill/116978970128383770",
+      "published_at": "2026-07-25T05:30:29.940Z"
+    },
+    {
+      "id": "mastodon|global|https://toot.community/@monsieur_lepetit/116979366804405751",
+      "pattern": "\"You go on and put that mascara, girl!\"",
+      "evidence": [
+        "\"You go on and put that mascara, girl!\"",
+        "favourites=34; replies=1",
+        "https://toot.community/@Monsieur_Lepetit/116979366804405751"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.027,
+      "category": "trending_post",
+      "metric": {
+        "name": "boosts",
+        "value": 29
+      },
+      "author": "Monsieur_Lepetit@toot.community",
+      "has_video": false,
+      "url": "https://toot.community/@Monsieur_Lepetit/116979366804405751",
+      "published_at": "2026-07-25T07:11:22.000Z"
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/@fribbledom/116979573449058495",
+      "pattern": "Coding agents could be incredible if they respected the workflow of people who actually write software. \"Look! I changed 83 files in 7 minutes!\" Yes. That's the problem.",
+      "evidence": [
+        "Coding agents could be incredible if they respected the workflow of people who actually write software. \"Look! I changed 83 files in 7 minutes!\" Yes. That's the problem.",
+        "favourites=20; replies=3",
+        "https://mastodon.social/@fribbledom/116979573449058495"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.001,
+      "category": "trending_post",
+      "metric": {
+        "name": "boosts",
+        "value": 4
+      },
+      "author": "fribbledom",
+      "has_video": false,
+      "url": "https://mastodon.social/@fribbledom/116979573449058495",
+      "published_at": "2026-07-25T08:03:55.881Z"
+    },
+    {
+      "id": "mastodon|global|https://wandering.shop/@cstross/116979752960527665",
+      "pattern": "RE: https:// dobbs.town/@bobcromwell/116977 603579088866 Modern equivalent:",
+      "evidence": [
+        "RE: https:// dobbs.town/@bobcromwell/116977 603579088866 Modern equivalent:",
+        "favourites=16; replies=5",
+        "https://wandering.shop/@cstross/116979752960527665"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.009,
+      "category": "trending_post",
+      "metric": {
+        "name": "boosts",
+        "value": 12
+      },
+      "author": "cstross@wandering.shop",
+      "has_video": false,
+      "url": "https://wandering.shop/@cstross/116979752960527665",
+      "published_at": "2026-07-25T08:49:35.000Z"
+    },
+    {
+      "id": "mastodon|global|https://mstdn.social/@obsidianurbex/116979433040033409",
+      "pattern": "Inside an abandoned prison, this panopticon allowed guards to monitor all four wings that radiate out from this central hub. Somewhere in Portugal 🇵🇹 # Portugal # Prison # History # Photography # LostPlace # Abandoned # Yellow",
+      "evidence": [
+        "Inside an abandoned prison, this panopticon allowed guards to monitor all four wings that radiate out from this central hub. Somewhere in Portugal 🇵🇹 # Portugal # Prison # History # Photography # LostPlace # Abandoned # Yellow",
+        "favourites=46; replies=0",
+        "https://mstdn.social/@ObsidianUrbex/116979433040033409"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "weeks",
+      "confidence": 0.021,
+      "category": "portugal",
+      "metric": {
+        "name": "boosts",
+        "value": 23
+      },
+      "author": "ObsidianUrbex@mstdn.social",
+      "has_video": false,
+      "url": "https://mstdn.social/@ObsidianUrbex/116979433040033409",
+      "published_at": "2026-07-25T07:28:13.000Z"
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/@blogdiva/116978772492423398",
+      "pattern": "RE: https:// kind.social/@Shards/1169781630 69105667 20/20. the poster should say: how to tell a GenXer from a Boomer and a Millennial",
+      "evidence": [
+        "RE: https:// kind.social/@Shards/1169781630 69105667 20/20. the poster should say: how to tell a GenXer from a Boomer and a Millennial",
+        "favourites=45; replies=30",
+        "https://mastodon.social/@blogdiva/116978772492423398"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.024,
+      "category": "trending_post",
+      "metric": {
+        "name": "boosts",
+        "value": 26
+      },
+      "author": "blogdiva",
+      "has_video": false,
+      "url": "https://mastodon.social/@blogdiva/116978772492423398",
+      "published_at": "2026-07-25T04:40:14.254Z"
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/@oliviacats/116978749233763067",
+      "pattern": "Nothing beats a calm, peaceful afternoon nap spot. Resting comfortably and feeling safe. ❤️🐱 ​#CatsOfMastodon # MastoCats # TabbyCatsOfMastodon # RescueCats # CatLife",
+      "evidence": [
+        "Nothing beats a calm, peaceful afternoon nap spot. Resting comfortably and feeling safe. ❤️🐱 ​#CatsOfMastodon # MastoCats # TabbyCatsOfMastodon # RescueCats # CatLife",
+        "favourites=63; replies=0",
+        "https://mastodon.social/@Oliviacats/116978749233763067"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "weeks",
+      "confidence": 0.008,
+      "category": "mastocats",
+      "metric": {
+        "name": "boosts",
+        "value": 11
+      },
+      "author": "Oliviacats",
+      "has_video": false,
+      "url": "https://mastodon.social/@Oliviacats/116978749233763067",
+      "published_at": "2026-07-25T04:34:19.357Z"
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/@randahl/116979840653045494",
+      "pattern": "Good morning from Tyumen Oblast in Russia, where Putin's oil refinery is wondering if war with Ukraine is a good idea. It is coming home. 🚀",
+      "evidence": [
+        "Good morning from Tyumen Oblast in Russia, where Putin's oil refinery is wondering if war with Ukraine is a good idea. It is coming home. 🚀",
+        "favourites=12; replies=1",
+        "https://mastodon.social/@randahl/116979840653045494"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.0,
+      "category": "trending_post",
+      "metric": {
+        "name": "boosts",
+        "value": 3
+      },
+      "author": "randahl",
+      "has_video": false,
+      "url": "https://mastodon.social/@randahl/116979840653045494",
+      "published_at": "2026-07-25T09:11:53.091Z"
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/@workingclasshistory/116979425256901891",
+      "pattern": "# OtD 25 Jul 1898 the US invaded Puerto Rico, claiming to free it from Spanish colonial rule. Instead they occupied it and gave citizenship to Spanish landowners, protecting them from landless rebels, and handing land to sugar corporations. Learn more: https:// stories.workingclasshistory.co m/arti…",
+      "evidence": [
+        "# OtD 25 Jul 1898 the US invaded Puerto Rico, claiming to free it from Spanish colonial rule. Instead they occupied it and gave citizenship to Spanish landowners, protecting them from landless rebels, and handing land to sugar corporations. Learn more: https:// stories.workingclasshistory.co m/arti…",
+        "favourites=9; replies=0",
+        "https://mastodon.social/@workingclasshistory/116979425256901891"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "weeks",
+      "confidence": 0.016,
+      "category": "otd",
+      "metric": {
+        "name": "boosts",
+        "value": 18
+      },
+      "author": "workingclasshistory",
+      "has_video": false,
+      "url": "https://mastodon.social/@workingclasshistory/116979425256901891",
+      "published_at": "2026-07-25T07:26:14.653Z"
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/@simonbs/116979184743485711",
+      "pattern": "I can’t be the only one who thinks it’s time Apple revisited the share sheet, right? The share sheet splits actions across five different sections: share destinations, circular actions, a featured action, and two separate lists of actions. That’s not even counting the top row of contacts. But what …",
+      "evidence": [
+        "I can’t be the only one who thinks it’s time Apple revisited the share sheet, right? The share sheet splits actions across five different sections: share destinations, circular actions, a featured action, and two separate lists of actions. That’s not even counting the top row of contacts. But what …",
+        "favourites=29; replies=8",
+        "https://mastodon.social/@simonbs/116979184743485711"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.003,
+      "category": "trending_post",
+      "metric": {
+        "name": "boosts",
+        "value": 6
+      },
+      "author": "simonbs",
+      "has_video": false,
+      "url": "https://mastodon.social/@simonbs/116979184743485711",
+      "published_at": "2026-07-25T06:25:04.707Z"
+    },
+    {
+      "id": "mastodon|global|https://hachyderm.io/@jesper_linnet/116979485078352610",
+      "pattern": "Knold is really grumpy today, and wants nothing to do with humans # Caturday # CatsOfMastodon # CatsOfFediverse # Cats # SiberianCats # Knold",
+      "evidence": [
+        "Knold is really grumpy today, and wants nothing to do with humans # Caturday # CatsOfMastodon # CatsOfFediverse # Cats # SiberianCats # Knold",
+        "favourites=30; replies=1",
+        "https://hachyderm.io/@jesper_linnet/116979485078352610"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "weeks",
+      "confidence": 0.013,
+      "category": "caturday",
+      "metric": {
+        "name": "boosts",
+        "value": 15
+      },
+      "author": "jesper_linnet@hachyderm.io",
+      "has_video": false,
+      "url": "https://hachyderm.io/@jesper_linnet/116979485078352610",
+      "published_at": "2026-07-25T07:41:27.000Z"
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/@donni/116978637659778537",
+      "pattern": "In a recent study, scientists found we are all flawed, mortal beings capable of cruelty as well as kindness. Said one scientist, \"Damn, bro”",
+      "evidence": [
+        "In a recent study, scientists found we are all flawed, mortal beings capable of cruelty as well as kindness. Said one scientist, \"Damn, bro”",
+        "favourites=40; replies=1",
+        "https://mastodon.social/@donni/116978637659778537"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.026,
+      "category": "trending_post",
+      "metric": {
+        "name": "boosts",
+        "value": 28
+      },
+      "author": "donni",
+      "has_video": false,
+      "url": "https://mastodon.social/@donni/116978637659778537",
+      "published_at": "2026-07-25T04:05:56.873Z"
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/@mikehindleuk/116979317950942438",
+      "pattern": "Under the dome 🌳 Enjoy your weekend, people ☕️☀️ 📍 Darley Park, Derby 🇬🇧 📷 iPhone 💻 Photomator # blackandwhite # monochrome # photography # naturephotography # shotoniphone",
+      "evidence": [
+        "Under the dome 🌳 Enjoy your weekend, people ☕️☀️ 📍 Darley Park, Derby 🇬🇧 📷 iPhone 💻 Photomator # blackandwhite # monochrome # photography # naturephotography # shotoniphone",
+        "favourites=21; replies=0",
+        "https://mastodon.social/@mikehindleuk/116979317950942438"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "weeks",
+      "confidence": 0.001,
+      "category": "blackandwhite",
+      "metric": {
+        "name": "boosts",
+        "value": 4
+      },
+      "author": "mikehindleuk",
+      "has_video": false,
+      "url": "https://mastodon.social/@mikehindleuk/116979317950942438",
+      "published_at": "2026-07-25T06:58:57.347Z"
+    },
+    {
+      "id": "mastodon|global|https://mastodon.social/@cmconseils/116979674631588435",
+      "pattern": "When you're having a bad day.. just remember Argentina lost the world cup",
+      "evidence": [
+        "When you're having a bad day.. just remember Argentina lost the world cup",
+        "favourites=12; replies=1",
+        "https://mastodon.social/@cmconseils/116979674631588435"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "days",
+      "confidence": 0.0,
+      "category": "trending_post",
+      "metric": {
+        "name": "boosts",
+        "value": 3
+      },
+      "author": "cmconseils",
+      "has_video": false,
+      "url": "https://mastodon.social/@cmconseils/116979674631588435",
+      "published_at": "2026-07-25T08:29:39.804Z"
+    },
+    {
+      "id": "mastodon|global|https://mastodon.scot/@wen/116979331517283214",
+      "pattern": "I gave it a go, but eventually had to pull the tab. Not a magical bone in my body # Envelope # Instructions # Post",
+      "evidence": [
+        "I gave it a go, but eventually had to pull the tab. Not a magical bone in my body # Envelope # Instructions # Post",
+        "favourites=32; replies=1",
+        "https://mastodon.scot/@Wen/116979331517283214"
+      ],
+      "observed_on": [
+        "mastodon"
+      ],
+      "estimated_decay": "weeks",
+      "confidence": 0.016,
+      "category": "post",
+      "metric": {
+        "name": "boosts",
+        "value": 18
+      },
+      "author": "Wen@mastodon.scot",
+      "has_video": false,
+      "url": "https://mastodon.scot/@Wen/116979331517283214",
+      "published_at": "2026-07-25T07:02:24.000Z"
+    }
+  ]
+}

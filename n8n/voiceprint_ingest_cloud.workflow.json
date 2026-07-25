@@ -1,5 +1,5 @@
 {
-  "name": "Voiceprint — Ingestion (Cloud: per-type multi-model branches)",
+  "name": "Voiceprint — Ingestion (ChaosAdam13, video-router, embedded)",
   "nodes": [
     {
       "parameters": {},
@@ -8,30 +8,20 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -140,
+        -160,
         340
       ]
     },
     {
       "parameters": {
-        "documentId": {
-          "__rl": true,
-          "mode": "id",
-          "value": "YOUR_GOOGLE_SHEET_ID"
-        },
-        "sheetName": {
-          "__rl": true,
-          "mode": "name",
-          "value": "Sheet1"
-        },
-        "options": {}
+        "jsCode": "return [{\"json\": {\"id\": \"WlNUVi85zQg\", \"creator\": \"ChaosAdam13\", \"niche\": \"German candy & food comedy shorts\", \"platform\": \"youtube\", \"media_type\": \"video\", \"author\": \"creator\", \"media_url\": \"https://www.youtube.com/shorts/WlNUVi85zQg\", \"title\": \"Gehörst du zu den 99% 😂🤔 #shorts #viral #like #sweet\", \"caption\": \"\", \"published_at\": \"2026-07-05T17:30:03+00:00\", \"views\": 25572, \"likes\": 1061, \"comments\": 0}}, {\"json\": {\"id\": \"VBdockWR3Ws\", \"creator\": \"ChaosAdam13\", \"niche\": \"German candy & food comedy shorts\", \"platform\": \"youtube\", \"media_type\": \"video\", \"author\": \"creator\", \"media_url\": \"https://www.youtube.com/shorts/VBdockWR3Ws\", \"title\": \"Eissorten die es bald nichtmehr geben wird… #shorts #viral #sweet #sad\", \"caption\": \"\", \"published_at\": \"2026-07-05T16:00:20+00:00\", \"views\": 34055, \"likes\": 1701, \"comments\": 0}}, {\"json\": {\"id\": \"bwoMWDA6TL4\", \"creator\": \"ChaosAdam13\", \"niche\": \"German candy & food comedy shorts\", \"platform\": \"youtube\", \"media_type\": \"video\", \"author\": \"creator\", \"media_url\": \"https://www.youtube.com/shorts/bwoMWDA6TL4\", \"title\": \"Süßigkeiten die den Hype komplett verloren haben 😂 #shorts #viral #shortvideo\", \"caption\": \"\", \"published_at\": \"2026-07-04T17:30:34+00:00\", \"views\": 43914, \"likes\": 1963, \"comments\": 0}}, {\"json\": {\"id\": \"3Y_I0WRe8YY\", \"creator\": \"ChaosAdam13\", \"niche\": \"German candy & food comedy shorts\", \"platform\": \"youtube\", \"media_type\": \"video\", \"author\": \"creator\", \"media_url\": \"https://www.youtube.com/shorts/3Y_I0WRe8YY\", \"title\": \"Alle haben das letzte schonmal probiert #shorts #viral #like #sweet\", \"caption\": \"\", \"published_at\": \"2026-07-04T16:00:20+00:00\", \"views\": 37394, \"likes\": 1450, \"comments\": 0}}, {\"json\": {\"id\": \"c6jfBgcmSCo\", \"creator\": \"ChaosAdam13\", \"niche\": \"German candy & food comedy shorts\", \"platform\": \"youtube\", \"media_type\": \"video\", \"author\": \"creator\", \"media_url\": \"https://www.youtube.com/shorts/c6jfBgcmSCo\", \"title\": \"Stimmst du diesen 3 Süßigkeiten zu 🤔 #shorts #viral #like #candy\", \"caption\": \"\", \"published_at\": \"2026-07-03T17:30:39+00:00\", \"views\": 27254, \"likes\": 1322, \"comments\": 0}}, {\"json\": {\"id\": \"FZ3phteouGM\", \"creator\": \"ChaosAdam13\", \"niche\": \"German candy & food comedy shorts\", \"platform\": \"youtube\", \"media_type\": \"video\", \"author\": \"creator\", \"media_url\": \"https://www.youtube.com/shorts/FZ3phteouGM\", \"title\": \"Süßigkeiten die es 2027 nichtmehr geben wird… #shorts #viral #like #candy\", \"caption\": \"Quelle: Lokale / Eigene Beobachtung. Seit Monaten beobachte ich das diese 3 Süßigkeiten die im Video präsentiert werden immer weniger werden. Deswegen vermute ich das es diese im Jahr 2027 vollständig aus dem Verkauf genommen werden - zumindest in manchen Geschäften. In anderen Geschäften wird es die bestimmt noch geben.\", \"published_at\": \"2026-07-03T16:00:09+00:00\", \"views\": 366944, \"likes\": 8549, \"comments\": 0}}, {\"json\": {\"id\": \"g7VMT-yw0jg\", \"creator\": \"ChaosAdam13\", \"niche\": \"German candy & food comedy shorts\", \"platform\": \"youtube\", \"media_type\": \"video\", \"author\": \"creator\", \"media_url\": \"https://www.youtube.com/shorts/g7VMT-yw0jg\", \"title\": \"Wer mag bitte die letzte Schokolade 😭🤔 #shorts #candy #shortsviral #shortvideo\", \"caption\": \"\", \"published_at\": \"2026-07-02T17:30:10+00:00\", \"views\": 23423, \"likes\": 1156, \"comments\": 0}}, {\"json\": {\"id\": \"wjNe-0d0wYs\", \"creator\": \"ChaosAdam13\", \"niche\": \"German candy & food comedy shorts\", \"platform\": \"youtube\", \"media_type\": \"video\", \"author\": \"creator\", \"media_url\": \"https://www.youtube.com/shorts/wjNe-0d0wYs\", \"title\": \"Diese Getränke hat jeder im Sommer getrunken 😂☀️ #shorts #viral #shortvideo #sweet\", \"caption\": \"\", \"published_at\": \"2026-07-02T16:00:04+00:00\", \"views\": 27347, \"likes\": 1024, \"comments\": 0}}, {\"json\": {\"id\": \"FMzNR5RPg3c\", \"creator\": \"ChaosAdam13\", \"niche\": \"German candy & food comedy shorts\", \"platform\": \"youtube\", \"media_type\": \"video\", \"author\": \"creator\", \"media_url\": \"https://www.youtube.com/shorts/FMzNR5RPg3c\", \"title\": \"Diese Süßigkeiten verschwinden leider gerade aus den Läden 😭🥺 #shorts #viral #like #candy\", \"caption\": \"\", \"published_at\": \"2026-07-01T17:30:27+00:00\", \"views\": 21674, \"likes\": 736, \"comments\": 0}}, {\"json\": {\"id\": \"5KnFNBLA_PU\", \"creator\": \"ChaosAdam13\", \"niche\": \"German candy & food comedy shorts\", \"platform\": \"youtube\", \"media_type\": \"video\", \"author\": \"creator\", \"media_url\": \"https://www.youtube.com/shorts/5KnFNBLA_PU\", \"title\": \"Stimmen eure Kommentare? 🤔😂 #shorts #viral #sweet #like\", \"caption\": \"\", \"published_at\": \"2026-07-01T16:00:28+00:00\", \"views\": 14188, \"likes\": 582, \"comments\": 0}}, {\"json\": {\"id\": \"EsEp-10IYyg\", \"creator\": \"ChaosAdam13\", \"niche\": \"German candy & food comedy shorts\", \"platform\": \"youtube\", \"media_type\": \"video\", \"author\": \"creator\", \"media_url\": \"https://www.youtube.com/shorts/EsEp-10IYyg\", \"title\": \"Hast du bereits alle Snacks probiert diesen Sommer? 🧴 #shorts #viral #shortsviral #sweet\", \"caption\": \"\", \"published_at\": \"2026-06-30T17:30:14+00:00\", \"views\": 28378, \"likes\": 677, \"comments\": 0}}, {\"json\": {\"id\": \"UAYnuqk-xPI\", \"creator\": \"ChaosAdam13\", \"niche\": \"German candy & food comedy shorts\", \"platform\": \"youtube\", \"media_type\": \"video\", \"author\": \"creator\", \"media_url\": \"https://www.youtube.com/shorts/UAYnuqk-xPI\", \"title\": \"Diese Süßigkeiten kennen nur Leute die … sind 😢❤️ #shorts #viral #sweet #candy\", \"caption\": \"Nur spaß - dieses Video dient nur zur Unterhaltung.\\nQuelle: Eigene Meinung\", \"published_at\": \"2026-06-30T16:00:35+00:00\", \"views\": 29014, \"likes\": 699, \"comments\": 0}}, {\"json\": {\"id\": \"ZFYpPgrR0-A\", \"creator\": \"ChaosAdam13\", \"niche\": \"German candy & food comedy shorts\", \"platform\": \"youtube\", \"media_type\": \"video\", \"author\": \"creator\", \"media_url\": \"https://www.youtube.com/shorts/ZFYpPgrR0-A\", \"title\": \"Nur reale Leute haben diese Süßigkeiten diesen Juni schon gegessen❤️☀️ #shorts #viral #like #sweet\", \"caption\": \"\", \"published_at\": \"2026-06-29T17:30:01+00:00\", \"views\": 14562, \"likes\": 443, \"comments\": 0}}, {\"json\": {\"id\": \"WBD3_J1jorE\", \"creator\": \"ChaosAdam13\", \"niche\": \"German candy & food comedy shorts\", \"platform\": \"youtube\", \"media_type\": \"video\", \"author\": \"creator\", \"media_url\": \"https://www.youtube.com/shorts/WBD3_J1jorE\", \"title\": \"Diese Süßigkeiten mag niemand bei dieser Hitze ☀️⛱️ #shorts #viral #shortvideo #like\", \"caption\": \"\", \"published_at\": \"2026-06-29T16:00:05+00:00\", \"views\": 25788, \"likes\": 964, \"comments\": 0}}, {\"json\": {\"id\": \"jruYCevjLiQ\", \"creator\": \"ChaosAdam13\", \"niche\": \"German candy & food comedy shorts\", \"platform\": \"youtube\", \"media_type\": \"video\", \"author\": \"creator\", \"media_url\": \"https://www.youtube.com/shorts/jruYCevjLiQ\", \"title\": \"Diese teuren Süßigkeiten kennen nur Leute die viel Geld haben\", \"caption\": \"\", \"published_at\": \"2026-06-19T17:00:30+00:00\", \"views\": 18211, \"likes\": 741, \"comments\": 0}}];"
       },
-      "id": "sheet",
-      "name": "Read creator sheet",
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4.5,
+      "id": "seed",
+      "name": "Load creator data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
       "position": [
-        80,
+        60,
         340
       ]
     },
@@ -163,37 +153,9 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.4,
       "position": [
-        300,
+        280,
         340
       ]
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://fal.run/fal-ai/wizper",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "sendBody": true,
-        "contentType": "json",
-        "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({ audio_url: $('Read creator sheet').item.json.media_url }) }}",
-        "options": {
-          "timeout": 180000
-        }
-      },
-      "id": "sttV",
-      "name": "STT · video",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.4,
-      "position": [
-        540,
-        0
-      ],
-      "onError": "continueRegularOutput",
-      "retryOnFail": true,
-      "maxTries": 3,
-      "waitBetweenTries": 2500,
-      "alwaysOutputData": true
     },
     {
       "parameters": {
@@ -204,18 +166,18 @@
         "sendBody": true,
         "contentType": "json",
         "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({ video_url: $('Read creator sheet').item.json.media_url, prompt: \"Describe the visual style and what happens in this short video in one or two sentences for a creator style profile, then on a new line prefixed TEXT: transcribe any on-screen text overlays verbatim. If none, write TEXT:\", model: \"google/gemini-2.5-flash\" }) }}",
+        "jsonBody": "={{ JSON.stringify({ video_url: $('Load creator data').item.json.media_url, prompt: \"Watch this short video and return EXACTLY three labeled sections, each on its own line:\\nSPEECH: a verbatim transcript of everything spoken (empty if no speech).\\nSCENE: one or two sentences describing the visual style and what happens.\\nTEXT: verbatim transcription of any on-screen text overlays (empty if none).\", model: \"google/gemini-2.5-flash\" }) }}",
         "options": {
           "timeout": 180000
         }
       },
-      "id": "sceneV",
-      "name": "Scene · video",
+      "id": "vidV",
+      "name": "Video→text · fal (Gemini)",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        760,
-        0
+        520,
+        40
       ],
       "onError": "continueRegularOutput",
       "retryOnFail": true,
@@ -225,15 +187,15 @@
     },
     {
       "parameters": {
-        "jsCode": "const row = { ...$('Read creator sheet').item.json };\nconst transcript = String(($('STT · video').item.json.text) || '').trim() || null;\nconst out = String(($json && $json.output) || '');\nconst i = out.indexOf('TEXT:');\nlet vd = null, ov = null;\nif (i >= 0) { vd = out.slice(0, i).trim() || null; ov = out.slice(i + 5).trim() || null; }\nelse { vd = out.trim() || null; }\nrow._transcript = transcript; row._visual_desc = vd; row._overlay = ov;\nreturn [{ json: row }];"
+        "jsCode": "const row = { ...$('Load creator data').item.json };\nconst out = String(($json && $json.output) || '');\nconst g = (lab) => { const m = out.match(new RegExp(lab + ':([\\\\s\\\\S]*?)(?=SPEECH:|SCENE:|TEXT:|$)', 'i')); return m ? m[1].trim() : ''; };\nrow._transcript = g('SPEECH') || null;\nrow._visual_desc = g('SCENE') || null;\nrow._overlay = g('TEXT') || null;\nreturn [{ json: row }];"
       },
       "id": "shapeV",
       "name": "Shape video",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        980,
-        0
+        760,
+        40
       ]
     },
     {
@@ -245,18 +207,18 @@
         "sendBody": true,
         "contentType": "json",
         "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({ audio_url: $('Read creator sheet').item.json.media_url }) }}",
+        "jsonBody": "={{ JSON.stringify({ audio_url: $('Load creator data').item.json.media_url }) }}",
         "options": {
           "timeout": 180000
         }
       },
       "id": "sttA",
-      "name": "STT · audio",
+      "name": "Audio→text · fal (Wizper)",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        540,
-        180
+        520,
+        220
       ],
       "onError": "continueRegularOutput",
       "retryOnFail": true,
@@ -266,7 +228,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const row = { ...$('Read creator sheet').item.json };\nrow._transcript = String(($json && $json.text) || '').trim() || null;\nrow._visual_desc = null; row._overlay = null;\nreturn [{ json: row }];"
+        "jsCode": "const row = { ...$('Load creator data').item.json };\nrow._transcript = String(($json && $json.text) || '').trim() || null;\nrow._visual_desc = null; row._overlay = null;\nreturn [{ json: row }];"
       },
       "id": "shapeA",
       "name": "Shape audio",
@@ -274,7 +236,7 @@
       "typeVersion": 2,
       "position": [
         760,
-        180
+        220
       ]
     },
     {
@@ -286,18 +248,18 @@
         "sendBody": true,
         "contentType": "json",
         "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({ image_urls: [$('Read creator sheet').item.json.media_url], prompt: \"Describe this social-media image in one sentence for a creator style profile, then on a new line prefixed TEXT: transcribe verbatim any text overlaid on the image (captions, stickers, titles). If there is no overlaid text, write TEXT:\", model: \"google/gemini-2.5-flash\" }) }}",
+        "jsonBody": "={{ JSON.stringify({ image_urls: [$('Load creator data').item.json.media_url], prompt: \"Watch this short video and return EXACTLY three labeled sections, each on its own line:\\nSPEECH: a verbatim transcript of everything spoken (empty if no speech).\\nSCENE: one or two sentences describing the visual style and what happens.\\nTEXT: verbatim transcription of any on-screen text overlays (empty if none).\", model: \"google/gemini-2.5-flash\" }) }}",
         "options": {
           "timeout": 180000
         }
       },
       "id": "visI",
-      "name": "Vision · image",
+      "name": "Image→text · fal (Vision)",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        540,
-        360
+        520,
+        400
       ],
       "onError": "continueRegularOutput",
       "retryOnFail": true,
@@ -307,7 +269,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const row = { ...$('Read creator sheet').item.json };\nconst out = String(($json && $json.output) || '');\nconst i = out.indexOf('TEXT:');\nlet vd = null, ov = null;\nif (i >= 0) { vd = out.slice(0, i).trim() || null; ov = out.slice(i + 5).trim() || null; }\nelse { vd = out.trim() || null; }\nrow._transcript = String(row.transcript || '').trim() || null;\nrow._visual_desc = vd; row._overlay = ov;\nreturn [{ json: row }];"
+        "jsCode": "const row = { ...$('Load creator data').item.json };\nconst out = String(($json && $json.output) || '');\nconst i = out.indexOf('TEXT:');\nlet vd = null, ov = null;\nif (i >= 0) { vd = out.slice(0, i).trim() || null; ov = out.slice(i + 5).trim() || null; }\nelse { vd = out.trim() || null; }\nrow._transcript = String(row.transcript || '').trim() || null; row._visual_desc = vd; row._overlay = ov;\nreturn [{ json: row }];"
       },
       "id": "shapeI",
       "name": "Shape image",
@@ -315,36 +277,8 @@
       "typeVersion": 2,
       "position": [
         760,
-        360
+        400
       ]
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://fal.run/fal-ai/wizper",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "sendBody": true,
-        "contentType": "json",
-        "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({ audio_url: $('Read creator sheet').item.json.media_url }) }}",
-        "options": {
-          "timeout": 180000
-        }
-      },
-      "id": "sttS",
-      "name": "STT · story",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.4,
-      "position": [
-        540,
-        540
-      ],
-      "onError": "continueRegularOutput",
-      "retryOnFail": true,
-      "maxTries": 3,
-      "waitBetweenTries": 2500,
-      "alwaysOutputData": true
     },
     {
       "parameters": {
@@ -355,18 +289,18 @@
         "sendBody": true,
         "contentType": "json",
         "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({ video_url: $('Read creator sheet').item.json.media_url, prompt: \"Describe the visual style and what happens in this short video in one or two sentences for a creator style profile, then on a new line prefixed TEXT: transcribe any on-screen text overlays verbatim. If none, write TEXT:\", model: \"google/gemini-2.5-flash\" }) }}",
+        "jsonBody": "={{ JSON.stringify({ video_url: $('Load creator data').item.json.media_url, prompt: \"Watch this short video and return EXACTLY three labeled sections, each on its own line:\\nSPEECH: a verbatim transcript of everything spoken (empty if no speech).\\nSCENE: one or two sentences describing the visual style and what happens.\\nTEXT: verbatim transcription of any on-screen text overlays (empty if none).\", model: \"google/gemini-2.5-flash\" }) }}",
         "options": {
           "timeout": 180000
         }
       },
       "id": "vidS",
-      "name": "Video+OCR · story",
+      "name": "Story→text · fal (Gemini)",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        760,
-        540
+        520,
+        580
       ],
       "onError": "continueRegularOutput",
       "retryOnFail": true,
@@ -376,15 +310,15 @@
     },
     {
       "parameters": {
-        "jsCode": "const row = { ...$('Read creator sheet').item.json };\nconst transcript = String(($('STT · story').item.json.text) || '').trim() || null;\nconst out = String(($json && $json.output) || '');\nconst i = out.indexOf('TEXT:');\nlet vd = null, ov = null;\nif (i >= 0) { vd = out.slice(0, i).trim() || null; ov = out.slice(i + 5).trim() || null; }\nelse { vd = out.trim() || null; }\nrow._transcript = transcript; row._visual_desc = vd; row._overlay = ov;\nreturn [{ json: row }];"
+        "jsCode": "const row = { ...$('Load creator data').item.json };\nconst out = String(($json && $json.output) || '');\nconst g = (lab) => { const m = out.match(new RegExp(lab + ':([\\\\s\\\\S]*?)(?=SPEECH:|SCENE:|TEXT:|$)', 'i')); return m ? m[1].trim() : ''; };\nrow._transcript = g('SPEECH') || null;\nrow._visual_desc = g('SCENE') || null;\nrow._overlay = g('TEXT') || null;\nreturn [{ json: row }];"
       },
       "id": "shapeS",
       "name": "Shape story",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        980,
-        540
+        760,
+        580
       ]
     },
     {
@@ -396,8 +330,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        540,
-        720
+        520,
+        760
       ]
     },
     {
@@ -409,8 +343,8 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        1220,
-        300
+        1000,
+        320
       ]
     },
     {
@@ -422,8 +356,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1440,
-        300
+        1220,
+        320
       ]
     }
   ],
@@ -432,14 +366,14 @@
       "main": [
         [
           {
-            "node": "Read creator sheet",
+            "node": "Load creator data",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Read creator sheet": {
+    "Load creator data": {
       "main": [
         [
           {
@@ -454,28 +388,28 @@
       "main": [
         [
           {
-            "node": "STT · video",
+            "node": "Video→text · fal (Gemini)",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "STT · audio",
+            "node": "Audio→text · fal (Wizper)",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "Vision · image",
+            "node": "Image→text · fal (Vision)",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "STT · story",
+            "node": "Story→text · fal (Gemini)",
             "type": "main",
             "index": 0
           }
@@ -489,18 +423,7 @@
         ]
       ]
     },
-    "STT · video": {
-      "main": [
-        [
-          {
-            "node": "Scene · video",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Scene · video": {
+    "Video→text · fal (Gemini)": {
       "main": [
         [
           {
@@ -522,7 +445,7 @@
         ]
       ]
     },
-    "STT · audio": {
+    "Audio→text · fal (Wizper)": {
       "main": [
         [
           {
@@ -544,7 +467,7 @@
         ]
       ]
     },
-    "Vision · image": {
+    "Image→text · fal (Vision)": {
       "main": [
         [
           {
@@ -566,18 +489,7 @@
         ]
       ]
     },
-    "STT · story": {
-      "main": [
-        [
-          {
-            "node": "Video+OCR · story",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Video+OCR · story": {
+    "Story→text · fal (Gemini)": {
       "main": [
         [
           {
