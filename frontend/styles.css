@@ -1155,7 +1155,7 @@ html[data-mode="performance"] .toast{
 
 .landing-bottom{
   position:relative; z-index:2;
-  display:flex; justify-content:center;
+  display:flex; flex-direction:column; align-items:center; gap:12px;
   padding: 18px 24px 36px;
 }
 .landing-cta{
@@ -1224,4 +1224,28 @@ html[data-mode="performance"] .toast{
   .streak, .phone-hand{ animation: none !important; }
   .orbit-ring, .orbit-item svg{ animation: none !important; }
   .landing.is-leaving, .app.is-entering{ transition: none; animation: none; }
+}
+
+/* ---- Landing additions (features + powered strip) ---- */
+.landing-features{
+  list-style:none; margin:22px 0 0; padding:0;
+  display:grid; gap:10px; max-width:520px;
+}
+.landing-features li{
+  display:flex; align-items:center; gap:11px;
+  font-size:14.5px; line-height:1.4; color:#D8CCEA;
+  padding:11px 14px; border-radius:12px;
+  border:1px solid rgba(124,92,252,.22);
+  background:rgba(22,15,40,.42);
+}
+.landing-features li em{ color:#F8F0FF; font-style:italic; }
+.lf-ico{ font-size:16px; flex:0 0 auto; }
+.landing-powered{
+  margin:14px 0 0; text-align:center;
+  font-size:12px; letter-spacing:.04em; text-transform:uppercase;
+  color:#8B7BA8;
+}
+.landing-powered strong{ color:#C4B5FD; font-weight:600; }
+@media (max-width:720px){
+  .landing-features{ max-width:100%; }
 }
