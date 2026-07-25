@@ -1,0 +1,599 @@
+{
+    "name": "SocialTrends - Ingest Pipeline",
+    "nodes": [
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.manualTrigger",
+        "typeVersion": 1,
+        "position": [
+          -384,
+          192
+        ],
+        "id": "fd284830-0405-4ddd-ba2a-a2607520b08b",
+        "name": "When clicking ‘Execute workflow’"
+      },
+      {
+        "parameters": {
+          "jsCode": "// MAIN CHANNEL: YouTube most-popular chart, WORLDWIDE.\n// The Data API has no global chart - \"worldwide\" means polling every major\n// region and aggregating. Downstream, a video trending in several regions is\n// merged into ONE row ranked by how many regions it charts in.\n// Cost: 1 quota unit per region (~28/run) out of 10.000 free units per day.\nconst regions = [\n  // Americas\n  'US', 'CA', 'BR', 'MX', 'AR', 'CO',\n  // Europe\n  'GB', 'DE', 'FR', 'ES', 'IT', 'NL', 'PL', 'SE', 'TR',\n  // Asia-Pacific\n  'IN', 'JP', 'KR', 'ID', 'PH', 'VN', 'TH', 'AU', 'NZ',\n  // Middle East + Africa\n  'SA', 'AE', 'EG', 'NG', 'ZA',\n];\n\nreturn regions.map(regionCode => ({ json: { platform: 'youtube', regionCode } }));"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          32,
+          48
+        ],
+        "id": "c2000000-0000-4000-9000-000000000010",
+        "name": "YouTube regions"
+      },
+      {
+        "parameters": {
+          "url": "https://www.googleapis.com/youtube/v3/videos",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpQueryAuth",
+          "sendQuery": true,
+          "queryParameters": {
+            "parameters": [
+              {
+                "name": "part",
+                "value": "snippet,statistics"
+              },
+              {
+                "name": "chart",
+                "value": "mostPopular"
+              },
+              {
+                "name": "regionCode",
+                "value": "={{ $json.regionCode }}"
+              },
+              {
+                "name": "maxResults",
+                "value": "50"
+              }
+            ]
+          },
+          "options": {
+            "response": {
+              "response": {
+                "responseFormat": "text"
+              }
+            },
+            "timeout": 20000
+          }
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          240,
+          48
+        ],
+        "id": "b1f0c2a4-1111-4aaa-9001-aa0000000002",
+        "name": "Fetch YouTube trending",
+        "retryOnFail": true,
+        "maxTries": 2,
+        "waitBetweenTries": 3000,
+        "disabled": true,
+        "onError": "continueRegularOutput",
+        "notes": "MAIN CHANNEL - worldwide. BLOCKED: needs a Query Auth credential (Name: key, Value: a YouTube Data API v3 key). Attach it, then enable this node."
+      },
+      {
+        "parameters": {
+          "jsCode": "// Pair each API response back to the region that produced it (index-safe:\n// the HTTP node emits one output item per input item, in order).\nconst regions = $('YouTube regions').all();\n\nreturn $input.all().map((item, i) => ({\n  json: {\n    data: item.json.data ?? '',\n    geo: regions[i]?.json?.regionCode || 'global',\n  },\n}));"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          464,
+          48
+        ],
+        "id": "c2000000-0000-4000-9000-000000000011",
+        "name": "Tag YouTube region"
+      },
+      {
+        "parameters": {
+          "jsCode": "// Secondary social sources - public platform APIs, no auth, no website scraping.\nconst BSKY = 'https://public.api.bsky.app/xrpc/';\nconst HOT = 'at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.generator/whats-hot';\n\nconst sources = [\n  // Bluesky: What's Hot posts (videos arrive as HLS playlist links)\n  { platform: 'bluesky',  url: `${BSKY}app.bsky.feed.getFeed?feed=${encodeURIComponent(HOT)}&limit=50` },\n  // Bluesky: trending topics -> the \"categories\" view\n  { platform: 'bluesky',  url: `${BSKY}app.bsky.unspecced.getTrendingTopics?limit=15` },\n  // Mastodon: trending posts (video/gifv attachments) + trending hashtags\n  { platform: 'mastodon', url: 'https://mastodon.social/api/v1/trends/statuses?limit=40' },\n  { platform: 'mastodon', url: 'https://mastodon.social/api/v1/trends/tags?limit=15' },\n  // Reddit: top of the day, subreddit doubles as the category.\n  // Firecrawl cannot be used here - old.reddit.com/robots.txt is \"Disallow: /\"\n  // and Firecrawl honours robots.txt (403). This RSS feed is Reddit's own\n  // syndication endpoint, but it allows only ~1 request per 60s per IP,\n  // so keep this to ONE Reddit URL unless you add a Reddit OAuth credential.\n  { platform: 'reddit',   url: 'https://www.reddit.com/r/all/top.rss?t=day&limit=75' },\n];\n\nreturn sources.map(json => ({ json }));"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          32,
+          304
+        ],
+        "id": "0a894398-b8ee-4227-960f-9c2489ccf261",
+        "name": "Social trend sources"
+      },
+      {
+        "parameters": {
+          "url": "={{ $json.url }}",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "User-Agent",
+                "value": "n8n-trend-ingest/1.0 (+https://n8n.io)"
+              },
+              {
+                "name": "Accept",
+                "value": "application/json, application/atom+xml;q=0.9, */*;q=0.8"
+              }
+            ]
+          },
+          "options": {
+            "batching": {
+              "batch": {
+                "batchSize": 1,
+                "batchInterval": 1500
+              }
+            },
+            "response": {
+              "response": {
+                "responseFormat": "text"
+              }
+            },
+            "timeout": 20000
+          }
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          240,
+          304
+        ],
+        "id": "b1f0c2a4-1111-4aaa-9001-aa0000000001",
+        "name": "Fetch social feeds",
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 5000,
+        "onError": "continueRegularOutput",
+        "notes": "One request at a time, 1.5s apart. A failing source is skipped, not fatal."
+      },
+      {
+        "parameters": {
+          "numberInputs": 3
+        },
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3,
+        "position": [
+          704,
+          192
+        ],
+        "id": "b1f0c2a4-1111-4aaa-9001-aa0000000003",
+        "name": "Combine sources"
+      },
+      {
+        "parameters": {
+          "jsCode": "// ---- Normalize SOCIAL MEDIA trends (Reddit / Bluesky / Mastodon / YouTube) ----\nconst scraped_at = new Date().toISOString();\n\nconst YT_CATS = {'1':'Film & Animation','2':'Autos & Vehicles','10':'Music','15':'Pets & Animals','17':'Sports','19':'Travel & Events','20':'Gaming','22':'People & Blogs','23':'Comedy','24':'Entertainment','25':'News & Politics','26':'Howto & Style','27':'Education','28':'Science & Technology','29':'Nonprofits & Activism','30':'Movies','31':'Anime/Animation','42':'Shorts','44':'Trailers'};\n\nconst VIDEO_RE = /(v\\.redd\\.it|youtube\\.com\\/(watch|shorts)|youtu\\.be\\/|tiktok\\.com\\/.*video\\/\\d+|instagram\\.com\\/(reel|tv)\\/|streamable\\.com|redgifs\\.com|twitch\\.tv\\/videos|\\.(mp4|mov|webm|m3u8)(\\?|$))/i;\n\nconst dec = (s) => String(s == null ? '' : s)\n  .replace(/<!\\[CDATA\\[([\\s\\S]*?)\\]\\]>/g, '$1')\n  .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '\"')\n  .replace(/&#0?39;|&apos;/g, \"'\").replace(/&#0?32;/g, ' ')\n  .replace(/&#(\\d+);/g, (_, n) => String.fromCharCode(+n))\n  .replace(/&amp;/g, '&').trim();\n\nconst tag = (xml, name) => {\n  const m = xml.match(new RegExp('<' + name + '(?:\\\\s[^>]*)?>([\\\\s\\\\S]*?)<\\\\/' + name + '>'));\n  return m ? dec(m[1]) : '';\n};\nconst attr = (xml, re) => { const m = xml.match(re); return m ? dec(m[1]) : ''; };\nconst strip = (html) => dec(String(html || '').replace(/<br\\s*\\/?>/gi, ' ').replace(/<[^>]+>/g, ' ')).replace(/\\s+/g, ' ').trim();\nconst clip = (s, n) => (s.length > n ? s.slice(0, n - 1) + '…' : s);\nconst hashtag = (text) => { const m = String(text).match(/(?:^|\\s)#([A-Za-z0-9_]{2,30})/); return m ? m[1] : ''; };\n\nconst row = (o) => ({\n  platform: '', geo: 'global', category: '', rank: 0, title: '', url: '',\n  video_url: '', has_video: 'no', video_thumbnail: '', author: '',\n  metric_name: '', metric_value: null, context: '', published_at: '', ...o,\n});\n\n// --- Reddit: top posts of the day, subreddit = category ---\nfunction parseReddit(body) {\n  const out = [];\n  (body.match(/<entry>[\\s\\S]*?<\\/entry>/g) || []).forEach((b, i) => {\n    const title = tag(b, 'title');\n    if (!title) return;\n    const content = tag(b, 'content');\n    const links = [...content.matchAll(/href=\"([^\"]+)\"/g)].map((m) => dec(m[1]));\n    const video = links.find((u) => VIDEO_RE.test(u)) || '';\n    out.push(row({\n      platform: 'reddit',\n      category: attr(b, /<category[^>]*label=\"r\\/([^\"]+)\"/) || attr(b, /<category[^>]*term=\"([^\"]+)\"/),\n      rank: i + 1,\n      title,\n      url: attr(b, /<link[^>]*href=\"([^\"]+)\"/),\n      video_url: video,\n      has_video: video ? 'yes' : 'no',\n      video_thumbnail: attr(content, /<img src=\"([^\"]+)\"/),\n      author: tag(b, 'name'),\n      metric_name: 'top_rank_24h',\n      metric_value: i + 1,\n      published_at: tag(b, 'updated'),\n    }));\n  });\n  return out;\n}\n\n// --- Bluesky: What's Hot feed (videos come through as HLS playlists) ---\nfunction parseBlueskyFeed(data) {\n  return (data.feed || []).map((f, i) => {\n    const p = f.post || {};\n    const rec = p.record || {};\n    const e = p.embed || {};\n    const vid = e.$type === 'app.bsky.embed.video#view' ? e\n      : (e.media && e.media.$type === 'app.bsky.embed.video#view' ? e.media : null);\n    const ext = e.external || (e.media && e.media.external) || {};\n    const extVideo = VIDEO_RE.test(ext.uri || '') ? ext.uri : '';\n    const handle = p.author?.handle || '';\n    const rkey = String(p.uri || '').split('/').pop();\n    const text = strip(rec.text);\n    return row({\n      platform: 'bluesky',\n      category: hashtag(rec.text) || 'whats_hot',\n      rank: i + 1,\n      title: clip(text || ext.title || '(media post)', 300),\n      url: handle && rkey ? `https://bsky.app/profile/${handle}/post/${rkey}` : (p.uri || ''),\n      video_url: vid?.playlist || extVideo,\n      has_video: vid?.playlist || extVideo ? 'yes' : 'no',\n      video_thumbnail: vid?.thumbnail || ext.thumb || '',\n      author: handle,\n      metric_name: 'likes',\n      metric_value: p.likeCount ?? null,\n      context: `reposts=${p.repostCount ?? 0}; replies=${p.replyCount ?? 0}`,\n      published_at: rec.createdAt || p.indexedAt || '',\n    });\n  });\n}\n\n// --- Bluesky: trending topics (the \"categories\" view) ---\nfunction parseBlueskyTopics(data) {\n  return (data.topics || []).map((t, i) => row({\n    platform: 'bluesky',\n    category: 'trending_topic',\n    rank: i + 1,\n    title: t.topic || '',\n    url: t.link ? 'https://bsky.app' + t.link : '',\n    author: '',\n    metric_name: 'topic_rank',\n    metric_value: i + 1,\n  }));\n}\n\n// --- Mastodon: trending posts + trending hashtags ---\nfunction parseMastodonStatuses(arr) {\n  return arr.map((s, i) => {\n    const media = s.media_attachments || [];\n    const v = media.find((m) => m.type === 'video' || m.type === 'gifv');\n    const img = media.find((m) => m.type === 'image');\n    const text = strip(s.content);\n    return row({\n      platform: 'mastodon',\n      category: (s.tags || [])[0]?.name || hashtag(text) || 'trending_post',\n      rank: i + 1,\n      title: clip(text || '(media post)', 300),\n      url: s.url || s.uri || '',\n      video_url: v?.url || v?.remote_url || '',\n      has_video: v ? 'yes' : 'no',\n      video_thumbnail: v?.preview_url || img?.preview_url || '',\n      author: s.account?.acct || '',\n      metric_name: 'boosts',\n      metric_value: s.reblogs_count ?? null,\n      context: `favourites=${s.favourites_count ?? 0}; replies=${s.replies_count ?? 0}`,\n      published_at: s.created_at || '',\n    });\n  });\n}\n\nfunction parseMastodonTags(arr) {\n  return arr.map((t, i) => {\n    const h = (t.history || [])[0] || {};\n    return row({\n      platform: 'mastodon',\n      category: 'trending_hashtag',\n      rank: i + 1,\n      title: '#' + (t.name || ''),\n      url: t.url || '',\n      metric_name: 'uses_24h',\n      metric_value: h.uses ? Number(h.uses) : null,\n      context: `accounts=${h.accounts ?? 0}`,\n    });\n  });\n}\n\n// --- YouTube: most popular chart (MAIN CHANNEL, needs a free API key) ---\nfunction parseYouTube(data, geo) {\n  return (data.items || []).map((v, i) => row({\n    platform: 'youtube',\n    geo: geo || 'global',\n    category: YT_CATS[String(v.snippet?.categoryId)] || 'Unknown',\n    rank: i + 1,\n    title: v.snippet?.title || '',\n    url: 'https://www.youtube.com/watch?v=' + v.id,\n    video_url: 'https://www.youtube.com/watch?v=' + v.id,\n    has_video: 'yes',\n    video_thumbnail: v.snippet?.thumbnails?.high?.url || v.snippet?.thumbnails?.default?.url || '',\n    author: v.snippet?.channelTitle || '',\n    metric_name: 'views',\n    metric_value: v.statistics?.viewCount ? Number(v.statistics.viewCount) : null,\n    context: (v.snippet?.tags || []).slice(0, 5).join(', '),\n    published_at: v.snippet?.publishedAt || '',\n  }));\n}\n\n\n// --- Firecrawl SCRAPE of a subreddit listing page -> markdown ---\nfunction parseFirecrawlReddit(md, source_url) {\n  const links = [...String(md).matchAll(/\\[([^\\]]*)\\]\\((https?:\\/\\/[^\\s)]+)\\)/g)]\n    .map((m) => ({ text: dec(m[1]).trim(), url: m[2].trim() }));\n  const out = [];\n  const seenPost = new Set();\n  links.forEach((l, i) => {\n    const m = l.url.match(/reddit\\.com\\/r\\/([^/]+)\\/comments\\/([a-z0-9]+)/i);\n    if (!m) return;\n    const post_id = m[2];\n    if (seenPost.has(post_id)) return;\n    seenPost.add(post_id);\n    const prev = links[i - 1];\n    const titleFromPrev = prev && !/reddit\\.com\\/r\\/[^/]+\\/comments\\//i.test(prev.url) &&\n      prev.text && !/^(comments|permalink|share|save|report)$/i.test(prev.text);\n    const title = titleFromPrev ? prev.text : l.text;\n    const outbound = titleFromPrev ? prev.url : '';\n    if (!title || /^(comments|permalink)$/i.test(title)) return;\n    const video = VIDEO_RE.test(outbound) ? outbound : '';\n    out.push(row({\n      platform: 'reddit',\n      category: m[1],\n      rank: out.length + 1,\n      title,\n      url: l.url,\n      video_url: video,\n      has_video: video ? 'yes' : 'no',\n      metric_name: 'top_rank_24h',\n      metric_value: out.length + 1,\n      context: !video && outbound ? outbound : '',\n      published_at: '',\n    }));\n  });\n  return out;\n}\n\n// --- Firecrawl SEARCH results (TikTok / Instagram / LinkedIn discovery) ---\nfunction platformFromUrl(u) {\n  const s = String(u);\n  if (/tiktok\\.com/i.test(s)) return 'tiktok';\n  if (/instagram\\.com/i.test(s)) return 'instagram';\n  if (/linkedin\\.com/i.test(s)) return 'linkedin';\n  if (/youtube\\.com|youtu\\.be/i.test(s)) return 'youtube';\n  return 'web';\n}\n\nfunction parseFirecrawlSearch(d) {\n  // the node may hand back {data:{web:[]}}, {web:[]}, a bare array, or one result\n  const core = d && d.data && !Array.isArray(d.data) ? d.data : d;\n  let results = [];\n  if (Array.isArray(core)) results = core;\n  else if (core && typeof core === 'object') {\n    results = [].concat(core.web || [], core.news || [], core.results || []);\n    if (!results.length && core.url) results = [core];\n  }\n  return results.filter((r) => r && r.url).map((r, i) => {\n    const video = VIDEO_RE.test(r.url) ? r.url : '';\n    return row({\n      platform: platformFromUrl(r.url),\n      category: 'discovered_trend',\n      rank: i + 1,\n      title: clip(dec(r.title || r.metadata?.title || '(untitled)'), 300),\n      url: r.url,\n      video_url: video,\n      has_video: video ? 'yes' : 'no',\n      author: (String(r.url).match(/^https?:\\/\\/([^/]+)/) || [])[1] || '',\n      metric_name: 'search_rank',\n      metric_value: i + 1,\n      context: clip(dec(r.description || r.metadata?.description || ''), 300),\n    });\n  });\n}\n\nfunction normalizeBody(body, geo) {\n  const s = String(body || '').trim();\n  if (!s) return [];\n  if (s.startsWith('<')) return /reddit\\.com/.test(s) && /<entry>/.test(s) ? parseReddit(s) : [];\n  if (!s.startsWith('{') && !s.startsWith('[')) {\n    // plain markdown from a Firecrawl scrape\n    return /reddit\\.com\\/r\\/[^/]+\\/comments\\//i.test(s) ? parseFirecrawlReddit(s, '') : [];\n  }\n  let d;\n  try { d = JSON.parse(s); } catch (e) { return []; }\n  if (Array.isArray(d)) {\n    if (!d.length) return [];\n    if (d[0].account || d[0].media_attachments) return parseMastodonStatuses(d);\n    if (d[0].history && d[0].name) return parseMastodonTags(d);\n    if (d[0].url) return parseFirecrawlSearch(d);\n    return [];\n  }\n  if (Array.isArray(d.data) && d.data.length && d.data[0] && d.data[0].url) return parseFirecrawlSearch(d.data);\n  if (d.feed) return parseBlueskyFeed(d);\n  if (d.topics) return parseBlueskyTopics(d);\n  if (d.items || d.kind === 'youtube#videoListResponse') return parseYouTube(d, geo);\n  // Firecrawl node output\n  const fcCore = d.data && !Array.isArray(d.data) ? d.data : d;\n  const fcMd = fcCore.markdown || fcCore.content || '';\n  if (fcMd && /reddit\\.com\\/r\\/[^/]+\\/comments\\//i.test(fcMd)) return parseFirecrawlReddit(fcMd, fcCore.metadata?.sourceURL || '');\n  if (fcCore.web || fcCore.news || fcCore.results) return parseFirecrawlSearch(d);\n  if (fcCore.url) return parseFirecrawlSearch(fcCore); // one search result per item\n  return [];\n}\n\n// ---- run over every incoming response (YouTube lane + social lane) ----\nconst seen = new Set();\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  let body = j.data ?? j.body;\n  if (body === undefined || body === null || body === '') {\n    // Firecrawl nodes can hand back a flat object instead of {data:...}\n    body = (j.markdown || j.web || j.news || j.results || j.url || j.items || j.feed || j.topics) ? j : '';\n  }\n  let rows = [];\n  try {\n    rows = normalizeBody(typeof body === 'object' ? JSON.stringify(body) : body, j.geo);\n  } catch (e) {\n    rows = [];\n  }\n  for (const t of rows) {\n    const trend_key = `${t.platform}|${t.geo}|${t.url || t.title}`.toLowerCase();\n    if (seen.has(trend_key)) continue;\n    seen.add(trend_key);\n    out.push({ json: { ...t, trend_key, scraped_at } });\n  }\n}\n\nif (out.length === 0) {\n  throw new Error('No social trends parsed - check the responses in the two Fetch nodes.');\n}\n\n// ---- YouTube: merge the per-region charts into ONE worldwide ranking ----\nconst ytMap = new Map();\nconst rest = [];\nfor (const item of out) {\n  const t = item.json;\n  if (t.platform !== 'youtube') { rest.push(item); continue; }\n  const key = t.url;\n  const cur = ytMap.get(key);\n  if (!cur) {\n    ytMap.set(key, { row: { ...t, geo: 'worldwide' }, regions: [t.geo] });\n  } else {\n    cur.regions.push(t.geo);\n    cur.row.metric_value = Math.max(cur.row.metric_value || 0, t.metric_value || 0);\n  }\n}\nconst ytRows = [...ytMap.values()].map(({ row, regions }) => {\n  const uniq = [...new Set(regions)].filter(r => r && r !== 'global');\n  return {\n    n: uniq.length,\n    json: {\n      ...row,\n      context: `trending in ${uniq.length} region(s): ${uniq.join(', ')}`,\n      trend_key: `youtube|worldwide|${row.url}`.toLowerCase(),\n    },\n  };\n});\n// biggest worldwide spread first, then raw view count\nytRows.sort((a, b) => b.n - a.n || (b.json.metric_value || 0) - (a.json.metric_value || 0));\nytRows.forEach((r, i) => { r.json.rank = i + 1; });\n\nout.length = 0;\nout.push(...ytRows.map(r => ({ json: r.json })), ...rest);\n\n// YouTube (main channel) first, then anything else carrying a video link.\nconst prio = (p) => (p === 'youtube' ? 0 : 1);\nout.sort((a, b) =>\n  prio(a.json.platform) - prio(b.json.platform) ||\n  (b.json.has_video === 'yes') - (a.json.has_video === 'yes') ||\n  a.json.platform.localeCompare(b.json.platform) ||\n  a.json.rank - b.json.rank);\n\nreturn out;"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          928,
+          192
+        ],
+        "id": "23c3a3fb-0df6-4af5-840f-f85787cd2315",
+        "name": "Normalize trends"
+      },
+      {
+        "parameters": {
+          "jsCode": "// Firecrawl SEARCH covers the platforms with no open API (TikTok, Instagram,\n// LinkedIn). Search takes a natural-language query, not a URL - it finds and\n// scrapes matching pages, so results are discovery-grade, not official metrics.\nconst queries = [\n  'trending TikTok videos this week',\n  'viral Instagram reels trending this week',\n  'most engaged LinkedIn posts this week',\n];\n\nreturn queries.map(query => ({ json: { query } }));"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          32,
+          752
+        ],
+        "id": "dd000000-0000-4000-9000-000000000022",
+        "name": "Trend search queries"
+      },
+      {
+        "parameters": {
+          "resource": "MapSearch",
+          "operation": "search",
+          "query": "={{ $json.query }}",
+          "limit": 10,
+          "requestOptions": {}
+        },
+        "type": "@mendable/n8n-nodes-firecrawl.firecrawl",
+        "typeVersion": 1,
+        "position": [
+          320,
+          848
+        ],
+        "id": "dd000000-0000-4000-9000-000000000023",
+        "name": "Search social trends (Firecrawl)",
+        "retryOnFail": true,
+        "maxTries": 2,
+        "waitBetweenTries": 3000,
+        "credentials": {
+          "firecrawlApi": {
+            "id": "YGkaHvdHrkBtmQNj",
+            "name": "Firecrawl API"
+          }
+        },
+        "onError": "continueRegularOutput",
+        "notes": "Covers TikTok/Instagram/LinkedIn, which have no open API. Query-based discovery, not official platform metrics."
+      },
+      {
+        "parameters": {
+          "operation": "append",
+          "documentId": {
+            "__rl": true,
+            "value": "1Vt2RGAphWUF-cBRIl09ZfvIxr9l3WZzturXbbB27Qkc",
+            "mode": "list",
+            "cachedResultName": "Trends",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Vt2RGAphWUF-cBRIl09ZfvIxr9l3WZzturXbbB27Qkc/edit?usp=drivesdk"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": "gid=0",
+            "mode": "list",
+            "cachedResultName": "Tabellenblatt1",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Vt2RGAphWUF-cBRIl09ZfvIxr9l3WZzturXbbB27Qkc/edit#gid=0"
+          },
+          "columns": {
+            "mappingMode": "autoMapInputData",
+            "value": {},
+            "matchingColumns": [],
+            "schema": [],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.5,
+        "position": [
+          928,
+          480
+        ],
+        "id": "7e00b6d6-3859-4fa6-8ba6-80f6ec61486e",
+        "name": "Store in Google Sheets",
+        "credentials": {
+          "googleSheetsOAuth2Api": {
+            "id": "pETx5yaQtdAD5WQT",
+            "name": "Google Sheets account 2"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "jsCode": "// Hashtag seeds for the TikTok Actor. Kept separate from the Instagram seed so\n// each Actor run stays independently tunable.\nreturn [{ json: { tags: ['fyp', 'trending', 'viral'] } }];\n"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          -176,
+          624
+        ],
+        "id": "7e7561a2-0851-43c7-b1d6-2005b1e94d49",
+        "name": "TikTok trend input"
+      },
+      {
+        "parameters": {
+          "jsCode": "// Instagram hashtag search seed.\nreturn [{ json: { tag: 'trending' } }];\n"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          -176,
+          800
+        ],
+        "id": "1e749680-dbfb-4fbf-9b41-afe90378f5dc",
+        "name": "Instagram trend input"
+      },
+      {
+        "parameters": {
+          "operation": "Run actor and get dataset",
+          "actorId": {
+            "__rl": true,
+            "value": "GdWCkxBtKWOsKjdch",
+            "mode": "list",
+            "cachedResultName": "clockworks/tiktok-scraper"
+          },
+          "customBody": "={{ JSON.stringify({ hashtags: $json.tags, resultsPerPage: 25, excludePinnedPosts: true, profileScrapeSections: [\"videos\"] }) }}",
+          "timeout": 600,
+          "authentication": "apifyOAuth2Api"
+        },
+        "type": "@apify/n8n-nodes-apify.apify",
+        "typeVersion": 1,
+        "position": [
+          48,
+          592
+        ],
+        "id": "46f5511e-3328-4d03-bc98-757070394eea",
+        "name": "Scrape TikTok trends (Apify)",
+        "credentials": {
+          "apifyOAuth2Api": {
+            "id": "KBagGEUEu17uFBue",
+            "name": "Apify account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "Run actor and get dataset",
+          "actorId": {
+            "__rl": true,
+            "value": "shu8hvrXbJbY3Eb9W",
+            "mode": "list",
+            "cachedResultName": "apify/instagram-scraper"
+          },
+          "customBody": "={{ JSON.stringify({ resultsType: \"posts\", search: $json.tag, searchType: \"hashtag\", searchLimit: 5, resultsLimit: 25, directUrls: [] }) }}",
+          "timeout": 600,
+          "authentication": "apifyOAuth2Api"
+        },
+        "type": "@apify/n8n-nodes-apify.apify",
+        "typeVersion": 1,
+        "position": [
+          96,
+          912
+        ],
+        "id": "4e91ee6a-2279-4324-a007-c2827da86cfb",
+        "name": "Scrape Instagram trends (Apify)",
+        "credentials": {
+          "apifyOAuth2Api": {
+            "id": "KBagGEUEu17uFBue",
+            "name": "Apify account"
+          }
+        }
+      },
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3,
+        "position": [
+          272,
+          704
+        ],
+        "id": "374ced81-e957-4e78-a858-4ac8beb7ccd3",
+        "name": "Combine Apify social"
+      },
+      {
+        "parameters": {
+          "jsCode": "// Normalize TikTok + Instagram Actor output into the same 16-column shape that\n// \"Normalize trends\" emits, so both streams can share the Sheets append.\nconst scraped_at = new Date().toISOString();\nconst out = [];\n\nconst clean = (s) => String(s ?? '').replace(/\\s+/g, ' ').trim();\nconst num = (v) => { const n = Number(v); return Number.isFinite(n) ? n : 0; };\n\nfor (const item of $input.all()) {\n  const it = item.json || {};\n  if (it.error) continue;\n\n  // TikTok items carry webVideoUrl / diggCount; Instagram carry shortCode / likesCount.\n  const isTikTok = Boolean(it.webVideoUrl || it.diggCount != null || it.playCount != null);\n  const platform = isTikTok ? 'tiktok' : 'instagram';\n\n  const url = isTikTok\n    ? (it.webVideoUrl || '')\n    : (it.url || (it.shortCode ? `https://www.instagram.com/p/${it.shortCode}/` : ''));\n  if (!url) continue;\n\n  const title = clean(isTikTok ? it.text : (it.caption ?? it.text)).slice(0, 300);\n  const author = isTikTok\n    ? clean(it.authorMeta?.name || it.authorMeta?.nickName)\n    : clean(it.ownerUsername || it.ownerFullName);\n\n  const is_video = isTikTok || it.type === 'Video' || Boolean(it.videoUrl);\n  const metric_value = isTikTok ? num(it.playCount || it.diggCount) : num(it.likesCount);\n\n  out.push({ json: {\n    platform,\n    geo: 'worldwide',\n    category: isTikTok\n      ? clean((it.hashtags || []).map(h => h.name || h).slice(0, 3).join(', '))\n      : clean((it.hashtags || []).slice(0, 3).join(', ')),\n    rank: 0,\n    title: title || '(no caption)',\n    url,\n    video_url: is_video ? (it.videoUrl || it.videoUrlNoWaterMark || url) : '',\n    has_video: is_video ? 'yes' : 'no',\n    video_thumbnail: it.covers?.default || it.videoMeta?.coverUrl || it.displayUrl || '',\n    author,\n    metric_name: isTikTok ? 'plays' : 'likes',\n    metric_value,\n    context: isTikTok\n      ? `${num(it.diggCount)} likes, ${num(it.commentCount)} comments`\n      : `${num(it.commentsCount)} comments`,\n    published_at: it.createTimeISO || it.timestamp || '',\n    scraped_at,\n    trend_key: `${platform}|worldwide|${url}`.toLowerCase(),\n  }});\n}\n\n// Rank within each platform by its own metric.\nconst byPlatform = {};\nout.sort((a, b) => b.json.metric_value - a.json.metric_value);\nfor (const o of out) {\n  byPlatform[o.json.platform] = (byPlatform[o.json.platform] || 0) + 1;\n  o.json.rank = byPlatform[o.json.platform];\n}\n\nreturn out;\n"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          480,
+          704
+        ],
+        "id": "20801a5b-e243-4e98-891f-03739d9b45b1",
+        "name": "Normalize Apify social"
+      },
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3,
+        "position": [
+          704,
+          480
+        ],
+        "id": "dac0917b-9ab9-442c-99c7-c66a49d10fd8",
+        "name": "Combine normalized"
+      }
+    ],
+    "pinData": {},
+    "connections": {
+      "When clicking ‘Execute workflow’": {
+        "main": [
+          [
+            {
+              "node": "YouTube regions",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Social trend sources",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Trend search queries",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "TikTok trend input",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Instagram trend input",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "YouTube regions": {
+        "main": [
+          [
+            {
+              "node": "Fetch YouTube trending",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Fetch YouTube trending": {
+        "main": [
+          [
+            {
+              "node": "Tag YouTube region",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Tag YouTube region": {
+        "main": [
+          [
+            {
+              "node": "Combine sources",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Social trend sources": {
+        "main": [
+          [
+            {
+              "node": "Fetch social feeds",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Fetch social feeds": {
+        "main": [
+          [
+            {
+              "node": "Combine sources",
+              "type": "main",
+              "index": 1
+            }
+          ]
+        ]
+      },
+      "Trend search queries": {
+        "main": [
+          [
+            {
+              "node": "Search social trends (Firecrawl)",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Search social trends (Firecrawl)": {
+        "main": [
+          [
+            {
+              "node": "Combine sources",
+              "type": "main",
+              "index": 2
+            }
+          ]
+        ]
+      },
+      "Combine sources": {
+        "main": [
+          [
+            {
+              "node": "Normalize trends",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Normalize trends": {
+        "main": [
+          [
+            {
+              "node": "Combine normalized",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "TikTok trend input": {
+        "main": [
+          [
+            {
+              "node": "Scrape TikTok trends (Apify)",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Instagram trend input": {
+        "main": [
+          [
+            {
+              "node": "Scrape Instagram trends (Apify)",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Scrape TikTok trends (Apify)": {
+        "main": [
+          [
+            {
+              "node": "Combine Apify social",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Scrape Instagram trends (Apify)": {
+        "main": [
+          [
+            {
+              "node": "Combine Apify social",
+              "type": "main",
+              "index": 1
+            }
+          ]
+        ]
+      },
+      "Combine Apify social": {
+        "main": [
+          [
+            {
+              "node": "Normalize Apify social",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Normalize Apify social": {
+        "main": [
+          [
+            {
+              "node": "Combine normalized",
+              "type": "main",
+              "index": 1
+            }
+          ]
+        ]
+      },
+      "Combine normalized": {
+        "main": [
+          [
+            {
+              "node": "Store in Google Sheets",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "active": false,
+    "settings": {
+      "executionOrder": "v1",
+      "binaryMode": "separate"
+    },
+    "versionId": "730b6b17-f02f-4387-adbb-8214fdb61975",
+    "meta": {
+      "templateCredsSetupCompleted": true,
+      "instanceId": "5531427d8d8c8a9a64e42e32e1e8f193b42ff6184eb93573f4634b53d251b0bb"
+    },
+    "nodeGroups": [],
+    "id": "Zhc7DcNlno8uvDYk",
+    "tags": []
+  }

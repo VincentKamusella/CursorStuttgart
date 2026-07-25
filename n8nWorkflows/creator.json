@@ -1,0 +1,480 @@
+{
+    "name": "crawlCreatorContent",
+    "nodes": [
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.manualTrigger",
+        "typeVersion": 1,
+        "position": [
+          -208,
+          160
+        ],
+        "id": "aa000000-0000-4000-9000-000000000001",
+        "name": "When clicking ‘Execute workflow’"
+      },
+      {
+        "parameters": {
+          "jsCode": "// Creator(s) to crawl. Accepts any YouTube profile form:\n//   https://www.youtube.com/c/name  |  /@handle  |  /channel/UC...  |  /user/name\nconst urls = [\n  'https://www.youtube.com/c/chaosadam13',\n];\n\nconst clean = urls.map(u => String(u || '').trim()).filter(Boolean);\nif (!clean.length) {\n  throw new Error('No creator URL configured. Add at least one profile link to the urls array.');\n}\n\nreturn clean.map(creator_url => ({ json: { creator_url } }));"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          32,
+          160
+        ],
+        "id": "aa000000-0000-4000-9000-000000000002",
+        "name": "Creator seed URLs"
+      },
+      {
+        "parameters": {
+          "operation": "append",
+          "documentId": {
+            "__rl": true,
+            "value": "1MsCwE-19PHHzUwLkXHHBPlcg4O1gWComkBA5HpQ0Zu8",
+            "mode": "list",
+            "cachedResultName": "Single Creator",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1MsCwE-19PHHzUwLkXHHBPlcg4O1gWComkBA5HpQ0Zu8/edit?usp=drivesdk"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": "gid=0",
+            "mode": "list",
+            "cachedResultName": "Tabellenblatt1",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1MsCwE-19PHHzUwLkXHHBPlcg4O1gWComkBA5HpQ0Zu8/edit#gid=0"
+          },
+          "columns": {
+            "mappingMode": "autoMapInputData",
+            "value": {},
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "creator",
+                "displayName": "creator",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "creator_url",
+                "displayName": "creator_url",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "channel_id",
+                "displayName": "channel_id",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "video_id",
+                "displayName": "video_id",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "title",
+                "displayName": "title",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "video_url",
+                "displayName": "video_url",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "embed_url",
+                "displayName": "embed_url",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "short_url",
+                "displayName": "short_url",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "content_type",
+                "displayName": "content_type",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "position",
+                "displayName": "position",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "published_at",
+                "displayName": "published_at",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "updated_at",
+                "displayName": "updated_at",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "views",
+                "displayName": "views",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "likes",
+                "displayName": "likes",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "rating",
+                "displayName": "rating",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "comments_fetched",
+                "displayName": "comments_fetched",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "top_comments",
+                "displayName": "top_comments",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "image_url",
+                "displayName": "image_url",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "image_original",
+                "displayName": "image_original",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "image_hq",
+                "displayName": "image_hq",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "description",
+                "displayName": "description",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "scraped_at",
+                "displayName": "scraped_at",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.5,
+        "position": [
+          1328,
+          0
+        ],
+        "id": "aa000000-0000-4000-9000-000000000007",
+        "name": "Store in Google Sheets1",
+        "credentials": {
+          "googleSheetsOAuth2Api": {
+            "id": "pETx5yaQtdAD5WQT",
+            "name": "Google Sheets account 2"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "Run actor and get dataset",
+          "actorId": {
+            "__rl": true,
+            "value": "h7sDV53CddomktSi5",
+            "mode": "list",
+            "cachedResultName": "streamers/youtube-scraper"
+          },
+          "customBody": "={{ JSON.stringify({ startUrls: [{ url: $json.creator_url }], maxResults: 30, maxResultsShorts: 10, sortingOrder: \"date\", downloadSubtitles: false }) }}",
+          "timeout": 300,
+          "authentication": "apifyOAuth2Api"
+        },
+        "type": "@apify/n8n-nodes-apify.apify",
+        "typeVersion": 1,
+        "position": [
+          224,
+          0
+        ],
+        "id": "dda5683a-be33-4241-a9ea-ee58c3503529",
+        "name": "Scrape creator videos (Apify)",
+        "credentials": {
+          "apifyOAuth2Api": {
+            "id": "KBagGEUEu17uFBue",
+            "name": "Apify account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "jsCode": "// Map streamers/youtube-scraper dataset items onto the Google Sheets schema.\n// Replaces the old RSS/XML regex parse of the channel feed.\nconst scraped_at = new Date().toISOString();\nconst seeds = $('Creator seed URLs').all();\nconst seed_url = seeds[0]?.json?.creator_url || '';\n\nconst int = (v) => {\n  if (v == null) return null;\n  const n = parseInt(String(v).replace(/[^\\d]/g, ''), 10);\n  return Number.isFinite(n) ? n : null;\n};\nconst vidId = (it) => {\n  if (it.id) return String(it.id);\n  const m = String(it.url || '').match(/(?:v=|\\/shorts\\/|youtu\\.be\\/)([\\w-]{6,})/);\n  return m ? m[1] : '';\n};\n\nconst out = [];\n$input.all().forEach((item, i) => {\n  const it = item.json || {};\n  if (it.error) return;                       // actor reports failures inline\n  const video_id = vidId(it);\n  const video_url = it.url || (video_id ? 'https://www.youtube.com/watch?v=' + video_id : '');\n  if (!video_id && !video_url) return;\n\n  const isShort = /\\/shorts\\//.test(video_url);\n  const chUrl = it.channelUrl || '';\n  const chId = (chUrl.match(/\\/channel\\/(UC[\\w-]+)/) || [])[1] || '';\n\n  out.push({ json: {\n    creator: it.channelName || '',\n    creator_url: chUrl || seed_url,\n    channel_id: chId,\n    video_id,\n    title: it.title || '',\n    video_url,\n    embed_url: video_id ? 'https://www.youtube.com/embed/' + video_id : '',\n    short_url: video_id ? 'https://youtu.be/' + video_id : '',\n    content_type: isShort ? 'short' : 'video',\n    position: i + 1,\n    published_at: it.date || '',\n    updated_at: it.date || '',\n    views: int(it.viewCount),\n    likes: int(it.likes),\n    rating: '',                               // not exposed by this actor\n    image_url: video_id ? `https://i.ytimg.com/vi/${video_id}/maxresdefault.jpg` : '',\n    image_original: video_id ? `https://i.ytimg.com/vi/${video_id}/oardefault.jpg` : '',\n    image_hq: it.thumbnailUrl || (video_id ? `https://i.ytimg.com/vi/${video_id}/hqdefault.jpg` : ''),\n    comments_fetched: 0,\n    top_comments: '',\n    description: String(it.text || '').slice(0, 500),\n    duration: it.duration || '',\n    comments_count: int(it.commentsCount),\n    scraped_at,\n  }});\n});\n\nif (out.length === 0) {\n  throw new Error('YouTube Scraper returned no videos - check the Actor run log in Apify Console.');\n}\n\nout.sort((a, b) => String(b.json.published_at).localeCompare(String(a.json.published_at)));\nreturn out;\n"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          448,
+          0
+        ],
+        "id": "14dad9d5-9e17-41dc-a90f-a4d2833e7312",
+        "name": "Restructure creator content"
+      },
+      {
+        "parameters": {
+          "jsCode": "// The comments Actor accepts many startUrls per run, so batch every video into\n// ONE run instead of paying for one Actor run per video.\nconst urls = $input.all()\n  .map(i => i.json.video_url)\n  .filter(Boolean);\n\nif (!urls.length) throw new Error('No video URLs to fetch comments for.');\n\nreturn [{ json: { video_urls: urls.slice(0, 50) } }];\n"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          672,
+          0
+        ],
+        "id": "053405c4-078c-4c59-ae90-cf421460b55b",
+        "name": "Collect video URLs"
+      },
+      {
+        "parameters": {
+          "operation": "Run actor and get dataset",
+          "actorId": {
+            "__rl": true,
+            "value": "p7UMdpQnjKmmpR21D",
+            "mode": "list",
+            "cachedResultName": "streamers/youtube-comments-scraper"
+          },
+          "customBody": "={{ JSON.stringify({ startUrls: $json.video_urls.map(u => ({ url: u })), maxComments: 10 }) }}",
+          "timeout": 600,
+          "authentication": "apifyOAuth2Api"
+        },
+        "type": "@apify/n8n-nodes-apify.apify",
+        "typeVersion": 1,
+        "position": [
+          880,
+          0
+        ],
+        "id": "684c373d-f677-4492-a38e-845537d449c3",
+        "name": "Scrape comments (Apify)",
+        "credentials": {
+          "apifyOAuth2Api": {
+            "id": "KBagGEUEu17uFBue",
+            "name": "Apify account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "jsCode": "// Group streamers/youtube-comments-scraper output back onto its video row.\n// One Actor run covers every video, so results are keyed by URL, not by index.\nfunction keyOf(u) {\n  const m = String(u || '').match(/(?:v=|\\/shorts\\/|youtu\\.be\\/)([\\w-]{6,})/);\n  return m ? m[1] : '';\n}\n\nconst byVideo = new Map();\nfor (const item of $input.all()) {\n  const c = item.json || {};\n  const k = keyOf(c.videoUrl || c.url || c.video_url);\n  if (!k) continue;\n  const text = String(c.comment ?? c.text ?? '').replace(/\\s+/g, ' ').trim();\n  if (!text) continue;\n  if (!byVideo.has(k)) byVideo.set(k, []);\n  byVideo.get(k).push({\n    author: c.author || c.authorName || '',\n    text,\n    likes: Number(c.voteCount ?? c.likes ?? 0) || 0,\n    replies: Number(c.replyCount ?? c.replies ?? 0) || 0,\n  });\n}\n\nconst fmt = (list, max = 5) => list.slice(0, max)\n  .map(c => `${c.author} (${c.likes}❤): ${c.text}`)\n  .join(' ||| ')\n  .slice(0, 1500);\n\nreturn $('Restructure creator content').all().map(item => {\n  const row = { ...item.json };\n  const list = (byVideo.get(row.video_id) || []).sort((a, b) => b.likes - a.likes);\n  row.comments_fetched = list.length;\n  row.top_comments = fmt(list);\n  return { json: row };\n});\n"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          1104,
+          0
+        ],
+        "id": "b0580a23-ef6b-4f06-843b-c07de9e0deca",
+        "name": "Merge comments"
+      }
+    ],
+    "pinData": {},
+    "connections": {
+      "When clicking ‘Execute workflow’": {
+        "main": [
+          [
+            {
+              "node": "Creator seed URLs",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Creator seed URLs": {
+        "main": [
+          [
+            {
+              "node": "Scrape creator videos (Apify)",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Scrape creator videos (Apify)": {
+        "main": [
+          [
+            {
+              "node": "Restructure creator content",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Restructure creator content": {
+        "main": [
+          [
+            {
+              "node": "Collect video URLs",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Collect video URLs": {
+        "main": [
+          [
+            {
+              "node": "Scrape comments (Apify)",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Scrape comments (Apify)": {
+        "main": [
+          [
+            {
+              "node": "Merge comments",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Merge comments": {
+        "main": [
+          [
+            {
+              "node": "Store in Google Sheets1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "active": false,
+    "settings": {
+      "executionOrder": "v1",
+      "binaryMode": "separate",
+      "availableInMCP": false
+    },
+    "versionId": "baad872a-4f6f-42f9-9148-495eb3204e3a",
+    "meta": {
+      "instanceId": "5531427d8d8c8a9a64e42e32e1e8f193b42ff6184eb93573f4634b53d251b0bb"
+    },
+    "nodeGroups": [],
+    "id": "J3psAVjUz0qmRz0o",
+    "tags": []
+  }
