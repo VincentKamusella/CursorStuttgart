@@ -1,0 +1,744 @@
+{
+  "name": "Voiceprint — MERGED (Apify download + fal Wizper/video + fingerprint)",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "trigger",
+      "name": "Run ingestion",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -220,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return [{\"json\": {\"id\": \"WlNUVi85zQg\", \"creator\": \"ChaosAdam13\", \"niche\": \"German candy & food comedy shorts\", \"platform\": \"youtube\", \"media_type\": \"video\", \"author\": \"creator\", \"media_url\": \"https://www.youtube.com/shorts/WlNUVi85zQg\", \"title\": \"Gehörst du zu den 99% 😂🤔 #shorts #viral #like #sweet\", \"caption\": \"\", \"published_at\": \"2026-07-05T17:30:03+00:00\", \"views\": 25572, \"likes\": 1061, \"comments\": 0}}, {\"json\": {\"id\": \"VBdockWR3Ws\", \"creator\": \"ChaosAdam13\", \"niche\": \"German candy & food comedy shorts\", \"platform\": \"youtube\", \"media_type\": \"video\", \"author\": \"creator\", \"media_url\": \"https://www.youtube.com/shorts/VBdockWR3Ws\", \"title\": \"Eissorten die es bald nichtmehr geben wird… #shorts #viral #sweet #sad\", \"caption\": \"\", \"published_at\": \"2026-07-05T16:00:20+00:00\", \"views\": 34055, \"likes\": 1701, \"comments\": 0}}, {\"json\": {\"id\": \"bwoMWDA6TL4\", \"creator\": \"ChaosAdam13\", \"niche\": \"German candy & food comedy shorts\", \"platform\": \"youtube\", \"media_type\": \"video\", \"author\": \"creator\", \"media_url\": \"https://www.youtube.com/shorts/bwoMWDA6TL4\", \"title\": \"Süßigkeiten die den Hype komplett verloren haben 😂 #shorts #viral #shortvideo\", \"caption\": \"\", \"published_at\": \"2026-07-04T17:30:34+00:00\", \"views\": 43914, \"likes\": 1963, \"comments\": 0}}, {\"json\": {\"id\": \"3Y_I0WRe8YY\", \"creator\": \"ChaosAdam13\", \"niche\": \"German candy & food comedy shorts\", \"platform\": \"youtube\", \"media_type\": \"video\", \"author\": \"creator\", \"media_url\": \"https://www.youtube.com/shorts/3Y_I0WRe8YY\", \"title\": \"Alle haben das letzte schonmal probiert #shorts #viral #like #sweet\", \"caption\": \"\", \"published_at\": \"2026-07-04T16:00:20+00:00\", \"views\": 37394, \"likes\": 1450, \"comments\": 0}}, {\"json\": {\"id\": \"c6jfBgcmSCo\", \"creator\": \"ChaosAdam13\", \"niche\": \"German candy & food comedy shorts\", \"platform\": \"youtube\", \"media_type\": \"video\", \"author\": \"creator\", \"media_url\": \"https://www.youtube.com/shorts/c6jfBgcmSCo\", \"title\": \"Stimmst du diesen 3 Süßigkeiten zu 🤔 #shorts #viral #like #candy\", \"caption\": \"\", \"published_at\": \"2026-07-03T17:30:39+00:00\", \"views\": 27254, \"likes\": 1322, \"comments\": 0}}, {\"json\": {\"id\": \"FZ3phteouGM\", \"creator\": \"ChaosAdam13\", \"niche\": \"German candy & food comedy shorts\", \"platform\": \"youtube\", \"media_type\": \"video\", \"author\": \"creator\", \"media_url\": \"https://www.youtube.com/shorts/FZ3phteouGM\", \"title\": \"Süßigkeiten die es 2027 nichtmehr geben wird… #shorts #viral #like #candy\", \"caption\": \"Quelle: Lokale / Eigene Beobachtung. Seit Monaten beobachte ich das diese 3 Süßigkeiten die im Video präsentiert werden immer weniger werden. Deswegen vermute ich das es diese im Jahr 2027 vollständig aus dem Verkauf genommen werden - zumindest in manchen Geschäften. In anderen Geschäften wird es die bestimmt noch geben.\", \"published_at\": \"2026-07-03T16:00:09+00:00\", \"views\": 366944, \"likes\": 8549, \"comments\": 0}}, {\"json\": {\"id\": \"g7VMT-yw0jg\", \"creator\": \"ChaosAdam13\", \"niche\": \"German candy & food comedy shorts\", \"platform\": \"youtube\", \"media_type\": \"video\", \"author\": \"creator\", \"media_url\": \"https://www.youtube.com/shorts/g7VMT-yw0jg\", \"title\": \"Wer mag bitte die letzte Schokolade 😭🤔 #shorts #candy #shortsviral #shortvideo\", \"caption\": \"\", \"published_at\": \"2026-07-02T17:30:10+00:00\", \"views\": 23423, \"likes\": 1156, \"comments\": 0}}, {\"json\": {\"id\": \"wjNe-0d0wYs\", \"creator\": \"ChaosAdam13\", \"niche\": \"German candy & food comedy shorts\", \"platform\": \"youtube\", \"media_type\": \"video\", \"author\": \"creator\", \"media_url\": \"https://www.youtube.com/shorts/wjNe-0d0wYs\", \"title\": \"Diese Getränke hat jeder im Sommer getrunken 😂☀️ #shorts #viral #shortvideo #sweet\", \"caption\": \"\", \"published_at\": \"2026-07-02T16:00:04+00:00\", \"views\": 27347, \"likes\": 1024, \"comments\": 0}}, {\"json\": {\"id\": \"FMzNR5RPg3c\", \"creator\": \"ChaosAdam13\", \"niche\": \"German candy & food comedy shorts\", \"platform\": \"youtube\", \"media_type\": \"video\", \"author\": \"creator\", \"media_url\": \"https://www.youtube.com/shorts/FMzNR5RPg3c\", \"title\": \"Diese Süßigkeiten verschwinden leider gerade aus den Läden 😭🥺 #shorts #viral #like #candy\", \"caption\": \"\", \"published_at\": \"2026-07-01T17:30:27+00:00\", \"views\": 21674, \"likes\": 736, \"comments\": 0}}, {\"json\": {\"id\": \"5KnFNBLA_PU\", \"creator\": \"ChaosAdam13\", \"niche\": \"German candy & food comedy shorts\", \"platform\": \"youtube\", \"media_type\": \"video\", \"author\": \"creator\", \"media_url\": \"https://www.youtube.com/shorts/5KnFNBLA_PU\", \"title\": \"Stimmen eure Kommentare? 🤔😂 #shorts #viral #sweet #like\", \"caption\": \"\", \"published_at\": \"2026-07-01T16:00:28+00:00\", \"views\": 14188, \"likes\": 582, \"comments\": 0}}, {\"json\": {\"id\": \"EsEp-10IYyg\", \"creator\": \"ChaosAdam13\", \"niche\": \"German candy & food comedy shorts\", \"platform\": \"youtube\", \"media_type\": \"video\", \"author\": \"creator\", \"media_url\": \"https://www.youtube.com/shorts/EsEp-10IYyg\", \"title\": \"Hast du bereits alle Snacks probiert diesen Sommer? 🧴 #shorts #viral #shortsviral #sweet\", \"caption\": \"\", \"published_at\": \"2026-06-30T17:30:14+00:00\", \"views\": 28378, \"likes\": 677, \"comments\": 0}}, {\"json\": {\"id\": \"UAYnuqk-xPI\", \"creator\": \"ChaosAdam13\", \"niche\": \"German candy & food comedy shorts\", \"platform\": \"youtube\", \"media_type\": \"video\", \"author\": \"creator\", \"media_url\": \"https://www.youtube.com/shorts/UAYnuqk-xPI\", \"title\": \"Diese Süßigkeiten kennen nur Leute die … sind 😢❤️ #shorts #viral #sweet #candy\", \"caption\": \"Nur spaß - dieses Video dient nur zur Unterhaltung.\\nQuelle: Eigene Meinung\", \"published_at\": \"2026-06-30T16:00:35+00:00\", \"views\": 29014, \"likes\": 699, \"comments\": 0}}, {\"json\": {\"id\": \"ZFYpPgrR0-A\", \"creator\": \"ChaosAdam13\", \"niche\": \"German candy & food comedy shorts\", \"platform\": \"youtube\", \"media_type\": \"video\", \"author\": \"creator\", \"media_url\": \"https://www.youtube.com/shorts/ZFYpPgrR0-A\", \"title\": \"Nur reale Leute haben diese Süßigkeiten diesen Juni schon gegessen❤️☀️ #shorts #viral #like #sweet\", \"caption\": \"\", \"published_at\": \"2026-06-29T17:30:01+00:00\", \"views\": 14562, \"likes\": 443, \"comments\": 0}}, {\"json\": {\"id\": \"WBD3_J1jorE\", \"creator\": \"ChaosAdam13\", \"niche\": \"German candy & food comedy shorts\", \"platform\": \"youtube\", \"media_type\": \"video\", \"author\": \"creator\", \"media_url\": \"https://www.youtube.com/shorts/WBD3_J1jorE\", \"title\": \"Diese Süßigkeiten mag niemand bei dieser Hitze ☀️⛱️ #shorts #viral #shortvideo #like\", \"caption\": \"\", \"published_at\": \"2026-06-29T16:00:05+00:00\", \"views\": 25788, \"likes\": 964, \"comments\": 0}}, {\"json\": {\"id\": \"jruYCevjLiQ\", \"creator\": \"ChaosAdam13\", \"niche\": \"German candy & food comedy shorts\", \"platform\": \"youtube\", \"media_type\": \"video\", \"author\": \"creator\", \"media_url\": \"https://www.youtube.com/shorts/jruYCevjLiQ\", \"title\": \"Diese teuren Süßigkeiten kennen nur Leute die viel Geld haben\", \"caption\": \"\", \"published_at\": \"2026-06-19T17:00:30+00:00\", \"views\": 18211, \"likes\": 741, \"comments\": 0}}];"
+      },
+      "id": "seed",
+      "name": "Load creator data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        0,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.apify.com/v2/acts/streamers~youtube-video-downloader/run-sync-get-dataset-items",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ videos: $('Load creator data').all().map(i=>({url:i.json.media_url})), storeInKVStore: true, preferredQuality: '480p', preferredFormat: 'mp4' }) }}",
+        "options": {
+          "timeout": 180000
+        }
+      },
+      "id": "apifydl",
+      "name": "Apify · Download media",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        220,
+        420
+      ],
+      "onError": "continueRegularOutput",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const S = v => (v==null?'':String(v)).trim();\nconst vid = u => { const m=String(u||'').match(/shorts\\/([\\w-]{11})|v=([\\w-]{11})|youtu\\.be\\/([\\w-]{11})|\\/([\\w-]{11})(?:\\?|$)/); return m?(m[1]||m[2]||m[3]||m[4]):''; };\nconst rows = $('Load creator data').all().map(i=>i.json);\nlet dl = $('Apify · Download media').all().map(i=>i.json);\nif (dl.length===1 && Array.isArray(dl[0])) dl = dl[0];\nconst map = {};\nfor (const d of dl) {\n  const id = S(d.id) || vid(d.input) || vid(d.downloadedFileUrl);\n  if (!id) continue;\n  map[id] = {\n    audio_url: S(d.audioOnlyUrl) || S(d.downloadedFileUrl) || '',\n    video_url: S(d.downloadedFileUrl) || S(d.videoOnlyUrl) || '',\n  };\n}\nreturn rows.map(r => {\n  const m = map[S(r.id)] || {};\n  return { json: { ...r, audio_url: m.audio_url || '', video_url: m.video_url || '' } };\n});"
+      },
+      "id": "enrich",
+      "name": "Enrich rows",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose"
+                },
+                "conditions": [
+                  {
+                    "id": "video",
+                    "leftValue": "={{ $json.media_type }}",
+                    "rightValue": "video",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "video"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose"
+                },
+                "conditions": [
+                  {
+                    "id": "audio",
+                    "leftValue": "={{ $json.media_type }}",
+                    "rightValue": "audio",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "audio"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose"
+                },
+                "conditions": [
+                  {
+                    "id": "image",
+                    "leftValue": "={{ $json.media_type }}",
+                    "rightValue": "image",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "image"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose"
+                },
+                "conditions": [
+                  {
+                    "id": "story",
+                    "leftValue": "={{ $json.media_type }}",
+                    "rightValue": "story",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "story"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose"
+                },
+                "conditions": [
+                  {
+                    "id": "comment",
+                    "leftValue": "={{ $json.media_type }}",
+                    "rightValue": "comment",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "comment"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "switch",
+      "name": "Route by media_type",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        660,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://fal.run/fal-ai/wizper",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ audio_url: $('Enrich rows').item.json.audio_url }) }}",
+        "options": {
+          "timeout": 180000
+        }
+      },
+      "id": "wzV",
+      "name": "Wizper · video (speech)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        900,
+        60
+      ],
+      "onError": "continueRegularOutput",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://fal.run/openrouter/router/video",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ video_url: $('Enrich rows').item.json.video_url, prompt: \"Watch this short video and return EXACTLY two labeled sections, each on its own line:\\nSCENE: one or two sentences describing the visual style and what happens.\\nTEXT: verbatim transcription of any on-screen text overlays (empty if none).\", model: \"google/gemini-2.5-flash\" }) }}",
+        "options": {
+          "timeout": 180000
+        }
+      },
+      "id": "vrV",
+      "name": "Video→text · fal (scene)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1120,
+        60
+      ],
+      "onError": "continueRegularOutput",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const row = { ...$('Enrich rows').item.json };\nrow._transcript = String(($('Wizper · video (speech)').item.json.text)||'').trim() || null;\nconst out = String(($json && $json.output)||'');\nconst g = (lab)=>{const m=out.match(new RegExp(lab+':([\\\\s\\\\S]*?)(?=SCENE:|TEXT:|$)','i'));return m?m[1].trim():'';};\nrow._visual_desc = g('SCENE') || null;\nrow._overlay = g('TEXT') || null;\nreturn [{ json: row }];"
+      },
+      "id": "shV",
+      "name": "Shape video",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1340,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://fal.run/fal-ai/wizper",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ audio_url: $('Enrich rows').item.json.audio_url }) }}",
+        "options": {
+          "timeout": 180000
+        }
+      },
+      "id": "wzA",
+      "name": "Wizper · audio (speech)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        900,
+        240
+      ],
+      "onError": "continueRegularOutput",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const row = { ...$('Enrich rows').item.json };\nrow._transcript = String(($json && $json.text)||'').trim() || null;\nrow._visual_desc = null; row._overlay = null;\nreturn [{ json: row }];"
+      },
+      "id": "shA",
+      "name": "Shape audio",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://fal.run/openrouter/router/vision",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ image_urls: [$('Enrich rows').item.json.media_url], prompt: \"Describe this social-media image in one sentence for a creator style profile, then on a new line prefixed TEXT: transcribe verbatim any text overlaid on the image. If none, write TEXT:\", model: \"google/gemini-2.5-flash\" }) }}",
+        "options": {
+          "timeout": 180000
+        }
+      },
+      "id": "viI",
+      "name": "Image→text · fal (Vision)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        900,
+        420
+      ],
+      "onError": "continueRegularOutput",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const row = { ...$('Enrich rows').item.json };\nconst out = String(($json && $json.output)||'');\nconst i = out.indexOf('TEXT:');\nlet vd=null,ov=null; if(i>=0){vd=out.slice(0,i).trim()||null;ov=out.slice(i+5).trim()||null;} else {vd=out.trim()||null;}\nrow._transcript = String(row.transcript||'').trim()||null; row._visual_desc=vd; row._overlay=ov;\nreturn [{ json: row }];"
+      },
+      "id": "shI",
+      "name": "Shape image",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://fal.run/fal-ai/wizper",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ audio_url: $('Enrich rows').item.json.audio_url }) }}",
+        "options": {
+          "timeout": 180000
+        }
+      },
+      "id": "wzS",
+      "name": "Wizper · story (speech)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        900,
+        600
+      ],
+      "onError": "continueRegularOutput",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://fal.run/openrouter/router/video",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ video_url: $('Enrich rows').item.json.video_url, prompt: \"Watch this short video and return EXACTLY two labeled sections, each on its own line:\\nSCENE: one or two sentences describing the visual style and what happens.\\nTEXT: verbatim transcription of any on-screen text overlays (empty if none).\", model: \"google/gemini-2.5-flash\" }) }}",
+        "options": {
+          "timeout": 180000
+        }
+      },
+      "id": "vrS",
+      "name": "Video→text · fal (story scene)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1120,
+        600
+      ],
+      "onError": "continueRegularOutput",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const row = { ...$('Enrich rows').item.json };\nrow._transcript = String(($('Wizper · story (speech)').item.json.text)||'').trim() || null;\nconst out = String(($json && $json.output)||'');\nconst g = (lab)=>{const m=out.match(new RegExp(lab+':([\\\\s\\\\S]*?)(?=SCENE:|TEXT:|$)','i'));return m?m[1].trim():'';};\nrow._visual_desc = g('SCENE') || null;\nrow._overlay = g('TEXT') || null;\nreturn [{ json: row }];"
+      },
+      "id": "shS",
+      "name": "Shape story",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1340,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const row = { ...$json };\nrow._transcript = String(row.transcript||'').trim()||null; row._visual_desc=null; row._overlay=null;\nreturn [{ json: row }];"
+      },
+      "id": "shC",
+      "name": "Shape comment",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        900,
+        780
+      ]
+    },
+    {
+      "parameters": {
+        "numberInputs": 5
+      },
+      "id": "merge",
+      "name": "Merge branches",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1580,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const S=v=>(v==null?'':String(v)).trim();\nconst N=v=>{const n=parseInt(String(v).replace(/[, ]/g,''),10);return isNaN(n)?0:n;};\nconst rows=$input.all().map(i=>i.json);\nconst corpus=[],visual=[],audience=[];\nfor(const r of rows){\n  const id=S(r.id)||('row_'+Math.random().toString(36).slice(2,10));\n  const mtype=S(r.media_type).toLowerCase();\n  const author=(S(r.author)||'creator').toLowerCase();\n  if(mtype==='comment'&&author==='audience'){audience.push({id,platform:S(r.platform),text:S(r.caption)||S(r._transcript)||S(r.transcript),likes:N(r.likes)});continue;}\n  if(r._visual_desc)visual.push({id,platform:S(r.platform),media_type:mtype,visual_desc:S(r._visual_desc)});\n  let caption=S(r.caption)||null; if(r._overlay)caption=(caption?caption+' ':'')+S(r._overlay);\n  const transcript=S(r._transcript)||S(r.transcript)||null; const title=S(r.title)||null;\n  if(!(transcript||caption||title))continue;\n  const hook=S(r.hook)||(transcript||caption||'').replace(/\\n/g,' ').split('. ')[0].split(' ').slice(0,14).join(' ');\n  corpus.push({id,platform:S(r.platform),media_type:mtype,title,transcript,caption,hook,published_at:S(r.published_at)||null,metrics:{views:N(r.views),likes:N(r.likes),comments:N(r.comments)},performance_percentile:0});\n}\nconst sc=corpus.map(i=>(i.metrics.likes+i.metrics.comments)/Math.max(i.metrics.views,1));\nconst sorted=[...sc].sort((a,b)=>a-b);\ncorpus.forEach((it,k)=>{const rank=sorted.filter(v=>v<=sc[k]).length; it.performance_percentile=corpus.length?Math.round((rank/corpus.length)*1000)/1000:0;});\nconst c0=rows[0]||{};\nconst corpusDoc={creator:{handle:S(c0.creator||c0.handle),niche:S(c0.niche),platforms:[...new Set(corpus.map(i=>i.platform).filter(Boolean))]},items:corpus};\nreturn [\n  {json:{fileName:'corpus.json',fileContent:JSON.stringify(corpusDoc,null,2),corpus:corpusDoc}},\n  {json:{fileName:'visual_profile.json',fileContent:JSON.stringify({items:visual},null,2)}},\n  {json:{fileName:'audience_signals.json',fileContent:JSON.stringify({items:audience},null,2)}},\n];"
+      },
+      "id": "assemble",
+      "name": "Assemble buckets + percentile",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1800,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const a = $('Assemble buckets + percentile').first().json;\nconst doc = a.corpus || JSON.parse(a.fileContent||'{\"items\":[]}');\nconst items = doc.items || [];\nconst lines = items.map(i=>`- [pct ${i.performance_percentile}] TITLE: ${i.title}\\n  SPEECH: ${i.transcript||'(none)'}\\n  CAPTION: ${i.caption||'(none)'}`).join('\\n');\nconst fpInput = `CREATOR: ${doc.creator&&doc.creator.handle} | NICHE: ${doc.creator&&doc.creator.niche}\\nItems (weight high-percentile most):\\n${lines}`;\nreturn [{ json: { fingerprint_input: fpInput, items_total: items.length, items_with_transcript: items.filter(i=>i.transcript).length } }];"
+      },
+      "id": "buildfp",
+      "name": "Build fingerprint input",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2020,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://fal.run/openrouter/router",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ model: \"google/gemini-2.5-flash\", temperature: 0, system_prompt: \"You are a voice-fingerprint analyst. From the creator's best-performing content, extract a structured VOICE FINGERPRINT. Cite a real excerpt as evidence for every trait \\u2014 a trait without evidence is invalid. Also list taboos: things this creator never does. Return ONLY valid minified JSON with keys: creator_handle, voice_traits (array of {trait,evidence,strength}), hook_archetypes (array of {name,pattern,example}), pacing (object: rhythm_description,opener_style,closer_style), vocabulary (object: signature_phrases,register,formality), taboos (array of {rule,reason}), exemplars (array of {excerpt,why_representative}). No prose, no markdown.\", prompt: $json.fingerprint_input }) }}",
+        "options": {
+          "timeout": 180000
+        }
+      },
+      "id": "fp",
+      "name": "Fingerprint · fal (LLM)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        2240,
+        420
+      ],
+      "onError": "continueRegularOutput",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "alwaysOutputData": true
+    }
+  ],
+  "connections": {
+    "Run ingestion": {
+      "main": [
+        [
+          {
+            "node": "Load creator data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load creator data": {
+      "main": [
+        [
+          {
+            "node": "Apify · Download media",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Apify · Download media": {
+      "main": [
+        [
+          {
+            "node": "Enrich rows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enrich rows": {
+      "main": [
+        [
+          {
+            "node": "Route by media_type",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Route by media_type": {
+      "main": [
+        [
+          {
+            "node": "Wizper · video (speech)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wizper · audio (speech)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Image→text · fal (Vision)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wizper · story (speech)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Shape comment",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wizper · video (speech)": {
+      "main": [
+        [
+          {
+            "node": "Video→text · fal (scene)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Video→text · fal (scene)": {
+      "main": [
+        [
+          {
+            "node": "Shape video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Shape video": {
+      "main": [
+        [
+          {
+            "node": "Merge branches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wizper · audio (speech)": {
+      "main": [
+        [
+          {
+            "node": "Shape audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Shape audio": {
+      "main": [
+        [
+          {
+            "node": "Merge branches",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Image→text · fal (Vision)": {
+      "main": [
+        [
+          {
+            "node": "Shape image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Shape image": {
+      "main": [
+        [
+          {
+            "node": "Merge branches",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Wizper · story (speech)": {
+      "main": [
+        [
+          {
+            "node": "Video→text · fal (story scene)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Video→text · fal (story scene)": {
+      "main": [
+        [
+          {
+            "node": "Shape story",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Shape story": {
+      "main": [
+        [
+          {
+            "node": "Merge branches",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "Shape comment": {
+      "main": [
+        [
+          {
+            "node": "Merge branches",
+            "type": "main",
+            "index": 4
+          }
+        ]
+      ]
+    },
+    "Merge branches": {
+      "main": [
+        [
+          {
+            "node": "Assemble buckets + percentile",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Assemble buckets + percentile": {
+      "main": [
+        [
+          {
+            "node": "Build fingerprint input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build fingerprint input": {
+      "main": [
+        [
+          {
+            "node": "Fingerprint · fal (LLM)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
